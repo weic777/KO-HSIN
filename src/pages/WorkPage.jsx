@@ -95,7 +95,7 @@ const books = [
     className="menu-design-section"
     style={{
       backgroundColor: getSectionBgColor('menu'),
-      height: '630px',
+      height: '730px',
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
