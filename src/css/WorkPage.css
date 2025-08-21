@@ -185,23 +185,9 @@ svg:hover .line {
   background: rgba(0, 0, 0, 0.2); /* 半透明黑色遮罩 */
 }
 
-.book-title {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 
-.book-cover:hover .book-title {
-  opacity: 1;
-}
+
+
 
 
 /* 提示文字 + 箭頭，放在菜單區塊底部上方 10px */
@@ -254,6 +240,28 @@ svg:hover .line {
   to { opacity: 1; transform: translate(-50%, 0); }
 }
 
+/* 書本上方的標題橫幅 */
+.book-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px; /* 距離書本上方 10px */
+}
+
+.book-banner .banner-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 5px; /* 左右間隔 5px */
+  color: #000;
+}
+
+.book-banner .circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #EFEC64;
+  display: inline-block;
+}
 
 /* 響應式設置 */
 @media (max-width: 768px) {
