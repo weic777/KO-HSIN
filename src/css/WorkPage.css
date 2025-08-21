@@ -101,8 +101,8 @@ svg:hover .line {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 50px;
-  padding-top: 50px;
-  padding-bottom: 60px; /* 給提示文字空間 */
+  padding-top: 100px;
+
 }
 
 /* 彈窗翻書 */
@@ -190,55 +190,6 @@ svg:hover .line {
 
 
 
-/* 提示文字 + 箭頭，放在菜單區塊底部上方 10px */
-.hint-wrapper {
-  position: absolute;
-  bottom: 10px; /* 距離菜單區塊底部 10px */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background-color: rgba(255, 255, 255, 0.85); /* 半透明白底 */
-  padding: 8px 12px;
-  border-radius: 8px;
-
-  animation: fadeIn 1s ease forwards;
-  z-index: 10; /* 確保顯示在書本之上 */
-}
-
-
-.hint-text {
-  margin-bottom: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: #333;
-  opacity: 0.9;
-  text-align: center;
-}
-
-
-/* SVG 箭頭動畫 */
-.hint-arrow {
-  width: 28px;
-  height: 28px;
-  animation: bounce 1.5s infinite ease-in-out;
-  opacity: 0.9;
-}
-
-/* 箭頭上下浮動 */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-/* 淡入效果 */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, 10px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
-}
 
 /* 書本上方的標題橫幅 */
 .book-banner {
@@ -262,6 +213,34 @@ svg:hover .line {
   background-color: #EFEC64;
   display: inline-block;
 }
+
+.finger-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;            /* 書本下方 5px */
+  animation: float 1.5s ease-in-out infinite;
+}
+
+.finger-icon {
+  width: 40px;                 /* 手指大小 */
+  height: auto;
+}
+
+.finger-text {
+  margin-top: 2px;             /* 距離手指 2px */
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  text-align: center;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
 
 /* 響應式設置 */
 @media (max-width: 768px) {

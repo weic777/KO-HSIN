@@ -10,6 +10,7 @@ import wafa4 from '../assets/wafa4.png';
 import wafa5 from '../assets/wafa5.png';
 import wafa6 from '../assets/wafa6.png';
 import HTMLFlipBook from 'react-pageflip';
+import finger from '../assets/finger-arrow.svg';
 
 function WorkPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -90,30 +91,31 @@ const books = [
 
       {/* 書本封面區塊 */}
       {activeCategory === 'all' && (
-        <section
-          className="menu-design-section"
-          style={{
-            backgroundColor: getSectionBgColor('menu'),
-            height: '630px',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '5vh',
-            position: 'relative',
-            flexWrap: 'wrap',
-          }}
-        >
-          {/* ✅ 標題區塊 */}
-          <div className="section-title">
-            <div className="zh">菜單設計</div>
-            <div className="en">Menu Design</div>
-          </div>
+  <section
+    className="menu-design-section"
+    style={{
+      backgroundColor: getSectionBgColor('menu'),
+      height: '630px',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '5vh',
+      position: 'relative',  // 這裡必須 relative 才能絕對定位手指
+      flexWrap: 'wrap',
+    }}
+  >
+    {/* 標題區塊 */}
+    <div className="section-title">
+      <div className="zh">菜單設計</div>
+      <div className="en">Menu Design</div>
+    </div>
 
-          {/* 書本清單 */}
-          {books.map((book, i) => (
-  <div key={i} style={{ textAlign: 'center', position: 'relative' }}>
-    {/* 🔹 書本上方的橫幅文字 */}
+    {/* 書本清單 */}
+{books.map((book, i) => (
+  <div key={i} style={{ textAlign: 'center', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    
+    {/* 書本上方橫幅 */}
     <div className="book-banner">
       <span className="circle"></span>
       <span className="banner-text">{book.title}</span>
@@ -129,27 +131,20 @@ const books = [
         height: `${book.size.cover.h}px`,
         backgroundImage: `url(${book.cover})`,
       }}
-    >
-      <div className="hint-wrapper">
-        <div className="hint-text">點擊封面翻閱</div>
-        <svg className="hint-arrow" viewBox="0 0 24 24" fill="none">
-          <defs>
-            <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#ff7e5f" />
-              <stop offset="100%" stopColor="#feb47b" />
-            </linearGradient>
-          </defs>
-          <path d="M12 5v14M5 12l7 7 7-7" stroke="url(#arrowGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </div>
-  
+    ></div>
+
+    {/* 每本書的手指提示 */}
+    <div className="finger-wrapper">
+      <img src={finger} alt="finger" className="finger-icon" />
+      <div className="finger-text">點擊翻閱</div>
     </div>
   </div>
 ))}
 
+  </section>
+)}
 
-        </section>
-      )}
+
 
       {/* 彈窗翻書 */}
       {activeBook !== null && (
