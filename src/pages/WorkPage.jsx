@@ -1,6 +1,6 @@
 import '../index.css';
+import React, { useState } from 'react';
 import '../css/WorkPage.css';
-import { useState } from 'react';
 import workTitle from '../assets/work-title.svg';
 import wafa from '../assets/wafa.jpg'; 
 import wafa1 from '../assets/wafa1.png';
@@ -15,6 +15,7 @@ import finger from '../assets/finger-arrow.svg';
 function WorkPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeBook, setActiveBook] = useState(null);
+  const [offset, setOffset] = useState(0); // 控制作品滑動
 
   const categories = [
     { label: 'All', id: 'all' },
@@ -23,33 +24,43 @@ function WorkPage() {
     { label: 'UI/UX', id: 'uiux' },
   ];
 
-const books = [
-  {
-    cover: wafa,
-    title: '龍府小鍋',
-    size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } },
-    pages: [[wafa1, wafa2], [wafa3, wafa4], [wafa5, wafa6], [wafa1, wafa2], [wafa3, wafa4]],
-  },
-  {
-    cover: wafa,
-    title: '四川龍府',
-    size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } },
-    pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa]],
-  },
-  {
-    cover: wafa,
-    title: 'Orriginbar-序',
-    size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } },
-    pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa]],
-  },
-  {
-    cover: wafa,
-    title: '瓦法奇朵',
-    size: { cover: { w: 175, h: 371 }, page: { w: 343, h: 486 } },
-    pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa]],
-  },
-];
+  const books = [
+    {
+      cover: wafa,
+      title: '龍府小鍋',
+      size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } },
+      pages: [[wafa1, wafa2], [wafa3, wafa4], [wafa5, wafa6], [wafa1, wafa2], [wafa3, wafa4]],
+    },
+    {
+      cover: wafa,
+      title: '四川龍府',
+      size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } },
+      pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa]],
+    },
+    {
+      cover: wafa,
+      title: 'Orriginbar-序',
+      size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } },
+      pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa]],
+    },
+    {
+      cover: wafa,
+      title: '瓦法奇朵',
+      size: { cover: { w: 175, h: 371 }, page: { w: 343, h: 486 } },
+      pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa], [wafa, wafa]],
+    },
+  ];
 
+  // 滑動控制
+  const cardWidth = 320; 
+  const gap = 60; 
+  const visibleCards = 3; 
+  const singleWidth = cardWidth + gap;
+  const workCards = [1, 2, 3, 4, 5, 6]; // 作品數量
+  const maxOffset = Math.max(0, (workCards.length - visibleCards) * singleWidth);
+
+  const handleNext = () => setOffset(prev => Math.min(prev + singleWidth, maxOffset));
+  const handlePrev = () => setOffset(prev => Math.max(prev - singleWidth, 0));
 
   const getSectionBgColor = (section) => {
     if (activeCategory !== 'all') return 'white';
@@ -91,60 +102,48 @@ const books = [
 
       {/* 書本封面區塊 */}
       {activeCategory === 'all' && (
-  <section
-    className="menu-design-section"
-    style={{
-      backgroundColor: getSectionBgColor('menu'),
-      height: '730px',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: '5vh',
-      position: 'relative',  // 這裡必須 relative 才能絕對定位手指
-      flexWrap: 'wrap',
-    }}
-  >
-    {/* 標題區塊 */}
-    <div className="section-title">
-      <div className="zh">菜單設計</div>
-      <div className="en">Menu Design</div>
-    </div>
+        <section className="menu-design-section" style={{
+          backgroundColor: getSectionBgColor('menu'),
+          height: '730px',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '5vh',
+          position: 'relative',
+          flexWrap: 'wrap',
+        }}>
+          <div className="section-title">
+            <div className="zh">菜單設計</div>
+            <div className="en">Menu Design</div>
+          </div>
 
-    {/* 書本清單 */}
-{books.map((book, i) => (
-  <div key={i} style={{ textAlign: 'center', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    
-    {/* 書本上方橫幅 */}
-    <div className="book-banner">
-      <span className="circle"></span>
-      <span className="banner-text">{book.title}</span>
-      <span className="circle"></span>
-    </div>
+          {books.map((book, i) => (
+            <div key={i} style={{ textAlign: 'center', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="book-banner">
+                <span className="circle"></span>
+                <span className="banner-text">{book.title}</span>
+                <span className="circle"></span>
+              </div>
 
-    {/* 書本封面 */}
-    <div
-      onClick={() => openBook(i)}
-      className="book-cover"
-      style={{
-        width: `${book.size.cover.w}px`,
-        height: `${book.size.cover.h}px`,
-        backgroundImage: `url(${book.cover})`,
-      }}
-    ></div>
+              <div
+                onClick={() => openBook(i)}
+                className="book-cover"
+                style={{
+                  width: `${book.size.cover.w}px`,
+                  height: `${book.size.cover.h}px`,
+                  backgroundImage: `url(${book.cover})`,
+                }}
+              ></div>
 
-    {/* 每本書的手指提示 */}
-    <div className="finger-wrapper">
-      <img src={finger} alt="finger" className="finger-icon" />
-      <div className="finger-text">點擊翻閱</div>
-    </div>
-  </div>
-))}
-
-  </section>
-)}
-
-
+              <div className="finger-wrapper">
+                <img src={finger} alt="finger" className="finger-icon" />
+                <div className="finger-text">點擊翻閱</div>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
 
       {/* 彈窗翻書 */}
       {activeBook !== null && (
@@ -174,18 +173,45 @@ const books = [
               </div>,
             ])}
           </HTMLFlipBook>
-
           <button className="book-modal-close" onClick={closeBook}>×</button>
         </div>
       )}
 
       {/* 平面設計區塊 */}
-      <section className="graphic-design-section" style={{ backgroundColor: getSectionBgColor('graphic'), height: '760px', width: '100%' }}></section>
+<section className="graphic-design-section">
+  <div className="section-title">
+    <div className="zh">平面設計</div>
+    <div className="en">Graphic Design</div>
+  </div>
 
-      {/* UI/UX 設計區塊 */}
+  <div className="works-wrapper">
+    <div
+      className="works-inner"
+      style={{ transform: `translateX(-${offset}px)` }}
+    >
+      {workCards.map((idx) => (
+        <div className="work-card-wrapper" key={idx}>
+          <div className="work-card">
+            <div className="year">2025</div>
+            <div className="work-content">
+              <div className="work-img"></div>
+              <div className="work-title">作品標題 {idx}</div>
+              <div className="work-desc">這是第 {idx} 組作品的解說文字</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div className="graphic-nav">
+    <button onClick={handlePrev} disabled={offset === 0}>‹</button>
+    <button onClick={handleNext} disabled={offset === maxOffset}>›</button>
+  </div>
+</section>
+
+
       <section className="uiux-design-section" style={{ backgroundColor: getSectionBgColor('uiux'), height: '720px', width: '100%' }}></section>
-
-      {/* 最後一個設計區塊 */}
       <section className="final-design-section" style={{ backgroundColor: getSectionBgColor('final'), height: '760px', width: '100%' }}></section>
     </div>
   );

@@ -5,7 +5,7 @@
 /* 通用標題樣式 */
 .section-title {
   position: absolute;
-  top: 45px;
+  top: 60px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -101,7 +101,7 @@ svg:hover .line {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 50px;
-  padding-top: 100px;
+  padding-top: 70px;
 
 }
 
@@ -239,6 +239,116 @@ svg:hover .line {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-8px); }
   100% { transform: translateY(0); }
+}
+
+/* === 平面設計 Graphic Design 區塊 === */
+.graphic-design-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 750px;
+  width: 100%;
+  padding-top: 200px; /* ✅ 與標題英文間隔 */
+}
+
+/* 作品介紹容器 (水平排列) */
+/* 作品介紹容器 */
+/* 作品介紹外層容器 */
+.works-wrapper {
+  overflow: hidden;      /* 隱藏超出區域 */
+  width: calc(100% - 40vh); /* 左右各留 10vh */
+  margin: 0 auto;        /* 置中 */
+  position: relative;
+}
+
+/* 內層滑動容器 */
+.works-inner {
+  display: flex;
+  gap: 60px;
+  transition: transform 0.5s ease;
+}
+
+/* 單張卡片 */
+.work-card-wrapper {
+  flex-shrink: 0;
+  width: 320px;           /* 與圖片寬度一致 */
+}
+
+
+/* 單一作品卡片 */
+.work-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+/* 年份 (直式) */
+.work-card .year {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg); /* 讓文字直立但由上而下 */
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
+/* 右側內容 (圖片 + 文字) */
+.work-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 作品圖片 (可調整尺寸與外框) */
+.work-img {
+  width: 320px;
+  height: 320px;
+  border: 3px solid black;
+  background-color: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 2px;
+}
+
+/* 小標題 */
+.work-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+/* 解說文字 */
+.work-desc {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+
+/* 左右按鈕 */
+.graphic-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.graphic-nav button {
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.graphic-nav button:hover {
+  transform: scale(1.2);
 }
 
 
