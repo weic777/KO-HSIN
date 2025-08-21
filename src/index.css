@@ -19,8 +19,37 @@ a:hover {
 
 #root {
   width: 100%;
-padding: 0;
+  padding: 0;
 }
+
+::-webkit-scrollbar {
+  /* 主要滾動條(包含按鈕範圍) */
+    background-color: #0DB7D6;
+
+  width: 12px;   /* 控制垂直卷軸 */
+  height: 12px;  /* 控制水平卷軸 */
+}
+
+::-webkit-scrollbar-button {
+  /* 上下左右按鈕 */
+  display: block; /* mac預設為display:none;所以要寫這個讓他顯示 */
+  width: 12px;    /* 控制垂直卷軸 */
+  height: 12px;   /* 控制水平卷軸 */
+}
+
+::-webkit-scrollbar-thumb {
+  /* 滾動手柄 */
+  background-color: #EFEC64;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  /* 滾動軌道(不包含按鈕範圍) */
+  background-color: #0DB7D6;
+  border-radius: 999px;
+}
+
+
 /* 共用按鈕樣式 */
 .hover-link {
   position: relative;
@@ -127,9 +156,11 @@ padding: 0;
   0% {
     transform: rotate(0deg) scale(1);
   }
+
   50% {
     transform: rotate(180deg) scale(1.2);
   }
+
   100% {
     transform: rotate(360deg) scale(1);
   }
@@ -148,6 +179,7 @@ padding: 0;
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -158,9 +190,11 @@ padding: 0;
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -182,7 +216,8 @@ body {
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -194,7 +229,8 @@ html, body {
 }
 
 main {
-  flex: 1; /* 主要內容撐開空間 */
+  flex: 1;
+  /* 主要內容撐開空間 */
 }
 
 footer {
