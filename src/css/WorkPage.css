@@ -335,6 +335,7 @@ svg:hover .line {
 
 
 /* 左右按鈕 */
+/* === 平面設計左右箭頭 === */
 .graphic-nav {
   position: absolute;
   top: 50%;
@@ -342,20 +343,41 @@ svg:hover .line {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 40px; /* 左右間距 */
+  pointer-events: none; /* 避免覆蓋作品 */
 }
 
 .graphic-nav button {
-  font-size: 24px;
-  font-weight: bold;
+  width: 200px;
+  height: 50px;
   border: none;
-  background: none;
+  background: transparent center/contain no-repeat;
   cursor: pointer;
   transition: transform 0.2s ease;
+  pointer-events: all; /* 讓按鈕可點擊 */
 }
 
-.graphic-nav button:hover {
-  transform: scale(1.2);
+/* 左箭頭 */
+.graphic-nav button.prev {
+  background-image: url('../assets/arrow-right.svg');
+}
+.graphic-nav button.prev:hover {
+  background-image: url('../assets/arrow-right-hover.svg');
+}
+
+/* 右箭頭 */
+.graphic-nav button.next {
+  background-image: url('../assets/arrow-left.svg');
+}
+.graphic-nav button.next:hover {
+  background-image: url('../assets/arrow-left-hover.svg');
+}
+
+/* 禁用狀態 (透明) */
+.graphic-nav button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
 }
 
 

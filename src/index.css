@@ -236,3 +236,16 @@ main {
 footer {
   margin-top: auto;
 }
+
+/* 選取文字的客製化樣式 */
+::selection {
+  background: #EC6D65; /* 淡黃色半透明 */
+  color: #ffffff; /* 黑色文字 */
+  font-weight: 700;
+}
+
+::-moz-selection {
+  background: #EC6D65;
+  color: #ffffff;
+  font-weight: 700;
+}

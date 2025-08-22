@@ -11,11 +11,67 @@ import wafa5 from '../assets/wafa5.png';
 import wafa6 from '../assets/wafa6.png';
 import HTMLFlipBook from 'react-pageflip';
 import finger from '../assets/finger-arrow.svg';
+import arrowleft from '../assets/arrow-left.svg';
+import arrowlefthover from '../assets/arrow-left-hover.svg';
+import arrowright from '../assets/arrow-right.svg';
+import arrowrighthover from '../assets/arrow-right-hover.svg';
+
+// ✅ 平面設計作品資料（可自由設定年份、標題、描述、圖片、圖片尺寸）
+const workCards = [
+  {
+    year: '2025',
+    title: '作品標題 1',
+    desc: '這是第 1 組作品的解說文字',
+    img: wafa1,
+    imgWidth: 320,
+    imgHeight: 320,
+  },
+  {
+    year: '2024',
+    title: '作品標題 2',
+    desc: '這是第 2 組作品的解說文字',
+    img: wafa2,
+    imgWidth: 320,
+    imgHeight: 320,
+  },
+  {
+    year: '2024',
+    title: '作品標題 3',
+    desc: '這是第 3 組作品的解說文字',
+    img: wafa3,
+    imgWidth: 320,
+    imgHeight: 320,
+  },
+  {
+    year: '2023',
+    title: '作品標題 4',
+    desc: '這是第 4 組作品的解說文字',
+    img: wafa4,
+    imgWidth: 320,
+    imgHeight: 320,
+  },
+  {
+    year: '2023',
+    title: '作品標題 5',
+    desc: '這是第 5 組作品的解說文字',
+    img: wafa5,
+    imgWidth: 320,
+    imgHeight: 320,
+  },
+  {
+    year: '2022',
+    title: '作品標題 6',
+    desc: '這是第 6 組作品的解說文字',
+    img: wafa6,
+    imgWidth: 340,
+    imgHeight: 320,
+  },
+];
 
 function WorkPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeBook, setActiveBook] = useState(null);
-  const [offset, setOffset] = useState(0); // 控制作品滑動
+  const [offset, setOffset] = useState(0);
 
   const categories = [
     { label: 'All', id: 'all' },
@@ -51,12 +107,10 @@ function WorkPage() {
     },
   ];
 
-  // 滑動控制
-  const cardWidth = 320; 
-  const gap = 60; 
-  const visibleCards = 3; 
+  const cardWidth = 320;
+  const gap = 60;
+  const visibleCards = 3;
   const singleWidth = cardWidth + gap;
-  const workCards = [1, 2, 3, 4, 5, 6]; // 作品數量
   const maxOffset = Math.max(0, (workCards.length - visibleCards) * singleWidth);
 
   const handleNext = () => setOffset(prev => Math.min(prev + singleWidth, maxOffset));
@@ -178,38 +232,43 @@ function WorkPage() {
       )}
 
       {/* 平面設計區塊 */}
-<section className="graphic-design-section">
-  <div className="section-title">
-    <div className="zh">平面設計</div>
-    <div className="en">Graphic Design</div>
-  </div>
+      <section className="graphic-design-section">
+        <div className="section-title">
+          <div className="zh">平面設計</div>
+          <div className="en">Graphic Design</div>
+        </div>
 
-  <div className="works-wrapper">
-    <div
-      className="works-inner"
-      style={{ transform: `translateX(-${offset}px)` }}
-    >
-      {workCards.map((idx) => (
-        <div className="work-card-wrapper" key={idx}>
-          <div className="work-card">
-            <div className="year">2025</div>
-            <div className="work-content">
-              <div className="work-img"></div>
-              <div className="work-title">作品標題 {idx}</div>
-              <div className="work-desc">這是第 {idx} 組作品的解說文字</div>
-            </div>
+        <div className="works-wrapper">
+          <div className="works-inner" style={{ transform: `translateX(-${offset}px)` }}>
+            {workCards.map((work, idx) => (
+              <div className="work-card-wrapper" key={idx}>
+                <div className="work-card">
+                  <div className="year">{work.year}</div>
+                  <div className="work-content">
+                    <div
+                      className="work-img"
+                      style={{
+                        backgroundImage: `url(${work.img})`,
+                        width: work.imgWidth ? `${work.imgWidth}px` : '100%',
+                        height: work.imgHeight ? `${work.imgHeight}px` : '200px',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                      }}
+                    ></div>
+                    <div className="work-title">{work.title}</div>
+                    <div className="work-desc">{work.desc}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
 
-  <div className="graphic-nav">
-    <button onClick={handlePrev} disabled={offset === 0}>‹</button>
-    <button onClick={handleNext} disabled={offset === maxOffset}>›</button>
-  </div>
-</section>
-
+        <div className="graphic-nav">
+          <button onClick={handlePrev} disabled={offset === 0} className="prev"></button>
+          <button onClick={handleNext} disabled={offset === maxOffset} className="next"></button>
+        </div>
+      </section>
 
       <section className="uiux-design-section" style={{ backgroundColor: getSectionBgColor('uiux'), height: '720px', width: '100%' }}></section>
       <section className="final-design-section" style={{ backgroundColor: getSectionBgColor('final'), height: '760px', width: '100%' }}></section>
