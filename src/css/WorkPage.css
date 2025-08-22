@@ -258,9 +258,16 @@ svg:hover .line {
 /* 作品介紹外層容器 */
 .works-wrapper {
   overflow: hidden;      /* 隱藏超出區域 */
-  width: calc(100% - 40vh); /* 左右各留 10vh */
+  width: calc(100% - 44vh); /* 左右各留 10vh */
   margin: 0 auto;        /* 置中 */
   position: relative;
+
+}
+@media (max-width:971px) {
+  .works-wrapper {
+  width: calc(100% - 5vh); /* 左右各留 10vh */
+
+  }
 }
 
 /* 內層滑動容器 */
