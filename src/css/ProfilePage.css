@@ -1,3 +1,91 @@
+/* 統一標題樣式 */
+.section-title {
+  position: absolute;
+  top: 5vh; /* 離區塊頂部5vh */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  line-height: 150%;
+}
+
+.section-title .zh {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.section-title .en {
+  font-size: 20px;
+  font-weight: 500;
+}
+/* 圓形遮罩 */
+.mask-circle {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid black;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* 可用 absolute 調整位置 */
+}
+
+/* myPhoto 初始位置在遮罩下方，由 JS 控制 translateY */
+.profile-photo-scroll {
+  width: 240px;
+  height: auto;
+  transition: transform 0.2s ease-out;
+}
+
+
+
+
+
+
+/* 大頭照 + 聯絡資訊 + 教育背景區塊 */
+.profile-main-wrapper {
+  width: 100%;
+  height: 700px;
+  background-color: #86DBEB;
+  position: relative; /* 用於標題絕對定位 */
+  padding-top: 120px; /* 保留標題下方間距 */
+}
+
+/* 榮譽區塊 */
+.certificate-wrapper {
+  width: 100%;
+  height: 570px;
+  background-color: #ffffff;
+  position: relative;
+  padding-top: 120px;
+}
+
+/* 技能區塊 */
+.skill-wrapper {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  padding-top: 120px;
+  overflow: hidden;
+}
+
+.skill-wrapper .skill-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 確保不變形 */
+}
+
+/* 經歷 Experience 區塊 */
+.experience-wrapper {
+  width: 100%;
+  height: 750px;
+  background-color: #EFEC64;
+  position: relative;
+  padding-top: 120px;
+}
+
+
 .profile-title-section {
   display: flex;
   flex-direction: column;

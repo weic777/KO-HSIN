@@ -113,23 +113,42 @@
   font-size: 16px; /* ✅ 比原本小 */
   font-weight: bold;
 }
+.input-wrapper, 
+.custom-select, 
+.form-textarea {
+  width: 90%; /* 或 100%，視需求 */
+  max-width: none;
+}
+
+
+.dropdown-options {
+  position: absolute;
+  top: calc(100% + 1vh);
+  left: 0;
+  width: 100%;        /* 100% 就會跟 input 一樣寬 */
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 10;
+}
 
 /* 輸入欄位 */
 .form-input {
-  flex: 1;
-  max-width: 700px;    /* ✅ 原本 810px，縮小一點 */
-  height: 45px;        /* ✅ 原本 55px，降低高度 */
-  border-radius: 12px; /* ✅ 原本 15px，略小 */
+  width: 100%;       /* 由 input-wrapper 控制寬度 */
+  max-width: 700px;
+  height: 45px;
+  border-radius: 12px;
   border: none;
-  background-color: rgba(236, 109, 101, 0.2);
-  padding: 0 10px;     /* ✅ 原本 15px，縮小左右 padding */
-  font-size: 16px;     /* ✅ 字體略小 */
+  background-color: #E6E6DC;
+  padding: 0 10px;
+  font-size: 16px;
 }
 
 /* 滑鼠移上去 */
 .form-input:hover {
   border: solid 3px black;
-  background-color: rgba(236, 109, 101, 0.25); /* 比原本稍微深一點 */
+  background-color: #E6E6DC; /* 比原本稍微深一點 */
   transition: all 0.2s ease; /* 平滑過渡 */
 }
 
@@ -145,16 +164,18 @@
 
 /* 外層色塊容器 */
 .form-wrapper {
-  background-color: #fff;              /* 白色底色 */
-  border: 3px solid #000;              /* 黑色線條 */
-  border-radius: 30px;                 /* 圓角 30px */
-  padding: 5vh 5vw;                    /* 內距，響應式 */
-  margin-top: 10vh;                    /* 與上方留距 */
-  width: min(90%, 1260px);             /* 最大寬度 1260px，平常 90% */
-  min-height: 60vh;                    /* 高度可自動撐開，最少 60vh */
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 30px;
+  padding: 5vh 5%;       /* 改成左右 5%，隨螢幕縮放 */
+  margin-top: 10vh;
+  width: 90%;            /* 最大寬度統一 */
+  max-width: 1260px;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  box-sizing: border-box; /* 重要！包含 padding */
 }
 
 /* 表單容器 */
@@ -163,4 +184,143 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.submit-btn {
+  width: 300px;
+  max-width: 80%;
+  height: 60px;
+  border-radius: 999px;
+  border: 3px solid black;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #E6E6DC;
+  color: #000000;
+}
+
+.submit-btn:active {
+  border: 3px solid #000000;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+/* 錯誤輸入框 */
+.input-error {
+  border: 3px solid #f04236;
+}
+
+/* 錯誤提示文字 */
+.error-text {
+  color: #f04236;;
+  font-size: 14px;
+  margin-top: 1vh;
+}
+/* 留言欄位與其他輸入欄位保持一致 */
+.form-textarea {
+  flex: 1;                     /* 吃掉剩餘寬度，跟 input 一樣 */
+  max-width: 700px;            /* 與 input 一致 */
+  min-height: 120px;           /* 調高高度 */
+  border-radius: 12px;
+  border: none;
+  background-color:#E6E6DC;
+  padding: 10px;
+  font-size: 16px;
+  font-family: inherit;        /* 與其他輸入欄位字體一致 */
+  resize: vertical;            /* 允許使用者手動拉高 */
+  box-sizing: border-box;
+}
+
+/* hover 狀態 */
+.form-textarea:hover {
+  border: solid 3px black;
+  background-color: #E6E6DC;
+  transition: all 0.2s ease;
+}
+
+/* focus 狀態 */
+.form-textarea:focus {
+  outline: none;
+  border: solid 3px black;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
+
+/* 錯誤狀態 */
+.form-textarea.input-error {
+  border: 3px solid #f04236;;
+}
+
+/* 讓標題置頂對齊欄位 */
+.form-row.textarea-row {
+  align-items: flex-start;
+}
+.required-star {
+  color: #f04236;
+}
+.custom-select {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 45px;
+  border: 3px solid black;
+  border-radius: 12px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.custom-select .select-placeholder.selected {
+  color: black;
+}
+
+.custom-select .arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  padding: 4px;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.custom-select .arrow.up {
+  transform: rotate(-135deg);
+}
+
+/* 下拉選單 */
+.dropdown-options {
+  position: absolute;
+  top: calc(100% + 1vh);
+  left: 0;
+  width: 100%;        /* 100% 就會跟 input 一樣寬 */
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+
+/* 每個選項 */
+.dropdown-option {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  color: black;
+}
+
+.dropdown-option:hover {
+  background-color: #E6E6DC;
+}
+.input-error.custom-select {
+  border: 3px solid #f04236;
 }

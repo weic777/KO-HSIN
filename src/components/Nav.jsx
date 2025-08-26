@@ -48,7 +48,6 @@ function Header() {
             <div className={`tooltip ${location.pathname === item.to ? 'active' : ''}`}>
               {item.tooltip}
             </div>
-            {location.pathname === item.to && <div className="nav-dot" />}
           </div>
         ))}
 
