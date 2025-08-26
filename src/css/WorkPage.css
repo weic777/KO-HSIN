@@ -2,6 +2,18 @@
   width: 200px;
   height: 200px;
 }
+
+.title-section {
+  margin-Top: 110px;
+  display: flex;
+  justify-Content: center
+}
+
+.workTitle {
+  width: 15%, ;
+  max-width: 100%;
+}
+
 /* 通用標題樣式 */
 .section-title {
   position: absolute;
@@ -9,7 +21,8 @@
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  line-height: 150%; /* ✅ 讓中英文之間有 150% 行距 */
+  line-height: 150%;
+  /* ✅ 讓中英文之間有 150% 行距 */
 }
 
 .section-title .zh {
@@ -27,12 +40,16 @@
   stroke: black;
   stroke-width: 3;
 
-  stroke-dasharray: 1000; /* 假設線條總長度夠大 */
-  stroke-dashoffset: 1000; /* 初始隱藏整條線 */
-  
-  transform-origin: center; /* 從中間延伸 */
-  transform: scaleX(0);     /* 初始縮放 0 */
-  animation: draw 3s forwards; 
+  stroke-dasharray: 1000;
+  /* 假設線條總長度夠大 */
+  stroke-dashoffset: 1000;
+  /* 初始隱藏整條線 */
+
+  transform-origin: center;
+  /* 從中間延伸 */
+  transform: scaleX(0);
+  /* 初始縮放 0 */
+  animation: draw 3s forwards;
 }
 
 svg:hover .line {
@@ -86,7 +103,7 @@ svg:hover .line {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
   padding: 4px 10px;
   border-radius: 4px;
@@ -95,7 +112,8 @@ svg:hover .line {
 
 /* 書本區塊 */
 .menu-design-section {
-  position: relative; /* ✅ 讓內部絕對定位相對於這個區塊 */
+  position: relative;
+  /* ✅ 讓內部絕對定位相對於這個區塊 */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -112,7 +130,7 @@ svg:hover .line {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,7 +145,7 @@ svg:hover .line {
   height: 40px;
   border-radius: 50%;
   border: none;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 24px;
   cursor: pointer;
@@ -145,7 +163,8 @@ svg:hover .line {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: fill;   /* 圖片完全貼齊頁面，不留白邊、不裁切 */
+  object-fit: fill;
+  /* 圖片完全貼齊頁面，不留白邊、不裁切 */
   background-color: white;
 }
 
@@ -171,18 +190,23 @@ svg:hover .line {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0); /* 預設透明 */
+  background: rgba(0, 0, 0, 0);
+  /* 預設透明 */
   transition: background 0.3s ease;
-  pointer-events: none; /* 避免遮罩擋到點擊 */
+  pointer-events: none;
+  /* 避免遮罩擋到點擊 */
 }
 
 .book-cover:hover {
-  transform: scale(1.05); /* 放大效果 */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* 浮起陰影 */
+  transform: scale(1.05);
+  /* 放大效果 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  /* 浮起陰影 */
 }
 
 .book-cover:hover::after {
-  background: rgba(0, 0, 0, 0.2); /* 半透明黑色遮罩 */
+  background: rgba(0, 0, 0, 0.2);
+  /* 半透明黑色遮罩 */
 }
 
 
@@ -196,13 +220,15 @@ svg:hover .line {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px; /* 距離書本上方 10px */
+  margin-bottom: 10px;
+  /* 距離書本上方 10px */
 }
 
 .book-banner .banner-text {
   font-size: 20px;
   font-weight: 600;
-  margin: 0 5px; /* 左右間隔 5px */
+  margin: 0 5px;
+  /* 左右間隔 5px */
   color: #000;
 }
 
@@ -218,17 +244,20 @@ svg:hover .line {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5px;            /* 書本下方 5px */
+  margin-top: 5px;
+  /* 書本下方 5px */
   animation: float 1.5s ease-in-out infinite;
 }
 
 .finger-icon {
-  width: 40px;                 /* 手指大小 */
+  width: 40px;
+  /* 手指大小 */
   height: auto;
 }
 
 .finger-text {
-  margin-top: 2px;             /* 距離手指 2px */
+  margin-top: 2px;
+  /* 距離手指 2px */
   font-size: 16px;
   font-weight: 500;
   color: black;
@@ -236,9 +265,17 @@ svg:hover .line {
 }
 
 @keyframes float {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* === 平面設計 Graphic Design 區塊 === */
@@ -250,22 +287,28 @@ svg:hover .line {
   justify-content: flex-start;
   height: 750px;
   width: 100%;
-  padding-top: 200px; /* ✅ 與標題英文間隔 */
+  padding-top: 200px;
+  /* ✅ 與標題英文間隔 */
 }
 
 /* 作品介紹容器 (水平排列) */
 /* 作品介紹容器 */
 /* 作品介紹外層容器 */
 .works-wrapper {
-  overflow: hidden;      /* 隱藏超出區域 */
-  width: calc(100% - 44vh); /* 左右各留 10vh */
-  margin: 0 auto;        /* 置中 */
+  overflow: hidden;
+  /* 隱藏超出區域 */
+  width: calc(100% - 44vh);
+  /* 左右各留 10vh */
+  margin: 0 auto;
+  /* 置中 */
   position: relative;
 
 }
+
 @media (max-width:971px) {
   .works-wrapper {
-  width: calc(100% - 5vh); /* 左右各留 10vh */
+    width: calc(100% - 5vh);
+    /* 左右各留 10vh */
 
   }
 }
@@ -280,7 +323,8 @@ svg:hover .line {
 /* 單張卡片 */
 .work-card-wrapper {
   flex-shrink: 0;
-  width: 320px;           /* 與圖片寬度一致 */
+  width: 320px;
+  /* 與圖片寬度一致 */
 }
 
 
@@ -295,7 +339,8 @@ svg:hover .line {
 /* 年份 (直式) */
 .work-card .year {
   writing-mode: vertical-rl;
-  transform: rotate(180deg); /* 讓文字直立但由上而下 */
+  transform: rotate(180deg);
+  /* 讓文字直立但由上而下 */
   font-size: 16px;
   font-weight: 500;
   margin-right: 2px;
@@ -343,8 +388,10 @@ svg:hover .line {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 40px; /* 左右間距 */
-  pointer-events: none; /* 避免覆蓋作品 */
+  padding: 0 40px;
+  /* 左右間距 */
+  pointer-events: none;
+  /* 避免覆蓋作品 */
 }
 
 .graphic-nav button {
@@ -354,13 +401,15 @@ svg:hover .line {
   background: transparent center/contain no-repeat;
   cursor: pointer;
   transition: transform 0.2s ease;
-  pointer-events: all; /* 讓按鈕可點擊 */
+  pointer-events: all;
+  /* 讓按鈕可點擊 */
 }
 
 /* 左箭頭 */
 .graphic-nav button.prev {
   background-image: url('../assets/arrow-right.svg');
 }
+
 .graphic-nav button.prev:hover {
   background-image: url('../assets/arrow-right-hover.svg');
 }
@@ -369,6 +418,7 @@ svg:hover .line {
 .graphic-nav button.next {
   background-image: url('../assets/arrow-left.svg');
 }
+
 .graphic-nav button.next:hover {
   background-image: url('../assets/arrow-left-hover.svg');
 }
@@ -402,6 +452,7 @@ svg:hover .line {
     /* 高度自動調整 */
   }
 }
+
 /* === Tag 篩選按鈕 === */
 /* 🔹 TAG 篩選容器：置中，標題下方 10px */
 .graphic-design-section {
@@ -419,9 +470,11 @@ svg:hover .line {
 .tag-under-title {
   position: absolute;
   left: 50%;
-  top: calc(100% + 20px); /* 標題高度以下 10px */
+  top: calc(100% + 20px);
+  /* 標題高度以下 10px */
   transform: translateX(-50%);
-  z-index: 2; /* 確保在作品卡上方可點擊 */
+  z-index: 2;
+  /* 確保在作品卡上方可點擊 */
 }
 
 /* 按鈕：初始 136x36、999 圓角、3px 黑框、padding 3px、字級 20px、黑字、白底 */
@@ -431,22 +484,29 @@ svg:hover .line {
   border-radius: 999px;
   border: 3px solid black;
   background: #fff;
-  padding: 3px 12px; /* 內距 3px + 文字左右留一點空間 */
+  padding: 3px 12px;
+  /* 內距 3px + 文字左右留一點空間 */
   font-size: 20px;
   font-weight: 500;
   color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px; /* 與 SVG 間距 5px */
+  gap: 5px;
+  /* 與 SVG 間距 5px */
   cursor: pointer;
   transition: width 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
 /* 選取（即篩選中）時 138x36 + 背景色 + 顯示 SVG */
 /* 已選擇 active 的狀態 */
-.tag-btn.active.social { background-color: #86DBEB; }  
-.tag-btn.active.promo  { background-color: #EFEC64; }  
+.tag-btn.active.social {
+  background-color: #86DBEB;
+}
+
+.tag-btn.active.promo {
+  background-color: #EFEC64;
+}
 
 /* 新增 hover 狀態 */
 .tag-btn.social:hover {
@@ -463,6 +523,7 @@ svg:hover .line {
   height: 16px;
   flex-shrink: 0;
 }
+
 .more-link-wrapper {
   position: absolute;
   bottom: 70px;
@@ -471,13 +532,16 @@ svg:hover .line {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 10px; /* 文字和圓形間距 */
-  cursor: pointer; /* 整個區域都可滑鼠互動 */
+  gap: 10px;
+  /* 文字和圓形間距 */
+  cursor: pointer;
+  /* 整個區域都可滑鼠互動 */
 }
 
 /* 查看更多文字 */
 .more-link {
-  font-weight: 700; /* 粗體 */
+  font-weight: 700;
+  /* 粗體 */
   font-size: 20px;
   position: relative;
   color: black;
@@ -487,9 +551,11 @@ svg:hover .line {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -2px;   /* 下方 2px */
+  bottom: -2px;
+  /* 下方 2px */
   width: 0;
-  height: 3px;    /* 黑線 3px */
+  height: 3px;
+  /* 黑線 3px */
   background: black;
   transition: width 0.3s ease;
 }
@@ -519,64 +585,33 @@ svg:hover .line {
 
 .more-link-wrapper:hover .more-circle {
   background-color: rgba(236, 109, 101, 0.5);
-  transform: rotate(-40deg); /* 往上翹感覺 */
+  transform: rotate(-40deg);
+  /* 往上翹感覺 */
 }
 
 
-/* UI/UX 區塊本體 */
+/* === UI/UX 區塊 === */
 .uiux-design-section {
   position: relative;
-  background-color: #EFEC64;
-  height: 720px;
   width: 100%;
+  height: 720px;
+  background-color: #EFEC64;
   overflow: hidden;
 }
 
-/* 遮罩：鋪滿整個 UI/UX 區塊 */
+/* 遮罩鋪滿整個區塊 */
 .uiux-overlay {
   position: absolute;
   inset: 0;
-  background-color: inherit;   /* 跟底色一樣 */
+  background-color: inherit;
+  /* 與底色一致 */
   overflow: hidden;
   z-index: 1;
-  pointer-events: none;         /* 不擋上層互動 */
+  pointer-events: none;
+  /* 不阻擋互動 */
 }
 
-/* 整塊會移動的傾斜長方形（含邊框） */
-.uiux-drift-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* 響應式寬度：最小 360px，常態 70vw，上限 1200px */
-  width: clamp(360px, 70vw, 1200px);
-  aspect-ratio: 1450 / 415;     /* 1450x415 比例 */
-  border: 3px solid #000;
-  border-radius: 15px;
-  overflow: hidden;
-  /* 初始置中並旋轉 -15° */
-  transform: translate(-50%, -50%) rotate(-15deg);
-  /* 讓整塊在遮罩中漂移 */
-  animation: uiuxDrift 12s ease-in-out infinite;
-}
-
-/* 放你自訂圖片（會跟著整塊一起移動） */
-.uiux-drift-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 漂移動畫：整個長方形在遮罩內移動 */
-@keyframes uiuxDrift {
-  0%   { transform: translate(-50%, -50%) rotate(-15deg); }
-  25%  { transform: translate(-35%, -65%) rotate(-15deg); }
-  50%  { transform: translate(-50%, -75%) rotate(-15deg); }
-  75%  { transform: translate(-70%, -40%) rotate(-15deg); }
-  100% { transform: translate(-50%, -50%) rotate(-15deg); }
-}
-
-/* 標題（UI/UX 頂部下 25%，左側 8%） */
+/* 區塊標題 */
 .uiux-section-title {
   position: absolute;
   top: 25%;
@@ -596,10 +631,10 @@ svg:hover .line {
   margin-top: 4px;
 }
 
-/* 查看更多：標題下方 10px */
+/* 查看更多連結 */
 .uiux-more-link-wrapper {
   position: absolute;
-  top: calc(25% + 10px);
+  top: calc(25% + 70px);
   left: 8%;
   display: flex;
   align-items: center;
@@ -609,8 +644,8 @@ svg:hover .line {
 }
 
 .uiux-more-link-wrapper .more-link {
-  font-weight: 700;
   font-size: 20px;
+  font-weight: 700;
   position: relative;
   color: black;
 }
@@ -652,18 +687,165 @@ svg:hover .line {
   height: 16px;
 }
 
-/* 動畫無障礙：若使用者偏好減少動畫 */
-@media (prefers-reduced-motion: reduce) {
-  .uiux-drift-box {
-    animation: none;
+
+/* === UI/UX 區塊卡片展示 === */
+.uiux-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  /* 四組水平排列 */
+  justify-content: flex-start;
+  /* 從左開始排 */
+  align-items: center;
+  gap: 15px;
+  /* 組與組之間的間隔 */
+
+  padding-left: 30vw;
+  /* 🔹用螢幕寬度的百分比替代固定像素 */
+  padding-right: 10vw;
+  /* 可選，讓右側也有空間 */
+
+  z-index: 1;
+  pointer-events: none;
+  /* 不擋互動 */
+}
+
+/* === 統一控制卡片間隔 === */
+:root {
+  --uiux-card-gap: 8px;
+  /* 調整這個數值即可改間隔 */
+}
+
+.uiux-card-group .card-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.uiux-card-group .card-list .uiux-card {
+  margin-bottom: var(--uiux-card-gap);
+}
+
+.uiux-card-group .card-list .uiux-card:last-child {
+  margin-bottom: 0;
+  /* 避免最後一張多餘間隔 */
+}
+
+
+.uiux-card-group {
+  display: flex;
+  flex-direction: column;
+  /* 每組垂直排列 */
+  gap: 315px;
+  transform: rotate(-15deg);
+  /* 改成負角度 → 往左歪 */
+}
+
+/* 無縫垂直循環動畫 */
+.uiux-card-group .card-list {
+  display: flex;
+  flex-direction: column;
+  animation: moveUp 15s linear infinite;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-10%);
+    /* 讓上半部移動到上方，露出下半部 */
   }
 }
 
-/* 小螢幕優化：縮小區塊高度與寬度 */
-@media (max-width: 768px) {
-  .uiux-design-section { height: 560px; }
-  .uiux-drift-box { width: clamp(260px, 88vw, 1000px); }
+.uiux-card {
+  border: 3px solid black;
+  background: white;
+  overflow: hidden;
 }
+
+.uiux-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 尺寸控制 */
+/* 尺寸控制：高縮小，寬固定 */
+.group-0 .uiux-card {
+  width: 25vw;
+  /* 寬度依螢幕寬度自適應 */
+  height: 80vh;
+  /* 高度依螢幕高度自適應 */
+}
+
+.group-1 .uiux-card {
+  width: calc(25vw * 0.6);
+  height: calc(80vh * 0.6);
+  /* 第二組高度縮小 */
+}
+
+.group-2 .uiux-card {
+  width: calc(25vw * 0.6);
+  height: calc(80vh * 0.6);
+  /* 第二組高度縮小 */
+}
+
+.group-3 .uiux-card {
+  width: calc(25vw * 0.6);
+  height: calc(80vh * 0.6);
+  /* 第二組高度縮小 */
+}
+
+/* === 動畫設計區塊 === */
+.animation-design-section {
+  position: relative;
+  width: 100%;
+  height: 760px;
+  background-color: #E6E6DC;
+  overflow: hidden;
+}
+
+/* TV 容器 */
+.tv-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  /* 可依需求調整 */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tv-base {
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+}
+
+.tv-mask-wrapper {
+  position: absolute;
+  top: 38%;
+  left: 30%;
+  transform: translate(-50%, -50%)scale(0.9);
+  width: 400px;
+  height: 147px;
+  z-index: 2;
+  background-position: center;
+}
+
+
+@media (max-width: 480px) {
+  .fade-up {
+    animation-delay: 0.4s;
+  }
+}
+
 
 @media (max-width: 480px) {
   .fade-up {

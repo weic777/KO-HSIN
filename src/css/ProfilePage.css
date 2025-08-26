@@ -1,0 +1,281 @@
+.profile-title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ✅ 改成置中 */
+  justify-content: center; /* ✅ 垂直置中 */
+margin-Top: 110px
+}
+
+.aboutTitle{
+  width: 15%;
+  max-width: 100%;
+}
+
+
+/* 大頭照與聯絡資訊 */
+.profile-main-section {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-left: 75px;
+  max-width: 1280px;
+}
+
+.profile-photo {
+  width: 250px;
+  height: auto;
+}
+
+.profile-contact {
+  margin-left: 60px;
+  max-width: 400px;
+}
+
+.profile-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile-name-en {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact-item img {
+  width: 16px;
+  margin-right: 6px;
+}
+
+.contact-item span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 下載按鈕 */
+.contact-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.download-btn {
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 90px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+.download-btn img {
+  width: 16px;
+  margin-left: 6px;
+}
+
+/* 教育背景 */
+.education-section {
+  margin-top: 50px;
+  margin-left: 50px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.education-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.education-item img {
+  width: 140px;
+  height: auto;
+}
+
+.education-text .edu-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.education-text .separator {
+  color: #888;
+  font-weight: 400;
+}
+
+.education-text .edu-subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.education-text .edu-date {
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* 證書 / 榮譽 */
+.certificate-section {
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.certificate-title {
+  display: flex;
+  align-items: center;
+}
+
+.certificate-title img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+.certificate-title .zh {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.certificate-title .en {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.honors-wrapper {
+  max-width: 1280px;
+  margin: 40px auto 0 auto;
+  padding: 0 20px;
+}
+
+.honor-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.honor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 280px;
+  flex: 1 0 280px;
+}
+
+.honor-card .star-icon {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.honor-card .honor-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.honor-card .honor-desc {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.honor-card .honor-date {
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  color: #888;
+}
+
+/* 技能 */
+.skill-section {
+  margin-top: 50px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+.skill-title {
+  position: absolute;
+  top: 60px;
+  left: 180px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.skill-title img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+.skill-title .zh {
+  font-size: 26px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.skill-title .en {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.skill-background {
+  width: 100vw;
+  height: auto;
+  display: block;
+}
+
+.icon-scroll-wrapper {
+  overflow: hidden;
+  width: 100vw;
+  position: relative;
+  height: 130px;
+  margin-top: -200px;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  margin-left: -50vw;
+  justify-content: center;
+}
+
+.icon-scroll {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  padding-left: 55px;
+}
+
+.skill-icon {
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+}

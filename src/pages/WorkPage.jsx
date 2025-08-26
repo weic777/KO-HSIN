@@ -18,6 +18,10 @@ import arrowrighthover from '../assets/arrow-right-hover.svg';
 import xyellow from '../assets/x-yellow.svg';
 import xblue from '../assets/x-blue.svg';
 import goarrow from '../assets/go-arrow.svg';
+import TvShow from '../assets/TvShow.svg';
+import Tv from '../assets/Tv.svg';
+import tvmp4 from '../assets/tvmp4.mp4';
+
 
 
 // ✅ 平面設計作品資料（增加 tag）
@@ -46,7 +50,7 @@ function WorkPage() {
   ];
 
   const books = [
-    { cover: wafa, title: '龍府小鍋', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa1, wafa2], [wafa3, wafa4], [wafa5, wafa6]] },
+    { cover: wafa, title: '龍府小鍋', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa1, wafa2], [wafa3, wafa4], [wafa5, wafa6],[wafa1, wafa2], [wafa3, wafa4] ]},
     { cover: wafa, title: '四川龍府', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa]] },
     { cover: wafa, title: 'Orriginbar-序', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa]] },
     { cover: wafa, title: '瓦法奇朵', size: { cover: { w: 175, h: 371 }, page: { w: 343, h: 486 } }, pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa]] },
@@ -103,8 +107,8 @@ function WorkPage() {
   return (
     <div className="App">
       {/* 標題 */}
-      <section className="title-section" style={{ marginTop: '110px', display: 'flex', justifyContent: 'center' }}>
-        <img src={workTitle} alt="作品標題圖" style={{ width: '180px', maxWidth: '100%' }} />
+      <section className="title-section">
+        <img src={workTitle} alt="作品標題圖"  />
       </section>
 
       {/* 分類選單 */}
@@ -234,22 +238,14 @@ function WorkPage() {
 
         </section>
       )}
-
-      {/* UI/UX 設計 */}
+      
+{/* UI/UX 設計 */}
 {activeCategory === 'all' && (
   <section className="uiux-design-section">
-    {/* 遮罩（與底色等大） */}
-    <div className="uiux-overlay">
-      {/* 會整塊移動的傾斜長方形（可換圖） */}
-      <div className="uiux-drift-box">
-        <img src={wafa1} alt="UI/UX showcase" />
-      </div>
-    </div>
-
     {/* 標題 */}
     <div className="uiux-section-title">
       <div className="zh">UI / UX</div>
-      <div className="en">CERTIFICATE</div>
+      <div className="en">UI / UX Design</div>
     </div>
 
     {/* 查看更多 */}
@@ -259,10 +255,86 @@ function WorkPage() {
         <img src={goarrow} alt="go arrow" className="go-arrow" />
       </div>
     </div>
+
+    {/* 卡片展示遮罩 */}
+    <div className="uiux-overlay">
+      {[0, 1, 2, 3].map((gIdx) => (
+        <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
+          <div className="card-list">
+            {/* 原始卡片 */}
+            {[1, 2, 3, 4].map((cIdx) => (
+              <div className="uiux-card" key={`orig-${cIdx}`}>
+                <img src={wafa1} alt={`Group ${gIdx} Card ${cIdx}`} />
+              </div>
+            ))}
+            {/* 複製一份卡片，保證無縫 */}
+            {[1, 2, 3, 4].map((cIdx) => (
+              <div className="uiux-card" key={`copy-${cIdx}`}>
+                <img src={wafa1} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   </section>
 )}
 
-      <section className="final-design-section" style={{ backgroundColor: getSectionBgColor('final'), height: '760px', width: '100%' }}></section>
+{/* 動畫設計 */}
+{activeCategory === 'all' && (
+  <section className="animation-design-section">
+    {/* 標題 */}
+    <div className="uiux-section-title">
+      <div className="zh">動畫設計</div>
+      <div className="en">Animation Design</div>
+    </div>
+
+    {/* 查看更多 */}
+    <div className="uiux-more-link-wrapper">
+      <div className="more-link">查看更多</div>
+      <div className="more-circle">
+        <img src={goarrow} alt="go arrow" className="go-arrow" />
+      </div>
+    </div>
+
+    {/* TV + 影片遮罩 */}
+    <div className="tv-container">
+      <img src={Tv} alt="Tv" className="tv-base" />
+
+      <div className="tv-mask-wrapper">
+        <svg width="610" height="457" viewBox="0 0 610 457" fill="none">
+          <defs>
+            <clipPath id="tvClip">
+              <path
+                d="M1.77946 402.962L17.1744 51.6766C17.9308 34.4185 31.8352 20.6459 49.0997 20.054L564.241 2.39197C582.62 1.76184 597.987 16.2376 598.455 34.6214L608.295 421.19C608.779 440.214 593.156 455.725 574.136 455.105L33.7602 437.484C15.3494 436.884 0.972958 421.365 1.77946 402.962Z"
+              />
+            </clipPath>
+          </defs>
+
+          <foreignObject width="100%" height="100%" clipPath="url(#tvClip)">
+            <video
+              src={tvmp4}
+              autoPlay
+              muted
+              loop
+              controls
+              preload="metadata"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </foreignObject>
+
+          <path
+            d="M1.77946 402.962L17.1744 51.6766C17.9308 34.4185 31.8352 20.6459 49.0997 20.054L564.241 2.39197C582.62 1.76184 597.987 16.2376 598.455 34.6214L608.295 421.19C608.779 440.214 593.156 455.725 574.136 455.105L33.7602 437.484C15.3494 436.884 0.972958 421.365 1.77946 402.962Z"
+            stroke="black"
+            strokeWidth="3"
+            fill="none"
+          />
+        </svg>
+      </div>
+    </div>
+  </section>
+)}
+
     </div>
   );
 }

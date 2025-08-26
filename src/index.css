@@ -39,8 +39,9 @@ a:hover {
 
 ::-webkit-scrollbar-thumb {
   /* 滾動手柄 */
-  background-color: #EFEC64;
+  background-color: #E6E6DC;
   border-radius: 999px;
+
 }
 
 ::-webkit-scrollbar-track {

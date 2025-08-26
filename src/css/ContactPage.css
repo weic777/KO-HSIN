@@ -1,0 +1,166 @@
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* ✅ 改成置中 */
+    justify-content: center;
+    /* ✅ 垂直置中 */
+}
+
+.contact-title-section {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    margin-top: 110px;
+}
+
+.contactTitle {
+    width: 15%;
+    max-width: 100%;
+}
+
+.line-grow {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    margin-top: 20px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 垂直置中 */
+    align-items: center;
+    /* 水平置中 */
+    text-align: center;
+}
+
+.contact-info>* {
+    margin: 0;
+    /* 先清掉預設 margin */
+    margin-bottom: 1.5em;
+    /* 150% 行高效果，控制元素間距 */
+}
+
+/* 避免最後一個元素多出 margin */
+.contact-info>*:last-child {
+    margin-bottom: 0;
+}
+
+/* 整個底色區塊 */
+.contact-content {
+  width: 100%;
+  background-color: #EFEC64;
+  margin-top: 0;   /* ✅ 直接緊貼黑線 */
+  padding: 10vh 0; /* 上下留白，響應式可用 vh 控制 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.contact-heading {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.contact-subheading {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contact-text {
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+/* 表單容器 */
+.contact-form {
+  background: url('../assets/form-bg.png') no-repeat center/cover; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh; /* ✅ 改小，上下間距 */
+  padding: 5%; /* ✅ 原本 10%，縮小一點 */
+}
+
+/* 單一欄位 */
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5vw; /* ✅ 原本 3vw，縮小 label 與 input 的距離 */
+}
+
+/* 標題區 */
+.form-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 140%; 
+  text-align: left;
+  min-width: 160px;   /* ✅ 原本 200px，縮短一點 */
+  flex-shrink: 0; 
+}
+
+.label-zh {
+  font-size: 20px; /* ✅ 比原本小 */
+  font-weight: bold;
+}
+
+.label-en {
+  font-size: 16px; /* ✅ 比原本小 */
+  font-weight: bold;
+}
+
+/* 輸入欄位 */
+.form-input {
+  flex: 1;
+  max-width: 700px;    /* ✅ 原本 810px，縮小一點 */
+  height: 45px;        /* ✅ 原本 55px，降低高度 */
+  border-radius: 12px; /* ✅ 原本 15px，略小 */
+  border: none;
+  background-color: rgba(236, 109, 101, 0.2);
+  padding: 0 10px;     /* ✅ 原本 15px，縮小左右 padding */
+  font-size: 16px;     /* ✅ 字體略小 */
+}
+
+/* 滑鼠移上去 */
+.form-input:hover {
+  border: solid 3px black;
+  background-color: rgba(236, 109, 101, 0.25); /* 比原本稍微深一點 */
+  transition: all 0.2s ease; /* 平滑過渡 */
+}
+
+/* 被點擊(輸入中) */
+.form-input:focus {
+  outline: none; 
+  border: solid 3px black;
+
+  background-color: rgb(255, 255, 255); /* 再深一點，表示聚焦 */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* 聚焦光暈 */
+  transition: all 0.2s ease;
+}
+
+/* 外層色塊容器 */
+.form-wrapper {
+  background-color: #fff;              /* 白色底色 */
+  border: 3px solid #000;              /* 黑色線條 */
+  border-radius: 30px;                 /* 圓角 30px */
+  padding: 5vh 5vw;                    /* 內距，響應式 */
+  margin-top: 10vh;                    /* 與上方留距 */
+  width: min(90%, 1260px);             /* 最大寬度 1260px，平常 90% */
+  min-height: 60vh;                    /* 高度可自動撐開，最少 60vh */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 表單容器 */
+.contact-form {
+  background: url('../assets/form-bg.png') no-repeat center/cover; /* 底圖 */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
