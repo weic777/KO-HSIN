@@ -11,7 +11,6 @@ import fjuLogo from '../assets/fju.svg';
 import certificateIcon from '../assets/certificate.svg';
 import starIcon from '../assets/star.svg';
 import skillBackground from '../assets/skillbackground.svg';
-import skill from '../assets/skill.svg';
 import aiLogo from '../assets/ai-logo.svg';
 import psLogo from '../assets/ps-logo.svg';
 import prLogo from '../assets/pr-logo.svg';
@@ -28,27 +27,21 @@ import { useEffect, useRef, useState } from 'react';
 function ProfilePage() {
   const photoRef = useRef(null);
   const wrapperRef = useRef(null);
-  const [translateY, setTranslateY] = useState(150); // 初始在下方
-   useEffect(() => {
+  const [translateY, setTranslateY] = useState(150);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (!wrapperRef.current) return;
       const rect = wrapperRef.current.getBoundingClientRect();
       const windowH = window.innerHeight;
 
-      // 計算區塊中心到視窗中心的距離
       const blockCenter = rect.top + rect.height / 2;
       const windowCenter = windowH / 2;
-      const distance = blockCenter - windowCenter;
 
-      // 當距離小於某個閾值時，開始滑動
-      if (distance < 200 && distance > -20) {
-        // normalize distance -> 0~1
-        let progress = 1 - Math.abs(distance) / 200;
-        setTranslateY(150 * (1 - progress));
-      } else if (distance <= -20) {
-        setTranslateY(0); // 完全到位
+      if (blockCenter <= windowCenter) {
+        setTranslateY(0);
       } else {
-        setTranslateY(150); // 還在下方
+        setTranslateY(150);
       }
     };
 
@@ -78,16 +71,17 @@ function ProfilePage() {
 
   return (
     <div className="App">
-       {/* 標題區塊 */}
+      {/* 標題區塊 */}
       <section className="profile-title-section">
         <img src={aboutTitle} alt="個人簡介標題圖" />
         <div className="line-grow"></div>
       </section>
 
-      {/* 大頭照 + 聯絡資訊 + 教育背景 */}
+      {/* 大頭照 + 聯絡資訊 + 教育背景 + tag */}
       <section className="profile-main-wrapper" ref={wrapperRef}>
         <section className="profile-main-section fade-up-delay">
 
+          {/* 大頭照 */}
           <div className="profile-photo-wrapper">
             <div className="mask-circle">
               <img
@@ -100,7 +94,7 @@ function ProfilePage() {
             </div>
           </div>
 
-
+          {/* 聯絡資訊 */}
           <div className="profile-contact">
             <div className="profile-name">魏可昕</div>
             <div className="profile-name-en">WEI, KO-HSIN</div>
@@ -132,7 +126,6 @@ function ProfilePage() {
 
           {/* 教育背景 */}
           <section className="education-section">
-            {/* 高中 */}
             <div className="education-item">
               <img src={schoolLogo} alt="高中校徽" />
               <div className="education-text">
@@ -144,7 +137,6 @@ function ProfilePage() {
               </div>
             </div>
 
-            {/* 大學 */}
             <div className="education-item">
               <img src={fjuLogo} alt="輔大校徽" />
               <div className="education-text">
@@ -156,28 +148,22 @@ function ProfilePage() {
               </div>
             </div>
           </section>
-          <section className="profile-main-wrapper" ref={wrapperRef}>
-  <section className="profile-main-section fade-up-delay">
 
-  {/* 大頭照 + 聯絡資訊 + 教育背景 */}
-
-  <div className="tag-wrapper">
-    {[
-      "# 熱於助人",
-      "# 細節魔人",
-      "# 學無止境",
-      "# 熱情滿點",
-      "# 效率狂人"
-    ].map((tag, idx) => (
-      <div key={idx} className="tag-item">
-        <div className="tag-bar"></div>
-        <span className="tag-text">{tag}</span>
-      </div>
-    ))}
-  </div>
-
-</section>
-</section>
+          {/* tag */}
+          <div className="tag-wrapper">
+            {[
+              "# 熱於助人",
+              "# 細節魔人",
+              "# 學無止境",
+              "# 熱情滿點",
+              "# 效率狂人"
+            ].map((tag, idx) => (
+              <div key={idx} className="tag-item">
+                <div className="tag-bar"></div>
+                <span className="tag-text">{tag}</span>
+              </div>
+            ))}
+          </div>
 
         </section>
       </section>
@@ -208,22 +194,23 @@ function ProfilePage() {
       </section>
 
       {/* 技能 */}
-      <section className="skill-wrapper">
-        <div className="section-title">
-          <span className="zh">技能</span> <br />
-          <span className="en">SKILLS</span>
-        </div>
+<section className="skill-wrapper">
+  <div className="skill-section-title">
+    <span className="zh">技能</span> <br />
+    <span className="en">SKILLS</span>
+  </div>
 
-        <img src={skillBackground} alt="技能背景圖" className="skill-background" />
+  <img src={skillBackground} alt="技能背景圖" className="skill-background" />
 
-        <div className="icon-scroll-wrapper">
-          <div className="icon-scroll">
-            {skills.map((logo, i) => (
-              <img key={i} src={logo} alt="技能圖標" className="skill-icon" />
-            ))}
-          </div>
-        </div>
-      </section>
+<div className="icon-scroll-wrapper">
+  <div className="icon-scroll">
+    {[...skills, ...skills].map((logo, i) => (
+      <img key={i} src={logo} alt="技能圖標" className="skill-icon" />
+    ))}
+  </div>
+</div>
+</section>
+
 
       {/* 經歷 */}
       <section className="experience-wrapper">

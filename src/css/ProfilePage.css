@@ -45,24 +45,25 @@
 
 /* 大頭照 + 聯絡資訊 + 教育背景區塊 */
 .profile-main-wrapper {
-  
-  display: flex;
-  justify-content: center; /* 水平置中整個區塊 */
-    align-items: flex-start; /* 改成 flex-start */
-      width: 100%;
-  height: 700px;
+   display: flex;
+  justify-content: center; /* 水平置中 */
+  align-items: center;     /* 垂直置中 */
+  width: 100%;
+  height: 700px;           /* 可依需求調整高度 */
   background-color: #86DBEB;
   position: relative;
 }
-
-.profile-main-section {
+.content-wrapper {
   display: flex;
   align-items: center;   /* 區塊內垂直置中 */
   gap: 60px;             /* 大頭照與聯絡資訊間距 */
   max-width: 1280px;
   flex-wrap: wrap;       /* ✅ 內容超出寬度時換行 */
   justify-content: center; /* 換行時水平置中 */
+ 
+  padding-top: 0px; /* 🔹 控制內容往下 */
 }
+
 
 
 
@@ -71,13 +72,40 @@
   width: 100%;
   height: 570px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;       /* 由上到下排列 */
+  align-items: center;          /* 水平置中 */
+  justify-content: center;      /* 整個容器垂直置中內容 */
   position: relative;
-  padding-top: 120px;
+  padding-top: 40px;            /* 給標題一點空間 */
+  box-sizing: border-box;
 }
 
+
 /* 技能區塊 */
+/* 技能區塊標題 */
+.skill-wrapper .skill-section-title {
+  position: absolute;
+  top: 20vh; /* 離技能區塊上方5vh */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2; /* 疊在背景圖上面 */
+}
+
+.skill-wrapper .skill-section-title .zh {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.skill-wrapper .skill-section-title .en {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .skill-wrapper {
   width: 100%;
+  overflow-x: hidden;
   height: 400px;
   position: relative;
   padding-top: 120px;
@@ -114,14 +142,6 @@ margin-Top: 110px
 }
 
 
-/* 大頭照與聯絡資訊 */
-.profile-main-section {
-  display: flex;
-  align-items: flex-start;
-  margin-top: 40px;
-  margin-left: 75px;
-  max-width: 1280px;
-}
 
 .profile-photo {
   width: 250px;
@@ -237,8 +257,13 @@ margin-Top: 110px
 
 /* 證書 / 榮譽 */
 .certificate-section {
-  margin-top: 50px;
-  margin-left: 100px;
+  margin: 0;          /* 移除 margin-left:100px 與 margin-top */
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* 水平置中榮譽卡片 */
+  align-items: center;       /* 垂直置中榮譽卡片 */
+  height: calc(100% - 60px); /* 扣掉標題高度 */
+  box-sizing: border-box;
 }
 
 .certificate-title {
@@ -263,16 +288,20 @@ margin-Top: 110px
 }
 
 .honors-wrapper {
-  max-width: 1280px;
-  margin: 40px auto 0 auto;
-  padding: 0 20px;
+  margin-top: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;      /* 水平置中 */
+  align-items: center;          /* 垂直置中 */
+  gap: 50px;                    /* 卡片間距 */
 }
+
 
 .honor-row {
   display: flex;
   justify-content: center;
   gap: 80px;
-  margin-top: 50px;
+  margin-top: 0px;
   flex-wrap: wrap;
 }
 
@@ -314,10 +343,12 @@ margin-Top: 110px
 /* 技能 */
 .skill-section {
   margin-top: 50px;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  margin-left: -50vw;
+  width: 100%;       /* 佔滿父元素，不用 100vw */
+  position: relative; /* 保留相對定位給內部絕對元素用 */
+  left: 0;           /* 移除 left:50% */
+  margin-left: 0;    /* 移除 margin-left:-50vw */
+  display: flex;
+  justify-content: center; /* 讓內部內容水平置中 */
 }
 
 .skill-title {
@@ -346,61 +377,84 @@ margin-Top: 110px
 }
 
 .skill-background {
-  width: 100vw;
+  width: 100%;
   height: auto;
   display: block;
 }
 
 .icon-scroll-wrapper {
-  overflow: hidden;
-  width: 100vw;
-  position: relative;
+  position: absolute;     /* 讓動畫層浮在背景上 */
+  bottom: 40px;           /* 或改成 top: 50%; translateY(-50%) 垂直置中 */
+  left: 0;
+  width: 100%;
   height: 130px;
-  margin-top: -200px;
   display: flex;
+    justify-content: flex-start; 
   align-items: center;
-  left: 50%;
-  margin-left: -50vw;
-  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  margin: 0;              /* 移除原先 margin-top */
 }
 
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* 滾動一半，因為列重複一遍 */
+  }
+}
 .icon-scroll {
   display: flex;
   gap: 20px;
   align-items: center;
   height: 100%;
-  width: 100%;
-  justify-content: center;
-  padding-left: 55px;
+  width: max-content;
+  animation: scroll-left 750s linear infinite;
 }
-
+.icon-scroll img {
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+.icon-scroll img:hover {
+  transform: scale(1.2);
+}
 .skill-icon {
+  flex-shrink: 0;
   max-width: 100px;
   max-height: 100px;
   width: auto;
   height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.skill-icon:hover {
+  transform: scale(1.2);
 }
 
 
 /* profile-main-section 保留水平排列大頭照 + 聯絡資訊 + 教育背景 */
 .profile-main-section {
   display: flex;
-  align-items: center;
-  gap: 60px;
+  align-items: center;       /* 垂直置中 */
+  justify-content: center;   /* 水平置中 */
+  gap: 60px;                 /* 大頭照與聯絡資訊間距 */
   max-width: 1280px;
-  flex-wrap: wrap; 
-  justify-content: center;
+  flex-wrap: wrap;           /* 超出寬度自動換行 */
+  margin: 0;                 /* 移除 margin-top 與 margin-left */
 }
+
 
 /* tag 區塊樣式 */
 .tag-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2vw;      /* tag 間距 */
+  gap: 2vw;
   flex-wrap: wrap;
-  margin-top: 3vh; /* 🔹 增加這行，控制與上方區塊距離 */
+  margin-top: 3vh;
 }
+
 
 .tag-item {
   position: relative;
@@ -426,5 +480,5 @@ margin-Top: 110px
 .tag-text {
   font-size: 1.5rem; /* 24px */
   font-weight: bold;
-  margin-left: 5vh; /* 與黑色條距離 */
+  margin-left: 3.5vh; /* 與黑色條距離 */
 }

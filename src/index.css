@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  overflow-x: hidden;
+}
+
 
 /* ✅ 全站使用 Inter 字體 */
 * {
