@@ -831,14 +831,52 @@ svg:hover .line {
 .tv-mask-wrapper {
   position: absolute;
   top: 38%;
-  left: 30%;
+  left: 27%;
   transform: translate(-50%, -50%)scale(0.9);
   width: 400px;
   height: 147px;
   z-index: 2;
   background-position: center;
 }
+/* 包裝按鈕和 hover 圓形 */
+.tv-overlay .btn-wrapper {
 
+  left: -130%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* hover 圓形，初始隱藏 */
+.tv-overlay .btn-wrapper .hover-circle {
+  position: absolute;
+  bottom: -5px; /* 圓形置於按鈕下方 */
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  z-index: -1; /* 確保在按鈕下方 */
+}
+
+/* 左右按鈕分別不同顏色 */
+.tv-overlay .btn-wrapper.left .hover-circle {
+  background-color: #EFEC64;
+}
+
+.tv-overlay .btn-wrapper.right .hover-circle {
+  background-color: #86DBEB;
+}
+
+/* hover 狀態 */
+.tv-overlay .btn-wrapper:hover .hover-circle {
+  opacity: 1;
+  transform: scale(1);
+}
 
 @media (max-width: 480px) {
   .fade-up {

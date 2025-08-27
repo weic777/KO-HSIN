@@ -156,6 +156,29 @@ function ProfilePage() {
               </div>
             </div>
           </section>
+          <section className="profile-main-wrapper" ref={wrapperRef}>
+  <section className="profile-main-section fade-up-delay">
+
+  {/* 大頭照 + 聯絡資訊 + 教育背景 */}
+
+  <div className="tag-wrapper">
+    {[
+      "# 熱於助人",
+      "# 細節魔人",
+      "# 學無止境",
+      "# 熱情滿點",
+      "# 效率狂人"
+    ].map((tag, idx) => (
+      <div key={idx} className="tag-item">
+        <div className="tag-bar"></div>
+        <span className="tag-text">{tag}</span>
+      </div>
+    ))}
+  </div>
+
+</section>
+</section>
+
         </section>
       </section>
 

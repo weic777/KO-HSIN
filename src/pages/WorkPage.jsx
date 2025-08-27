@@ -21,6 +21,8 @@ import goarrow from '../assets/go-arrow.svg';
 import TvShow from '../assets/TvShow.svg';
 import Tv from '../assets/Tv.svg';
 import tvmp4 from '../assets/tvmp4.mp4';
+import TvBtLf from '../assets/TvBtLf.svg';
+import TvBtRi from '../assets/TvBtRi.svg';
 
 
 
@@ -300,13 +302,22 @@ function WorkPage() {
     {/* TV + 影片遮罩 */}
     <div className="tv-container">
       <img src={Tv} alt="Tv" className="tv-base" />
-
+<div className="tv-overlay">
+  <div className="btn-wrapper left">
+    <img src={TvBtLf} alt="TvBtLf" className="tv-bt-left" />
+    <span className="hover-circle"></span>
+  </div>
+  <div className="btn-wrapper right">
+    <img src={TvBtRi} alt="TvBtRi" className="tv-bt-right" />
+    <span className="hover-circle"></span>
+  </div>
+</div>
       <div className="tv-mask-wrapper">
         <svg width="610" height="457" viewBox="0 0 610 457" fill="none">
           <defs>
             <clipPath id="tvClip">
               <path
-                d="M1.77946 402.962L17.1744 51.6766C17.9308 34.4185 31.8352 20.6459 49.0997 20.054L564.241 2.39197C582.62 1.76184 597.987 16.2376 598.455 34.6214L608.295 421.19C608.779 440.214 593.156 455.725 574.136 455.105L33.7602 437.484C15.3494 436.884 0.972958 421.365 1.77946 402.962Z"
+                d="M2.40201 406.86L2.56272 31.8622C2.56983 15.2936 16.0069 1.86794 32.5755 1.87502L551.666 2.09668C568.235 2.10375 581.661 15.541 581.654 32.1095L581.493 407.109C581.486 423.677 568.049 437.103 551.48 437.096L32.3891 436.873C15.8206 436.866 2.39491 423.429 2.40201 406.86Z" stroke="black" stroke-width="3"
               />
             </clipPath>
           </defs>
@@ -324,8 +335,8 @@ function WorkPage() {
           </foreignObject>
 
           <path
-            d="M1.77946 402.962L17.1744 51.6766C17.9308 34.4185 31.8352 20.6459 49.0997 20.054L564.241 2.39197C582.62 1.76184 597.987 16.2376 598.455 34.6214L608.295 421.19C608.779 440.214 593.156 455.725 574.136 455.105L33.7602 437.484C15.3494 436.884 0.972958 421.365 1.77946 402.962Z"
-            stroke="black"
+            d="M2.40201 406.86L2.56272 31.8622C2.56983 15.2936 16.0069 1.86794 32.5755 1.87502L551.666 2.09668C568.235 2.10375 581.661 15.541 581.654 32.1095L581.493 407.109C581.486 423.677 568.049 437.103 551.48 437.096L32.3891 436.873C15.8206 436.866 2.39491 423.429 2.40201 406.86Z" stroke="black" stroke-width="3"
+            // stroke="black"
             strokeWidth="3"
             fill="none"
           />

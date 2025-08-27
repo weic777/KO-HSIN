@@ -45,12 +45,26 @@
 
 /* 大頭照 + 聯絡資訊 + 教育背景區塊 */
 .profile-main-wrapper {
-  width: 100%;
+  
+  display: flex;
+  justify-content: center; /* 水平置中整個區塊 */
+    align-items: flex-start; /* 改成 flex-start */
+      width: 100%;
   height: 700px;
   background-color: #86DBEB;
-  position: relative; /* 用於標題絕對定位 */
-  padding-top: 120px; /* 保留標題下方間距 */
+  position: relative;
 }
+
+.profile-main-section {
+  display: flex;
+  align-items: center;   /* 區塊內垂直置中 */
+  gap: 60px;             /* 大頭照與聯絡資訊間距 */
+  max-width: 1280px;
+  flex-wrap: wrap;       /* ✅ 內容超出寬度時換行 */
+  justify-content: center; /* 換行時水平置中 */
+}
+
+
 
 /* 榮譽區塊 */
 .certificate-wrapper {
@@ -115,7 +129,6 @@ margin-Top: 110px
 }
 
 .profile-contact {
-  margin-left: 60px;
   max-width: 400px;
 }
 
@@ -366,4 +379,52 @@ margin-Top: 110px
   max-height: 100px;
   width: auto;
   height: auto;
+}
+
+
+/* profile-main-section 保留水平排列大頭照 + 聯絡資訊 + 教育背景 */
+.profile-main-section {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1280px;
+  flex-wrap: wrap; 
+  justify-content: center;
+}
+
+/* tag 區塊樣式 */
+.tag-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;      /* tag 間距 */
+  flex-wrap: wrap;
+  margin-top: 3vh; /* 🔹 增加這行，控制與上方區塊距離 */
+}
+
+.tag-item {
+  position: relative;
+  width: 12rem; /* 190px */
+  height: 3rem; /* 50px */
+  border: 3px solid black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem; /* 避開黑色條 */
+  box-sizing: border-box;
+}
+
+.tag-bar {
+  width: 0.9rem; /* 15px */
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.tag-text {
+  font-size: 1.5rem; /* 24px */
+  font-weight: bold;
+  margin-left: 5vh; /* 與黑色條距離 */
 }

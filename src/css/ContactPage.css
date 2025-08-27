@@ -116,6 +116,7 @@
 .input-wrapper, 
 .custom-select, 
 .form-textarea {
+  position: relative; 
   width: 90%; /* 或 100%，視需求 */
   max-width: none;
 }
