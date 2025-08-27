@@ -41,11 +41,11 @@ function ProfilePage() {
       const distance = blockCenter - windowCenter;
 
       // 當距離小於某個閾值時，開始滑動
-      if (distance < 200 && distance > -200) {
+      if (distance < 200 && distance > -20) {
         // normalize distance -> 0~1
         let progress = 1 - Math.abs(distance) / 200;
         setTranslateY(150 * (1 - progress));
-      } else if (distance <= -200) {
+      } else if (distance <= -20) {
         setTranslateY(0); // 完全到位
       } else {
         setTranslateY(150); // 還在下方
