@@ -607,6 +607,11 @@
   flex: 10 1 0;
 }
 
+
+
+
+
+
 /* 內容層 */
 .experience-wrapper .exp-article {
   position: absolute;
@@ -618,33 +623,99 @@
   padding: 1rem 24px 1rem 24px;
   font-family: monospace;
 }
+/* h3 標題：中英文統一 */
+.exp-logo {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin-bottom: 6px;
+  position: absolute; /* 固定位置 */
+  top: 0;
+  left: 0;
+}
 
-.experience-wrapper .exp-article h3 {
-  letter-spacing: 0.18em; 
-  position: absolute;         /* 保持原本絕對定位 */
-  top: 5%;                   /* 垂直置中父容器 */
-  left: 28px;                 /* 控制水平位置 */
-  transform: none;/* 真正垂直置中 */
-  writing-mode: vertical-rl;  /* 文字直排 */
-  text-orientation: upright;  /* 中文直立 */
+.exp-title-text {
+  display: block;
+  /* 文字方向設定只作用在文字 */
+}
+
+/* 中文文字直排 */
+.exp-article h3[lang="zh"] .exp-title-text {
+ position: absolute;       /* 加上絕對定位 */
+  top: 20px;                   /* 與父容器頂部對齊 */
+  left: 25px;               /* 避開 logo */
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   font-size: 1rem;
   font-weight: 300;
   opacity: 0.6;
   margin: 0;
-  
-}
+  z-index: 1;
+   }
 
-/* 英文：橫排 + 整體旋轉 90 度 */
-.experience-wrapper .exp-article h3[lang="en"] {
-  position: absolute;
-  top: 15%;            /* 先抓父容器中線 */
-  left: 38px;          /* 靠左一點 */
+/* 英文文字橫排 + 旋轉 90 度 */
+.exp-article h3[lang="en"] .exp-title-text {
+  position: absolute;       /* 加上絕對定位 */
+  top: 8%;                   /* 與中文對齊 */
+  left: 48px;              /* 避開 logo，留間距 */
   writing-mode: horizontal-tb;
-  text-orientation: mixed;
-  transform: translate(-50%, -50%) rotate(90deg);
-  transform-origin: center center;
+  transform: rotate(90deg);
+  transform-origin: left top;
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.6;
+  margin: 0;
+  z-index: 1;
 }
 
+
+/* exp-info 統一樣式 */
+.exp-info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* 黑線、職位、年份間距 5px */
+  z-index: 2;
+}
+
+/* 中文經歷 */
+.exp-article h3[lang="zh"] + .exp-info {
+  top: 40%; /* 調整到 h3 文字底下 */
+  left: 18px; /* 避開 logo，與文字對齊 */
+}
+
+/* 英文經歷 */
+.exp-article h3[lang="en"] + .exp-info {
+  top: 40%; /* 調整到 h3 文字底下 */
+  left:20px; /* 避開 logo，與文字對齊 */
+}
+
+/* 黑線 */
+.exp-line {
+  width: 3px;
+  height: 50px;
+  background-color: black;
+}
+
+/* 職位名稱 */
+.exp-position {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000;
+  text-align: center;
+}
+
+/* 年份 */
+.exp-year {
+  writing-mode: horizontal-tb;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.5);
+  text-align: center;
+}
 
 .experience-wrapper .exp-article svg {
   width: 18px;

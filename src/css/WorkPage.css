@@ -302,22 +302,24 @@ svg:hover .line {
   margin: 0 auto;
   /* 置中 */
   position: relative;
+  
 
 }
 
-@media (max-width:971px) {
-  .works-wrapper {
-    width: calc(100% - 5vh);
-    /* 左右各留 10vh */
 
-  }
-}
 
 /* 內層滑動容器 */
 .works-inner {
   display: flex;
   gap: 60px;
   transition: transform 0.5s ease;
+  
+}
+@media (max-width:1440px) {
+  .works-inner {
+    gap: 52px;
+
+  }
 }
 
 /* 單張卡片 */
