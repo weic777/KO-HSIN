@@ -1,7 +1,8 @@
 /* 統一標題樣式 */
 .section-title {
   position: absolute;
-  top: 5vh; /* 離區塊頂部5vh */
+  top: 5vh;
+  /* 離區塊頂部5vh */
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -17,6 +18,7 @@
   font-size: 20px;
   font-weight: 500;
 }
+
 /* 圓形遮罩 */
 .mask-circle {
   width: 240px;
@@ -28,7 +30,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* 可用 absolute 調整位置 */
+  position: relative;
+  /* 可用 absolute 調整位置 */
 }
 
 /* myPhoto 初始位置在遮罩下方，由 JS 控制 translateY */
@@ -45,23 +48,32 @@
 
 /* 大頭照 + 聯絡資訊 + 教育背景區塊 */
 .profile-main-wrapper {
-   display: flex;
-  justify-content: center; /* 水平置中 */
-  align-items: center;     /* 垂直置中 */
+  display: flex;
+  justify-content: center;
+  /* 水平置中 */
+  align-items: center;
+  /* 垂直置中 */
   width: 100%;
-  height: 700px;           /* 可依需求調整高度 */
+  height: 700px;
+  /* 可依需求調整高度 */
   background-color: #86DBEB;
   position: relative;
 }
+
 .content-wrapper {
   display: flex;
-  align-items: center;   /* 區塊內垂直置中 */
-  gap: 60px;             /* 大頭照與聯絡資訊間距 */
+  align-items: center;
+  /* 區塊內垂直置中 */
+  gap: 60px;
+  /* 大頭照與聯絡資訊間距 */
   max-width: 1280px;
-  flex-wrap: wrap;       /* ✅ 內容超出寬度時換行 */
-  justify-content: center; /* 換行時水平置中 */
- 
-  padding-top: 0px; /* 🔹 控制內容往下 */
+  flex-wrap: wrap;
+  /* ✅ 內容超出寬度時換行 */
+  justify-content: center;
+  /* 換行時水平置中 */
+
+  padding-top: 0px;
+  /* 🔹 控制內容往下 */
 }
 
 
@@ -73,70 +85,61 @@
   height: 570px;
   background-color: #ffffff;
   display: flex;
-  flex-direction: column;       /* 由上到下排列 */
-  align-items: center;          /* 水平置中 */
-  justify-content: center;      /* 整個容器垂直置中內容 */
+  flex-direction: column;
+  /* 由上到下排列 */
+  align-items: center;
+  /* 水平置中 */
+  justify-content: center;
+  /* 整個容器垂直置中內容 */
   position: relative;
-  padding-top: 40px;            /* 給標題一點空間 */
+  padding-top: 40px;
+  /* 給標題一點空間 */
   box-sizing: border-box;
 }
 
 
-/* 技能區塊 */
-/* 技能區塊標題 */
-.skill-wrapper .skill-section-title {
-  position: absolute;
-  top: 20vh; /* 離技能區塊上方5vh */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 2; /* 疊在背景圖上面 */
-}
-
-.skill-wrapper .skill-section-title .zh {
-  font-size: 26px;
-  font-weight: 600;
-}
-
-.skill-wrapper .skill-section-title .en {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.skill-wrapper {
-  width: 100%;
-  overflow-x: hidden;
-  height: 400px;
-  position: relative;
-  padding-top: 120px;
-  overflow: hidden;
-}
-
-.skill-wrapper .skill-background {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 確保不變形 */
-}
 
 /* 經歷 Experience 區塊 */
 .experience-wrapper {
   width: 100%;
   height: 750px;
+  /* 區塊高度 */
   background-color: #EFEC64;
+  display: flex;
+  /* 變成 flex 容器 */
+  flex-direction: column;
+  /* 上下排列 */
+  justify-content: center;
+  /* 垂直置中 */
+  align-items: center;
+  /* 水平置中 */
+  gap: 40px;
+  /* 標題與卡片間距 */
   position: relative;
-  padding-top: 120px;
+  padding: 0;
+  /* 移除原先 padding-top */
+  box-sizing: border-box;
 }
 
+.experience-wrapper .section-title {
+  position: static;
+  /* 移除絕對定位 */
+  transform: none;
+  /* 移除 translateX(-50%) */
+  text-align: center;
+}
 
 .profile-title-section {
   display: flex;
   flex-direction: column;
-  align-items: center; /* ✅ 改成置中 */
-  justify-content: center; /* ✅ 垂直置中 */
-margin-Top: 110px
+  align-items: center;
+  /* ✅ 改成置中 */
+  justify-content: center;
+  /* ✅ 垂直置中 */
+  margin-Top: 110px
 }
 
-.aboutTitle{
+.aboutTitle {
   width: 15%;
   max-width: 100%;
 }
@@ -257,12 +260,16 @@ margin-Top: 110px
 
 /* 證書 / 榮譽 */
 .certificate-section {
-  margin: 0;          /* 移除 margin-left:100px 與 margin-top */
+  margin: 0;
+  /* 移除 margin-left:100px 與 margin-top */
   width: 100%;
   display: flex;
-  justify-content: center;   /* 水平置中榮譽卡片 */
-  align-items: center;       /* 垂直置中榮譽卡片 */
-  height: calc(100% - 60px); /* 扣掉標題高度 */
+  justify-content: center;
+  /* 水平置中榮譽卡片 */
+  align-items: center;
+  /* 垂直置中榮譽卡片 */
+  height: calc(100% - 60px);
+  /* 扣掉標題高度 */
   box-sizing: border-box;
 }
 
@@ -291,9 +298,12 @@ margin-Top: 110px
   margin-top: 150px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;      /* 水平置中 */
-  align-items: center;          /* 垂直置中 */
-  gap: 50px;                    /* 卡片間距 */
+  justify-content: center;
+  /* 水平置中 */
+  align-items: center;
+  /* 垂直置中 */
+  gap: 50px;
+  /* 卡片間距 */
 }
 
 
@@ -343,17 +353,22 @@ margin-Top: 110px
 /* 技能 */
 .skill-section {
   margin-top: 50px;
-  width: 100%;       /* 佔滿父元素，不用 100vw */
-  position: relative; /* 保留相對定位給內部絕對元素用 */
-  left: 0;           /* 移除 left:50% */
-  margin-left: 0;    /* 移除 margin-left:-50vw */
+  width: 100%;
+  /* 佔滿父元素，不用 100vw */
+  position: relative;
+  /* 保留相對定位給內部絕對元素用 */
+  left: 0;
+  /* 移除 left:50% */
+  margin-left: 0;
+  /* 移除 margin-left:-50vw */
   display: flex;
-  justify-content: center; /* 讓內部內容水平置中 */
+  justify-content: center;
+  /* 讓內部內容水平置中 */
 }
 
 .skill-title {
   position: absolute;
-  top: 60px;
+  margin-top: 30px;
   left: 180px;
   z-index: 1;
   display: flex;
@@ -382,29 +397,82 @@ margin-Top: 110px
   display: block;
 }
 
-.icon-scroll-wrapper {
-  position: absolute;     /* 讓動畫層浮在背景上 */
-  bottom: 40px;           /* 或改成 top: 50%; translateY(-50%) 垂直置中 */
+.skill-wrapper {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+.skill-wrapper .skill-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* skill-content 讓標題 + icon 垂直置中 */
+.skill-content {
+  position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 130px;
+  height: 100%;
   display: flex;
-    justify-content: flex-start; 
+  flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
   z-index: 2;
-  margin: 0;              /* 移除原先 margin-top */
+}
+
+/* 標題 */
+.skill-section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.skill-section-title .zh {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.skill-section-title .en {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* logo 滾動區塊 */
+.icon-scroll-wrapper {
+  margin-top: -30px;
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-scroll {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 750s linear infinite;
+  width: max-content;
 }
 
 @keyframes scroll-left {
   0% {
     transform: translateX(0);
   }
+
   100% {
-    transform: translateX(-50%); /* 滾動一半，因為列重複一遍 */
+    transform: translateX(-50%);
+    /* 滾動一半，因為列重複一遍 */
   }
 }
+
 .icon-scroll {
+  margin-top: 30px;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -412,13 +480,16 @@ margin-Top: 110px
   width: max-content;
   animation: scroll-left 750s linear infinite;
 }
+
 .icon-scroll img {
   flex-shrink: 0;
   transition: transform 0.3s ease-in-out;
 }
+
 .icon-scroll img:hover {
   transform: scale(1.2);
 }
+
 .skill-icon {
   flex-shrink: 0;
   max-width: 100px;
@@ -436,12 +507,17 @@ margin-Top: 110px
 /* profile-main-section 保留水平排列大頭照 + 聯絡資訊 + 教育背景 */
 .profile-main-section {
   display: flex;
-  align-items: center;       /* 垂直置中 */
-  justify-content: center;   /* 水平置中 */
-  gap: 60px;                 /* 大頭照與聯絡資訊間距 */
+  align-items: center;
+  /* 垂直置中 */
+  justify-content: center;
+  /* 水平置中 */
+  gap: 60px;
+  /* 大頭照與聯絡資訊間距 */
   max-width: 1280px;
-  flex-wrap: wrap;           /* 超出寬度自動換行 */
-  margin: 0;                 /* 移除 margin-top 與 margin-left */
+  flex-wrap: wrap;
+  /* 超出寬度自動換行 */
+  margin: 0;
+  /* 移除 margin-top 與 margin-left */
 }
 
 
@@ -458,18 +534,22 @@ margin-Top: 110px
 
 .tag-item {
   position: relative;
-  width: 12rem; /* 190px */
-  height: 3rem; /* 50px */
+  width: 12rem;
+  /* 190px */
+  height: 3rem;
+  /* 50px */
   border: 3px solid black;
   background-color: white;
   display: flex;
   align-items: center;
-  padding-left: 1rem; /* 避開黑色條 */
+  padding-left: 1rem;
+  /* 避開黑色條 */
   box-sizing: border-box;
 }
 
 .tag-bar {
-  width: 0.9rem; /* 15px */
+  width: 0.9rem;
+  /* 15px */
   height: 100%;
   background-color: black;
   position: absolute;
@@ -478,7 +558,166 @@ margin-Top: 110px
 }
 
 .tag-text {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
+  /* 24px */
   font-weight: bold;
-  margin-left: 3.5vh; /* 與黑色條距離 */
+  margin-left: 3.5vh;
+  /* 與黑色條距離 */
+}
+
+/* ========== Experience 模板 (Accordion Cards) ========== */
+.experience-wrapper .exp-list {
+  --exp-gap: 8px;
+  --exp-speed: 0.6s;
+  --exp-ease: cubic-bezier(.22, .61, .36, 1);
+  margin: 0 auto;
+  /* 置中 */
+  padding: 0;
+  list-style: none;
+  height: auto;
+  /* 讓內容自適應 */
+
+  display: flex;
+  gap: var(--exp-gap);
+  width: min(980px, calc(100% - 80px));
+  /* 不超出左右邊距 */
+  height: clamp(300px, 40vh, 474px);
+  align-items: stretch;
+  transition: height var(--exp-speed) var(--exp-ease);
+}
+
+.experience-wrapper .exp-list li {
+  position: relative;
+  min-width: 80px;
+  flex: 1 1 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  border: 3px solid#000;
+  transition: flex var(--exp-speed) var(--exp-ease), filter var(--exp-speed) var(--exp-ease);
+  will-change: flex;
+}
+
+.experience-wrapper .exp-list:hover li {
+  flex: 1 1 0;
+  /* 先把所有項目收窄，再放大 active */
+}
+
+.experience-wrapper .exp-list li[data-active="true"] {
+  flex: 10 1 0;
+}
+
+/* 內容層 */
+.experience-wrapper .exp-article {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 24px 1rem 24px;
+  font-family: monospace;
+}
+
+.experience-wrapper .exp-article h3 {
+  letter-spacing: 0.18em; 
+  position: absolute;         /* 保持原本絕對定位 */
+  top: 5%;                   /* 垂直置中父容器 */
+  left: 28px;                 /* 控制水平位置 */
+  transform: none;/* 真正垂直置中 */
+  writing-mode: vertical-rl;  /* 文字直排 */
+  text-orientation: upright;  /* 中文直立 */
+  font-size: 1rem;
+  font-weight: 300;
+  opacity: 0.6;
+  margin: 0;
+  
+}
+
+/* 英文：橫排 + 整體旋轉 90 度 */
+.experience-wrapper .exp-article h3[lang="en"] {
+  position: absolute;
+  top: 15%;            /* 先抓父容器中線 */
+  left: 38px;          /* 靠左一點 */
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
+}
+
+
+.experience-wrapper .exp-article svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+  transition: opacity var(--exp-speed) var(--exp-ease);
+}
+
+.experience-wrapper .exp-article p,
+.experience-wrapper .exp-article a {
+  opacity: 0;
+  /* 預設隱藏，active 才顯示 */
+  transition: opacity var(--exp-speed) var(--exp-ease);
+  width: fit-content;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.experience-wrapper .exp-article p {
+  font-size: 13px;
+  color: #222;
+}
+
+.experience-wrapper .exp-article a {
+  position: absolute;
+  bottom: 1rem;
+  left: 24px;
+  height: 18px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.experience-wrapper .exp-article a span {
+  display: inline-block;
+  line-height: 18px;
+  translate: 12px 0;
+  font-weight: 600;
+}
+
+/* Active 狀態顯示更多資訊 */
+.experience-wrapper .exp-list li[data-active="true"] .exp-article :is(h3, svg) {
+  opacity: 1;
+}
+
+.experience-wrapper .exp-list li[data-active="true"] .exp-article :is(p, a) {
+  opacity: 1;
+  transition-delay: calc(var(--exp-speed) * 0.25);
+}
+
+/* 圖片作遮罩漸層，與原模板一致 */
+.experience-wrapper .exp-article img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  filter: grayscale(1) brightness(1.5);
+  transform: scale(1.1);
+  transition: filter var(--exp-speed) var(--exp-ease), transform var(--exp-speed) var(--exp-ease);
+  mask: radial-gradient(100% 100% at 100% 0, #fff, rgba(0, 0, 0, 0));
+}
+
+.experience-wrapper .exp-list li[data-active="true"] .exp-article img {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1);
+  transition-delay: calc(var(--exp-speed) * 0.25);
+}
+
+/* 小螢幕微調：讓容器更窄一些 */
+@media (max-width: 768px) {
+  .experience-wrapper .exp-list {
+    width: calc(100% - 40px);
+    height: clamp(280px, 42vh, 420px);
+  }
 }
