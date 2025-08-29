@@ -1,4 +1,13 @@
 /* 統一標題樣式 */
+h1, h2, h3, h4, .section-title, .profile-name, .honor-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900; /* 統一用最粗，讓標題更有力量 */
+}
+
+p, .exp-detail-desc, .contact-item span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400; /* 內文保持清爽 */
+}
 .section-title {
   position: absolute;
   top: 5vh;
@@ -592,7 +601,7 @@
   flex: 1 1 0;
   overflow: hidden;
   border-radius: 8px;
-  background: #fff;
+  background: #ffffff;
   border: 3px solid#000;
   transition: flex var(--exp-speed) var(--exp-ease), filter var(--exp-speed) var(--exp-ease);
   will-change: flex;
@@ -621,7 +630,6 @@
   justify-content: flex-end;
   gap: 1rem;
   padding: 1rem 24px 1rem 24px;
-  font-family: monospace;
 }
 /* h3 標題：中英文統一 */
 .exp-logo {
@@ -647,10 +655,11 @@
   writing-mode: vertical-rl;
   text-orientation: upright;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 500;
   opacity: 0.6;
   margin: 0;
   z-index: 1;
+  
    }
 
 /* 英文文字橫排 + 旋轉 90 度 */
@@ -694,7 +703,7 @@
 /* 黑線 */
 .exp-line {
   width: 3px;
-  height: 50px;
+  height: 70px;
   background-color: black;
 }
 
@@ -763,6 +772,58 @@
 .experience-wrapper .exp-list li[data-active="true"] .exp-article :is(p, a) {
   opacity: 1;
   transition-delay: calc(var(--exp-speed) * 0.25);
+}
+/* 卡片展開的細節區塊 */
+/* 經歷細節整組區塊 */
+.exp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 各區塊間距 */
+  opacity: 0;
+  transition: opacity var(--exp-speed) var(--exp-ease);
+  /* 🔹 新增這些 */
+  position: absolute; /* 讓它可以自由定位 */
+  top: 2rem;          /* 與卡片頂部對齊 (可依需求調整數字) */
+  left: 80px;        /* 往右推一點，避免跟標題/年份重疊 */
+  right: 24px;        /* 保持右邊內距 */
+    
+
+}
+
+
+/* 只有 active 卡片才顯示 */
+.exp-list li[data-active="true"] .exp-details {
+  opacity: 1;
+  transition-delay: calc(var(--exp-speed) * 0.25);
+}
+
+/* 工作性質 */
+.exp-jobtype {
+  font-size: 16px;
+  font-weight: 600;
+  color: #666; /* 灰色 */
+}
+
+/* 每個工作內容區塊 */
+.exp-detail-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* 標題與解說的間距 */
+  
+}
+
+/* 工作內容標題 */
+.exp-detail-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* 工作內容解說 */
+.exp-detail-desc {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
 }
 
 /* 圖片作遮罩漸層，與原模板一致 */

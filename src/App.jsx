@@ -1,13 +1,15 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
 import WorkPage from './pages/WorkPage';
 
-
 function App() {
+  const location = useLocation();
+  const showFooter = location.pathname !== '/home'; // HomePage 不顯示 Footer
+
   return (
     <>
       <Nav />
@@ -18,8 +20,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/work" element={<WorkPage />} />
       </Routes>
-      {/* footer區 */}
-      <Footer />
+      {showFooter && <Footer />}
     </>
   );
 }

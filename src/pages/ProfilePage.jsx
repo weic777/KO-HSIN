@@ -85,58 +85,93 @@ function ProfilePage() {
   const expItems = [
     {
       title: '中國時報',
-      desc:
-        'Gain the confidence to build anything you envision, transforming motion, interaction, and design principles into second nature.',
-      logo:  WorkLogo1 ,
+      logo: WorkLogo1,
       date: '2022',
+          position: '平面設計',
+
+      jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
     {
       title: '康健雜誌',
-      desc:
-        'Master CSS animations from your very first set of @keyframes right through to things no one else ever teaches you.',
-      
-      logo: WorkLogo2 ,
+      logo: WorkLogo2,
       date: '2022',
+          position: '平面設計',
+
+      jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
     {
       title: '新光三越',
-      desc:
-        'Shaders on a budget. Learn how to use noise to your advantage whilst making flames and stickers.',
-      
       logo: WorkLogo3,
       date: '2022',
+          position: '平面設計',
+
+      jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
     {
       title: 'HiSKIO',
-      desc:
-        'Take your users on a journey with the joy of tasteful scroll animation. You might not even need JavaScript.',
-      img: 'https://picsum.photos/720/720?random=42',
-      
-      logo: WorkLogo4 ,
+      logo: WorkLogo4,
       date: '2022',
+          position: '平面設計',
+
+      jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
     {
       title: '樂天市場',
-      desc:
-        'Grasp how to tame the pixel playground and when to do so. Whilst building with "Performance Driven Development".',
-      img: 'https://picsum.photos/720/720?random=128',
-      
-      logo: WorkLogo5 ,
+      logo: WorkLogo5,
       date: '2022',
+          position: '平面設計',
+
+      jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
     {
       title: '甲桂林廣告',
-      desc:
-        'Do you really need a library for that? Sometimes stepping back and rethinking the problem yields a nifty solution.',
-      
-      logo:  WorkLogo6 ,
+      logo: WorkLogo6,
       date: '2022',
+          position: '平面設計',
+
+      jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
     {
       title: '勞動部',
-      desc:
-        "It's not all just easings and compositions. Time plays a crucial part in various UI patterns that might not seem obvious at first.",
-      date: '2022',
+     date: '2022',
+         position: '平面設計',
+
+     jobtype: '短期兼職',
+    details: [
+      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
+      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
+      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+    ]
     },
   ];
   const [activeExp, setActiveExp] = useState(expItems.length - 1);
@@ -304,21 +339,33 @@ function ProfilePage() {
               onMouseEnter={() => setActiveExp(i)}
             >
               <article className="exp-article">
-  <h3 lang={/^[A-Za-z]+$/.test(item.title) ? "en" : "zh"}>
-    {item.logo && <img src={item.logo} alt={`${item.title} logo`} className="exp-logo" />}
-    <span className="exp-title-text">{item.title}</span>
-  </h3>
+                <h3 lang={/^[A-Za-z]+$/.test(item.title) ? "en" : "zh"}>
+                  {item.logo && <img src={item.logo} alt={`${item.title} logo`} className="exp-logo" />}
+                  <span className="exp-title-text">{item.title}</span>
+                </h3>
 
-  <div className="exp-info">
-    <div className="exp-line"></div>
-    <div className="exp-position">平面設計</div>
-    <div className="exp-year">{item.date}</div>
-  </div>
+                <div className="exp-info">
+  <div className="exp-line"></div>
+  <div className="exp-position">{item.position}</div>
+  <div className="exp-year">{item.date}</div>
+</div>
 
-  <p>{item.desc}</p>
-  {item.icon}
-  <img src={item.img} alt="" />
-</article>
+
+                <div className="exp-details">
+                  <div className="exp-jobtype">工作性質：{item.jobtype}</div>
+
+                  {item.details.map((d, idx) => (
+                    <div key={idx} className="exp-detail-block">
+                      <div className="exp-detail-title">{d.title}</div>
+                      <div className="exp-detail-desc">{d.desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+
+                {item.icon}
+                <img src={item.img} alt="" />
+              </article>
 
 
             </li>

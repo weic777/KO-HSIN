@@ -106,6 +106,8 @@ svg:hover .line {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
   padding: 4px 10px;
+    flex-wrap: nowrap; /* 不換行，保證水平置中 */
+
   border-radius: 4px;
   font-weight: bold;
 }
@@ -200,7 +202,7 @@ svg:hover .line {
 .book-cover:hover {
   transform: scale(1.05);
   /* 放大效果 */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); */
   /* 浮起陰影 */
 }
 
@@ -210,6 +212,75 @@ svg:hover .line {
 }
 
 
+
+
+.book-3d-wrapper {
+  cursor: pointer;
+  perspective: 1000px;
+  width: 263px; /* 根據封面尺寸調整 */
+  height: 372px;
+}
+
+.book-3d {
+  --book-thickness: 30px;
+  --cover-color: #4D9077;
+  width: 100%;
+  height: 100%;
+}
+
+.book-3d__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.book-3d-wrapper:hover .book-3d__inner {
+  transform: rotateY(-25deg);
+}
+
+/* 書頁 */
+.book-3d__inner::before {
+  position: absolute;
+  content: ' ';
+  left: 100%;
+  top: 1%;
+  width: calc(var(--book-thickness) * 2);
+  height: 98%;
+  transform: translate(-55%,0) rotateY(90deg);
+  background: linear-gradient(90deg,
+    #fff 0%, hsl(0,0%,94%) 5%, #fff 10%, hsl(0,0%,94%) 15%,
+    #fff 20%, hsl(0,0%,94%) 25%, #fff 30%, hsl(0,0%,94%) 35%,
+    #fff 40%, hsl(0,0%,94%) 45%, #fff 50%, hsl(0,0%,94%) 55%,
+    #fff 60%, hsl(0,0%,94%) 65%, #fff 70%, hsl(0,0%,94%) 75%,
+    #fff 80%, hsl(0,0%,94%) 85%, #fff 90%, hsl(0,0%,94%) 95%, #fff 100%
+  );
+}
+
+/* 後封面 */
+.book-3d__inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1%;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(calc(var(--book-thickness) * -1));
+  background-color: #00184b;
+  border-radius: 0 2px 2px 0;
+  box-shadow: -10px 0 30px 10px rgba(0,0,0,0.3);
+}
+
+/* 封面圖片 */
+.book-3d__cover {
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius: 0px 2px 2px 0px;
+  transform: translateZ(var(--book-thickness));
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+}
 
 
 
@@ -245,8 +316,25 @@ svg:hover .line {
   flex-direction: column;
   align-items: center;
   margin-top: 5px;
-  /* 書本下方 5px */
-  animation: float 1.5s ease-in-out infinite;
+  height: 60px; /* 固定手指區塊高度 */
+  animation: fingerFadeCycle 26s linear infinite, float 1.5s ease-in-out infinite;
+}
+
+/* 當手指消失時仍保留空間 */
+@keyframes fingerFadeCycle {
+  0% { opacity: 0; }
+  5% { opacity: 1; }       /* 快速淡入 */
+  25% { opacity: 0; }      /* 快速淡出 */
+  30% { opacity: 1; }      /* 再次快速淡入 */
+  50% { opacity: 0; }      /* 快速淡出 */
+  100% { opacity: 0; }     /* 保持隱藏 */
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }
 
 .finger-icon {
@@ -880,6 +968,42 @@ svg:hover .line {
   transform: scale(1);
 }
 
+
+
+.my-svg {
+  width: 500px;
+  height: 500px;
+}
+.ContactLine {
+  fill: none;
+  stroke: black;
+  stroke-width: 3;
+stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 3s linear forwards;
+  filter: url(#rough);
+
+}
+
+svg:hover .ContactLine {
+  stroke: #EFEC64;
+  animation: draw 3s linear forwards;
+  animation: draw 3s linear infinite;
+  /* infinite 無限重播 */
+
+  fill: #000000;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  /* 從隱藏開始 */
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 @media (max-width: 480px) {
   .fade-up {
     animation-delay: 0.4s;

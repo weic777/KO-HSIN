@@ -43,6 +43,14 @@ function WorkPage() {
   const [activeBook, setActiveBook] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+const [showBottomSvg, setShowBottomSvg] = useState(false);
+
+React.useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowBottomSvg(true);
+  }, 10000); // 10秒後顯示
+  return () => clearTimeout(timer);
+}, []);
 
   const categories = [
     { label: 'All', id: 'all' },
@@ -132,22 +140,69 @@ function WorkPage() {
 
       {/* 菜單設計 */}
       {activeCategory === 'all' && (
-        <section className="menu-design-section" style={{
-          backgroundColor: getSectionBgColor('menu'),
-          height: '730px', width: '100%',
-          display: 'flex', justifyContent: 'center', alignItems: 'center',
-          gap: '5vh', position: 'relative', flexWrap: 'wrap',
-        }}>
-          <div className="section-title"> <div className="zh">菜單設計</div> <div className="en">Menu Design</div> </div>
-          {books.map((book, i) => (
-            <div key={i} style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div className="book-banner"><span className="circle"></span><span className="banner-text">{book.title}</span><span className="circle"></span></div>
-              <div onClick={() => openBook(i)} className="book-cover"
-                style={{ width: `${book.size.cover.w}px`, height: `${book.size.cover.h}px`, backgroundImage: `url(${book.cover})` }}></div>
-              <div className="finger-wrapper"><img src={finger} alt="finger" className="finger-icon" /><div className="finger-text">點擊翻閱</div></div>
+       <section
+  className="menu-design-section"
+  style={{
+    backgroundColor: getSectionBgColor('menu'),
+    height: '730px',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  }}
+>
+  <div className="section-title">
+    <div className="zh">菜單設計</div>
+    <div className="en">Menu Design</div>
+  </div>
+
+  {/* 所有書本包裹容器 */}
+  <div
+    className="books-container"
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      gap: '60px',
+    }}
+  >
+    {books.map((book, i) => (
+      <div
+        key={i}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+        }}
+      >
+        <div className="book-banner">
+          <span className="circle"></span>
+          <span className="banner-text">{book.title}</span>
+          <span className="circle"></span>
+        </div>
+
+        <div className="book-3d-wrapper" onClick={() => openBook(i)}>
+          <div className="book-3d">
+            <div className="book-3d__inner">
+              <img className="book-3d__cover" src={book.cover} alt={book.title} />
             </div>
-          ))}
-        </section>
+          </div>
+        </div>
+
+        {/* 第一個書本顯示手指提示 */}
+        {i === 0 && (
+          <div className="finger-wrapper">
+            <img src={finger} alt="finger" className="finger-icon" />
+            <div className="finger-text">點擊翻閱</div>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
       )}
 
       {/* 翻書彈窗 */}
@@ -343,8 +398,43 @@ function WorkPage() {
         </svg>
       </div>
     </div>
+
+
+
+<svg className="my-svg" viewBox="0 0 200 200" width="100%" height="100%">
+
+
+  {/* 線條 */}
+  <path
+    className="ContactLine"
+    pathLength="1"
+    d="M94 86 
+       L79 77.53
+       C78.6948 77.3538 78.4415 77.1001 78.2659 76.7945 
+       78.0903 76.4889 77.9986 76.1424 78 75.79
+       V40
+       C78 29.9218 73.9964 20.2563 66.8701 13.1299
+       C59.7437 6.00356 50.0782 2 40 2
+       C29.9218 2 20.2563 6.00356 13.1299 13.1299
+       C6.00356 20.2563 2 29.9218 2 40
+       V134
+       C2 144.078 6.00356 153.744 13.1299 160.87
+       C20.2563 167.996 29.9218 172 40 172
+       C50.0782 172 59.7437 167.996 66.8701 160.87
+       C73.9964 153.744 78 144.078 78 134
+       V95.5"
+    stroke="black"
+    strokeWidth="3"
+    strokeMiterlimit="10"
+    strokeLinecap="round"
+    style={{ filter: "url(#rough)" }}
+  />
+</svg>
+    
   </section>
 )}
+
+
 
     </div>
   );
