@@ -462,12 +462,7 @@ p, .exp-detail-desc, .contact-item span {
   justify-content: center;
 }
 
-.icon-scroll {
-  display: flex;
-  gap: 20px;
-  animation: scroll-left 750s linear infinite;
-  width: max-content;
-}
+
 
 @keyframes scroll-left {
   0% {
@@ -496,21 +491,11 @@ p, .exp-detail-desc, .contact-item span {
 }
 
 .icon-scroll img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.skill-icon {
-  flex-shrink: 0;
-  max-width: 100px;
-  max-height: 100px;
-  width: auto;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
-}
 
-.skill-icon:hover {
-  transform: scale(1.2);
-}
+
 
 
 /* profile-main-section 保留水平排列大頭照 + 聯絡資訊 + 教育背景 */
@@ -596,6 +581,7 @@ p, .exp-detail-desc, .contact-item span {
 }
 
 .experience-wrapper .exp-list li {
+    height: 350px;    /* 高度 */
   position: relative;
   min-width: 80px;
   flex: 1 1 0;
@@ -678,34 +664,30 @@ p, .exp-detail-desc, .contact-item span {
 }
 
 
-/* exp-info 統一樣式 */
 .exp-info {
   position: absolute;
+  bottom: 20px;   /* 🔹 改成靠底 */
+  left: 20px;     /* 與左邊保持距離 */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; /* 黑線、職位、年份間距 5px */
+  gap: 5px;       /* 黑線、職位、年份間距 */
   z-index: 2;
 }
 
-/* 中文經歷 */
-.exp-article h3[lang="zh"] + .exp-info {
-  top: 40%; /* 調整到 h3 文字底下 */
-  left: 18px; /* 避開 logo，與文字對齊 */
-}
-
-/* 英文經歷 */
+/* 中文經歷 & 英文經歷 不用再額外 top 定位 */
+.exp-article h3[lang="zh"] + .exp-info,
 .exp-article h3[lang="en"] + .exp-info {
-  top: 40%; /* 調整到 h3 文字底下 */
-  left:20px; /* 避開 logo，與文字對齊 */
+  top: auto;      /* 🔹 移除 top，避免干擾 */
+  left: 20px;     /* 左邊統一 20px */
 }
 
 /* 黑線 */
-.exp-line {
+/* .exp-line {
   width: 3px;
-  height: 70px;
+  height: 60px;
   background-color: black;
-}
+} */
 
 /* 職位名稱 */
 .exp-position {
@@ -775,20 +757,23 @@ p, .exp-detail-desc, .contact-item span {
 }
 /* 卡片展開的細節區塊 */
 /* 經歷細節整組區塊 */
+/* 經歷細節整組區塊 */
 .exp-details {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 各區塊間距 */
+  gap: 16px;
   opacity: 0;
   transition: opacity var(--exp-speed) var(--exp-ease);
-  /* 🔹 新增這些 */
-  position: absolute; /* 讓它可以自由定位 */
-  top: 2rem;          /* 與卡片頂部對齊 (可依需求調整數字) */
-  left: 80px;        /* 往右推一點，避免跟標題/年份重疊 */
-  right: 24px;        /* 保持右邊內距 */
-    
+  position: absolute;
+  top: 50%;          /* 垂直置中 */
+  left: 70px;           /* 從卡片左側開始 */
+  right: 20px;          /* 讓區塊寬度撐滿卡片 */
+  transform: translateY(-50%); /* 垂直偏移 -50% */
 
+  box-sizing: border-box;
+  text-align: left;   /* 保持文字左對齊 */
 }
+
 
 
 /* 只有 active 卡片才顯示 */

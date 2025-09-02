@@ -86,60 +86,60 @@ function ProfilePage() {
     {
       title: '中國時報',
       logo: WorkLogo1,
-      date: '2022',
-          position: '平面設計',
+      date: '2021',
+          position: '平面設計剪輯',
 
       jobtype: '短期兼職',
     details: [
-      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
-      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
-      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+      { title: '聯名產品設計', desc: '設計聯名產品封面，確保符合品牌規範並展現合作價值。' },
+      { title: '活動影片剪輯', desc: '剪輯「時報廣告金犢獎」與「金像獎」頒獎影片，整合素材並調整節奏以提升觀影體驗。' },
+      { title: '現場活動執行', desc: '參與頒獎典禮現場執行，協調流程與支援視覺呈現，確保活動順利進行。' }
     ]
     },
     {
       title: '康健雜誌',
       logo: WorkLogo2,
       date: '2022',
-          position: '平面設計',
+          position: '網頁平面設計',
 
       jobtype: '短期兼職',
     details: [
-      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
-      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
-      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+      { title: '論壇主視覺設計', desc: '負責「2022 年癌症論壇」主視覺設計，並延伸應用於多元宣傳與社群素材。' },
+      { title: '資訊圖卡設計', desc: '設計「癌症問康健」官網及社群知識圖卡，以簡化資訊呈現並提升傳播效率。' },
+      { title: '內容規範維護', desc: '管理後台內容格式，確保文字與設計規範一致，維持專業形象。' }
     ]
     },
     {
       title: '新光三越',
       logo: WorkLogo3,
-      date: '2022',
-          position: '平面設計',
+      date: '2023',
+          position: '視覺設計',
 
       jobtype: '短期兼職',
     details: [
-      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
-      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
-      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+      { title: '官網 Banner 設計', desc: '規劃並設計官網 Banner，延伸主視覺風格至多元數位素材。' },
+      { title: '互動專案 Wireframe', desc: '製作「情人約會地圖」Wireframe，規劃資訊層級與互動動線，提升使用體驗。' },
+      { title: '視覺延伸應用', desc: '依據專案需求進行延伸設計，確保品牌風格一致與應用完整性。' }
     ]
     },
     {
       title: 'HiSKIO',
       logo: WorkLogo4,
       date: '2022',
-          position: '平面設計',
+          position: 'UI/UX 實習',
 
       jobtype: '短期兼職',
     details: [
-      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
-      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
-      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+      { title: '後台UX流程優化', desc: '參與後台 UX 流程優化、分析用戶行為。' },
+      { title: '前台UI介面設計', desc: '設計符合操作邏輯的 UI 介面，確保資訊層級清晰與操作流暢。' },
+      { title: '網站內容改版', desc: '參與網站一頁式內容改版設計，提升資訊架構與視覺層次。' }
     ]
     },
     {
       title: '樂天市場',
       logo: WorkLogo5,
-      date: '2022',
-          position: '平面設計',
+      date: '2024',
+          position: '視覺設計助理',
 
       jobtype: '短期兼職',
     details: [
@@ -151,19 +151,19 @@ function ProfilePage() {
     {
       title: '甲桂林廣告',
       logo: WorkLogo6,
-      date: '2022',
-          position: '平面設計',
+      date: '2025',
+          position: '廣告業務',
 
-      jobtype: '短期兼職',
+      jobtype: '正職',
     details: [
-      { title: '活動視覺設計', desc: '制定主視覺並應用於各類線上、線下展覽活動行銷素材。' },
-      { title: '社群圖文設計', desc: '設計社群圖文並建立模板，提升設計一致性與團隊協作效率。' },
-      { title: '球場LED 看板設計', desc: '確保遠距離可視性與品牌曝光效益。' }
+      { title: '銷售簡報與行銷文案', desc: '制參與銷售策略規劃，製作專業簡報、現場導引文案與品牌說明資料，提升溝通與提案效果。' },
+      { title: '跨部門專案協作', desc: '與設計、攝影、剪輯等協作單位密切溝通，確保行銷素材符合品牌定位與美感品質。' },
+      { title: '市場與競品分析', desc: '定期產出市場趨勢與競品研究報告，提供專案即時調整依據，強化行銷策略競爭力。' }
     ]
     },
     {
       title: '勞動部',
-     date: '2022',
+     date: '2025',
          position: '平面設計',
 
      jobtype: '短期兼職',
@@ -352,7 +352,7 @@ function ProfilePage() {
 
 
                 <div className="exp-details">
-                  <div className="exp-jobtype">工作性質：{item.jobtype}</div>
+                  <div className="exp-jobtype">{item.jobtype}</div>
 
                   {item.details.map((d, idx) => (
                     <div key={idx} className="exp-detail-block">
