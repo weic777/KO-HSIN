@@ -3,6 +3,7 @@
   height: 200px;
 }
 
+
 .title-section {
   margin-Top: 110px;
   display: flex;
@@ -36,7 +37,7 @@
 }
 
 .line {
-  fill: none;
+ fill: white; 
   stroke: black;
   stroke-width: 3;
 
@@ -970,14 +971,12 @@ svg:hover .line {
 
 
 
-.my-svg {
-  width: 500px;
-  height: 500px;
-}
+
 .ContactLine {
-  fill: none;
+  fill: #ffffff;
+
   stroke: black;
-  stroke-width: 3;
+  stroke-width: 5;
 stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: draw 3s linear forwards;
@@ -990,8 +989,6 @@ svg:hover .ContactLine {
   animation: draw 3s linear forwards;
   animation: draw 3s linear infinite;
   /* infinite 無限重播 */
-
-  fill: #000000;
 }
 
 @keyframes draw {
@@ -1004,6 +1001,84 @@ svg:hover .ContactLine {
     stroke-dashoffset: 0;
   }
 }
+
+
+
+
+
+
+.contact-svg-wrapper {
+  position: fixed;
+  bottom: 2%;
+  right: -3%;
+  width: 200px;
+  height: 150px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  transform: translateX(300px); /* 初始在右側螢幕外 */
+  animation: flyIn 1s forwards; /* 飛入動畫 */
+}
+@keyframes flyIn {
+  to {
+    transform: translateX(0); /* 飛到最終位置 */
+    opacity: 1;
+  }
+}
+.my-svg-fixed {
+  position: absolute;   /* 變成絕對定位，讓文字可以疊在上面 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.contact-tag-text {
+  position: absolute;
+  top: 44%;
+  left: 26%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  writing-mode: vertical-rl;
+  text-align: center;
+  z-index: 2;  /* 保證在 SVG 上面 */
+  pointer-events: none; /* 讓點擊事件傳到 SVG 或 X */
+    writing-mode: vertical-rl; /* 文字直排 */
+  text-orientation: upright;  /* 保持文字直立 */
+}
+
+
+.contact-close {
+  position: absolute;
+  top: -2px;
+  left: 30%;
+  width: 25px;
+  height: 25px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+
+
+.contact-svg-wrapper:hover .contact-text {
+  color: rgb(0, 0, 0);
+}
+
+.contact-svg-wrapper:hover .ContactLine {
+  stroke: #86DBEB;
+  fill: #E6E6DC;
+  animation: draw 3s linear infinite;
+}
+
+
+
+
 @media (max-width: 480px) {
   .fade-up {
     animation-delay: 0.4s;

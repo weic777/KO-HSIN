@@ -1,8 +1,10 @@
 import '../css/ContactPage.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import contactTitle from '../assets/contact-title.svg';
 
+
 function ContactPage() {
+  const formRef = useRef(null); 
   const [formData, setFormData] = useState({
     company: '',
     contactName: '',
@@ -53,7 +55,7 @@ function ContactPage() {
       setErrors(newErrors);
       return;
     }
-    console.log('送出資料', formData);
+     formRef.current.submit(); // ✅ 現在可以正確提交
   };
 
   return (
@@ -74,7 +76,13 @@ function ContactPage() {
           </section>
 
           <div className="form-wrapper">
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form
+  className="contact-form"
+  onSubmit={handleSubmit}
+  action="https://formspree.io/f/mdkllgzd"
+  method="POST"
+  ref={formRef} // 如果你要用 ref.submit() 的話
+>
               {[
                 { name: 'company', zh: '公司名稱', en: 'Company Name', type: 'text' },
                 { name: 'contactName', zh: '聯絡人姓名', en: 'Contact Name', type: 'text' },
