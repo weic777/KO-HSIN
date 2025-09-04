@@ -218,8 +218,7 @@ svg:hover .line {
 .book-3d-wrapper {
   cursor: pointer;
   perspective: 1000px;
-  width: 263px; /* 根據封面尺寸調整 */
-  height: 372px;
+
 }
 
 .book-3d {
@@ -268,10 +267,11 @@ svg:hover .line {
   width: 100%;
   height: 100%;
   transform: translateZ(calc(var(--book-thickness) * -1));
-  background-color: #00184b;
+  background-color: var(--back-color, #00184b); /* 預設顏色 #00184b */
   border-radius: 0 2px 2px 0;
   box-shadow: -10px 0 30px 10px rgba(0,0,0,0.3);
 }
+
 
 /* 封面圖片 */
 .book-3d__cover {
@@ -910,6 +910,7 @@ svg:hover .line {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .tv-base {
@@ -928,6 +929,7 @@ svg:hover .line {
   height: 147px;
   z-index: 2;
   background-position: center;
+
 }
 /* 包裝按鈕和 hover 圓形 */
 .tv-overlay .btn-wrapper {
@@ -952,6 +954,7 @@ svg:hover .line {
   transform: scale(0);
   transition: all 0.3s ease;
   z-index: -1; /* 確保在按鈕下方 */
+  
 }
 
 /* 左右按鈕分別不同顏色 */
@@ -968,6 +971,11 @@ svg:hover .line {
   opacity: 1;
   transform: scale(1);
 }
+.tv-border {
+  stroke: black;      
+  stroke-width: 5px;  
+  fill: none;         
+}
 
 
 
@@ -981,6 +989,7 @@ stroke-dasharray: 1;
   stroke-dashoffset: 1;
   animation: draw 3s linear forwards;
   filter: url(#rough);
+  
 
 }
 

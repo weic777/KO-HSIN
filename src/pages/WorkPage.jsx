@@ -2,13 +2,6 @@ import '../index.css';
 import React, { useState } from 'react';
 import '../css/WorkPage.css';
 import workTitle from '../assets/work-title.svg';
-import wafa from '../assets/wafa.jpg';
-import wafa1 from '../assets/wafa1.png';
-import wafa2 from '../assets/wafa2.png';
-import wafa3 from '../assets/wafa3.png';
-import wafa4 from '../assets/wafa4.png';
-import wafa5 from '../assets/wafa5.png';
-import wafa6 from '../assets/wafa6.png';
 import HTMLFlipBook from 'react-pageflip';
 import finger from '../assets/finger-arrow.svg';
 import arrowleft from '../assets/arrow-left.svg';
@@ -24,15 +17,84 @@ import tvmp4 from '../assets/tvmp4.mp4';
 import TvBtLf from '../assets/TvBtLf.svg';
 import TvBtRi from '../assets/TvBtRi.svg';
 import x from '../assets/x.svg';
+import video1 from '../assets/YT_片尾.MP4';
+import video2 from '../assets/YT_眾志成城篇_片頭.MP4';
+import video3 from '../assets/YT_繁星追逐篇_片頭.MP4';
+import oreginbarcover from '../assets/序_封面.PNG';
+import oreginbar1 from '../assets/序_菜單_1.jpg';
+import oreginbar2 from '../assets/序_菜單_2.jpg';
+import oreginbar3 from '../assets/序_菜單_3.jpg';
+import oreginbar4 from '../assets/序_菜單_4.jpg';
+import oreginbar5 from '../assets/序_菜單_5.jpg';
+import oreginbar6 from '../assets/序_菜單_6.jpg';
+import oreginbar7 from '../assets/序_菜單_7.jpg';
+import oreginbar8 from '../assets/序_菜單_8.jpg';
+import oreginbar9 from '../assets/序_菜單_9.jpg';
+import oreginbar10 from '../assets/序_菜單_10.jpg';
+import oreginbar11 from '../assets/序_菜單_11.jpg';
+import oreginbar12 from '../assets/序_菜單_12.jpg';
+import oreginbar13 from '../assets/序_菜單_13.jpg';
+import oreginbar14 from '../assets/序_菜單_14.jpg';
+import oreginbar15 from '../assets/序_菜單_15.jpg';
+import oreginbar16 from '../assets/序_菜單_16.jpg';
+import oreginbar17 from '../assets/序_菜單_17.jpg';
+import oreginbar18 from '../assets/序_菜單_18.jpg';
+import oreginbar19 from '../assets/序_菜單_19.jpg';
+import oreginbar20 from '../assets/序_菜單_20.jpg';
+import oreginbar21 from '../assets/序_菜單_21.jpg';
+import oreginbar22 from '../assets/序_菜單_22.jpg';
+import oreginbar23 from '../assets/序_菜單_23.jpg';
+import oreginbar24 from '../assets/序_菜單_24.jpg';
+import longfucover from '../assets/longfucover.jpg';
+import longfu1 from '../assets/longfu _1.jpg';
+import longfu2 from '../assets/longfu _2.jpg';
+import longfu3 from '../assets/longfu _3.jpg';
+import longfu4 from '../assets/longfu _4.jpg';
+import longfu5 from '../assets/longfu _5.jpg';
+import longfu6 from '../assets/longfu _6.jpg';
+import longfu7 from '../assets/longfu _7.jpg';
+import longfu8 from '../assets/longfu _8.jpg';
+import longfu9 from '../assets/longfu _9.jpg';
+import longfu10 from '../assets/longfu _10.jpg';
+import longfu11 from '../assets/longfu _11.jpg';
+import longfu12 from '../assets/longfu _12.jpg';
+import longfu13 from '../assets/longfu _13.jpg';
+import longfu14 from '../assets/longfu _14.jpg';
+import xiaoguocover from '../assets/xiaoguocover.jpg';
+import xiaoguo1 from '../assets/xiaoguo _1.jpg';
+import xiaoguo2 from '../assets/xiaoguo _2.jpg';
+import xiaoguo3 from '../assets/xiaoguo _3.jpg';
+import xiaoguo4 from '../assets/xiaoguo _4.jpg';
+import xiaoguo5 from '../assets/xiaoguo _5.jpg';
+import xiaoguo6 from '../assets/xiaoguo _6.jpg';
+import xiaoguo7 from '../assets/xiaoguo _7.jpg';
+import xiaoguo8 from '../assets/xiaoguo _8.jpg';
+import xiaoguo9 from '../assets/xiaoguo _9.jpg';
+import xiaoguo10 from '../assets/xiaoguo _10.jpg';
+import wafacover from '../assets/wafacover.jpg';
+import wafa2 from '../assets/wafa_2.jpg';
+import wafa3 from '../assets/wafa_3.jpg';
+import wafa4 from '../assets/wafa_4.jpg';
+import wafa5 from '../assets/wafa_5.jpg';
+import wafa6 from '../assets/wafa_6.jpg';
+import wafa7 from '../assets/wafa_7.jpg';
+import wafa8 from '../assets/wafa_8.jpg';
+import wafa10 from '../assets/wafa_10.jpg';
+
+
+
+
+
 import { useNavigate } from 'react-router-dom'; 
+
 
 
 
 // ✅ 平面設計作品資料（增加 tag）
 const workCards = [
-  { year: '2025', title: '作品標題 1', desc: '這是第 1 組作品的解說文字', img: wafa1, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2025', title: '作品標題 2', desc: '這是第 2 組作品的解說文字', img: wafa1, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2025', title: '作品標題 3', desc: '這是第 3 組作品的解說文字', img: wafa1, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2025', title: '作品標題 1', desc: '這是第 1 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2025', title: '作品標題 2', desc: '這是第 2 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2025', title: '作品標題 3', desc: '這是第 3 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
   { year: '2024', title: '作品標題 4', desc: '這是第 4 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '宣傳文宣' },
   { year: '2024', title: '作品標題 5', desc: '這是第 5 組作品的解說文字', img: wafa3, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
   { year: '2023', title: '作品標題 6', desc: '這是第 6 組作品的解說文字', img: wafa4, imgWidth: 320, imgHeight: 320, tag: '宣傳文宣' },
@@ -64,10 +126,10 @@ const navigate = useNavigate();
   ];
 
   const books = [
-    { cover: wafa, title: '龍府小鍋', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa1, wafa2], [wafa3, wafa4], [wafa5, wafa6], [wafa1, wafa2], [wafa3, wafa4]] },
-    { cover: wafa, title: '四川龍府', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa]] },
-    { cover: wafa, title: 'Orriginbar-序', size: { cover: { w: 263, h: 372 }, page: { w: 343, h: 486 } }, pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa]] },
-    { cover: wafa, title: '瓦法奇朵', size: { cover: { w: 175, h: 371 }, page: { w: 343, h: 486 } }, pages: [[wafa, wafa], [wafa, wafa], [wafa, wafa]] },
+    { cover: xiaoguocover, title: '龍府小鍋', backColor: '#082456ff', size: { cover: { w: 20, h: 28 }, page: { w: 443, h: 586 } }, pages: [[xiaoguocover, xiaoguo1], [xiaoguo2, xiaoguo3], [xiaoguo4, xiaoguo5], [xiaoguo6, xiaoguo7], [xiaoguo8, xiaoguo9], [xiaoguo10, xiaoguocover]] },
+    { cover: longfucover, title: '四川龍府', backColor: '#000000ff', size: { cover: { w: 20, h: 28 }, page: {  w: 443, h: 586  } }, pages: [[longfucover, longfu1], [longfu2,longfu5], [longfu6, longfu7], [longfu8, longfu9], [longfu10, longfu11], [longfu12, longfu13], [longfu14, longfucover]] },
+    { cover: oreginbarcover, title: 'Orriginbar-序', backColor: '#000631ff', size: { cover: { w: 20, h: 28  }, page: {  w: 330, h: 586 } }, pages: [[oreginbarcover,oreginbar2 ], [oreginbar3, oreginbar4], [oreginbar5, oreginbar6], [oreginbar7, oreginbar8], [oreginbar9, oreginbar10], [oreginbar11, oreginbar12], [oreginbar13, oreginbar14], [oreginbar15, oreginbar16], [oreginbar17, oreginbar18], [oreginbar19, oreginbar20], [oreginbar21, oreginbar22], [oreginbar23, oreginbarcover]] },
+    { cover: wafacover, title: '瓦法奇朵', backColor: '#075524ff', size: { cover: { w: 13, h: 28}, page: { w: 285, h: 571 } }, pages: [[wafacover, wafa2], [wafa3,wafa4], [ wafa5,wafa6], [ wafa7,wafa8],[wafa10,wafacover] ] },
   ];
 
   const cardWidth = 320;
@@ -130,6 +192,21 @@ const handlePrev = () => {
 
   const openBook = (index) => setActiveBook(index);
   const closeBook = () => setActiveBook(null);
+// 先加一個影片清單
+const videoList = [
+  video1,
+  video2,
+  video3,
+];
+const [videoIndex, setVideoIndex] = useState(0);
+
+const handleNextVideo = () => {
+  setVideoIndex((prev) => (prev + 1) % videoList.length);
+};
+
+const handlePrevVideo = () => {
+  setVideoIndex((prev) => (prev - 1 + videoList.length) % videoList.length);
+};
 
   return (
     <div className="App">
@@ -200,13 +277,19 @@ const handlePrev = () => {
                   <span className="circle"></span>
                 </div>
 
-                <div className="book-3d-wrapper" onClick={() => openBook(i)}>
-                  <div className="book-3d">
-                    <div className="book-3d__inner">
-                      <img className="book-3d__cover" src={book.cover} alt={book.title} />
-                    </div>
-                  </div>
-                </div>
+<div
+  className="book-3d-wrapper"
+  style={{ width: book.size.cover.w + 'vw', height: book.size.cover.h + 'vw' ,    '--back-color': book.backColor // 🔹 設定 CSS variable
+}}
+  onClick={() => openBook(i)}
+>
+  <div className="book-3d">
+    <div className="book-3d__inner">
+      <img className="book-3d__cover" src={book.cover} alt={book.title} />
+    </div>
+  </div>
+</div>
+
 
                 {/* 第一個書本顯示手指提示 */}
                 {i === 0 && (
@@ -342,13 +425,13 @@ const handlePrev = () => {
                   {/* 原始卡片 */}
                   {[1, 2, 3, 4].map((cIdx) => (
                     <div className="uiux-card" key={`orig-${cIdx}`}>
-                      <img src={wafa1} alt={`Group ${gIdx} Card ${cIdx}`} />
+                      <img src={wafa2} alt={`Group ${gIdx} Card ${cIdx}`} />
                     </div>
                   ))}
                   {/* 複製一份卡片，保證無縫 */}
                   {[1, 2, 3, 4].map((cIdx) => (
                     <div className="uiux-card" key={`copy-${cIdx}`}>
-                      <img src={wafa1} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
+                      <img src={wafa2} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
                     </div>
                   ))}
                 </div>
@@ -376,49 +459,56 @@ const handlePrev = () => {
           </div>
 
           {/* TV + 影片遮罩 */}
-          <div className="tv-container">
-            <img src={Tv} alt="Tv" className="tv-base" />
-            <div className="tv-overlay">
-              <div className="btn-wrapper left">
-                <img src={TvBtLf} alt="TvBtLf" className="tv-bt-left" />
-                <span className="hover-circle"></span>
-              </div>
-              <div className="btn-wrapper right">
-                <img src={TvBtRi} alt="TvBtRi" className="tv-bt-right" />
-                <span className="hover-circle"></span>
-              </div>
-            </div>
-            <div className="tv-mask-wrapper">
-              <svg width="610" height="457" viewBox="0 0 610 457" fill="none">
-                <defs>
-                  <clipPath id="tvClip">
-                    <path
-                      d="M2.40201 406.86L2.56272 31.8622C2.56983 15.2936 16.0069 1.86794 32.5755 1.87502L551.666 2.09668C568.235 2.10375 581.661 15.541 581.654 32.1095L581.493 407.109C581.486 423.677 568.049 437.103 551.48 437.096L32.3891 436.873C15.8206 436.866 2.39491 423.429 2.40201 406.86Z" stroke="black" stroke-width="3"
-                    />
-                  </clipPath>
-                </defs>
+<div className="tv-container">
+  <img src={Tv} alt="Tv" className="tv-base" />
+  <div className="tv-overlay">
+    <div className="btn-wrapper left" onClick={handlePrevVideo}>
+      <img src={TvBtLf} alt="TvBtLf" className="tv-bt-left" />
+      <span className="hover-circle"></span>
+    </div>
+    <div className="btn-wrapper right" onClick={handleNextVideo}>
+      <img src={TvBtRi} alt="TvBtRi" className="tv-bt-right" />
+      <span className="hover-circle"></span>
+    </div>
+  </div>
 
-                <foreignObject width="100%" height="100%" clipPath="url(#tvClip)">
-                  <video
-                    src={tvmp4}
-                    autoPlay
-                    muted
-                    loop
-                    controls
-                    preload="metadata"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </foreignObject>
+  <div className="tv-mask-wrapper">
+    <svg width="610" height="457" viewBox="0 0 610 457" fill="none">
+      <defs>
+        <clipPath id="tvClip">
+          <path
+            d="M2.40201 406.86L2.56272 31.8622C2.56983 15.2936 16.0069 1.86794 32.5755 1.87502L551.666 2.09668C568.235 2.10375 581.661 15.541 581.654 32.1095L581.493 407.109C581.486 423.677 568.049 437.103 551.48 437.096L32.3891 436.873C15.8206 436.866 2.39491 423.429 2.40201 406.86Z"
+            stroke="black"
+            strokeWidth="3"
+          />
+        </clipPath>
+      </defs>
+  <path
+    className="tv-border"
+    d="M2.40201 406.86L2.56272 31.8622C2.56983 15.2936 16.0069 1.86794 32.5755 1.87502L551.666 2.09668C568.235 2.10375 581.661 15.541 581.654 32.1095L581.493 407.109C581.486 423.677 568.049 437.103 551.48 437.096L32.3891 436.873C15.8206 436.866 2.39491 423.429 2.40201 406.86Z"
+    fill="none"
+  />
+      <foreignObject width="100%" height="100%" clipPath="url(#tvClip)">
+        <video
+          key={videoIndex} // 🔹 保證切換時重新渲染
+          src={videoList[videoIndex]}
+          autoPlay
+          muted
+          loop={false} // 這裡設 false，播放完才切下一支
+          controls
+          preload="metadata"
+          style={{  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+  backgroundColor: "black" // 當比例不合時填滿背景
+   }}
+          onEnded={handleNextVideo} // 🔹 播放完自動播下一個
+        />
+      </foreignObject>
+    </svg>
+  </div>
+</div>
 
-                <path
-                  d="M2.40201 406.86L2.56272 31.8622C2.56983 15.2936 16.0069 1.86794 32.5755 1.87502L551.666 2.09668C568.235 2.10375 581.661 15.541 581.654 32.1095L581.493 407.109C581.486 423.677 568.049 437.103 551.48 437.096L32.3891 436.873C15.8206 436.866 2.39491 423.429 2.40201 406.86Z" stroke="black" stroke-width="3"
-                  // stroke="black"
-                  strokeWidth="3"
-                  fill="none"
-                />
-              </svg>
-            </div>
-          </div>
 
 
 
