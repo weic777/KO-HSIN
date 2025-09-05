@@ -193,10 +193,13 @@ p, .exp-detail-desc, .contact-item span {
 
 /* 下載按鈕 */
 .contact-buttons {
-  margin-top: 30px;
-  display: flex;
-  gap: 10px;
+ display: flex;
+  gap: 1px;          /* 按鈕間距 */
+  justify-content: flex-start; /* 靠左排列 */
+  margin-left: -10px;
+  margin-top: 10px;   /* 距離 email */
 }
+
 
 .download-btn {
   background-color: black;
@@ -482,7 +485,8 @@ p, .exp-detail-desc, .contact-item span {
   align-items: center;
   height: 100%;
   width: max-content;
-  animation: scroll-left 750s linear infinite;
+  animation: scroll-left 150s linear infinite;
+  animation-play-state: running !important;
 }
 
 .icon-scroll img {

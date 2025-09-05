@@ -28,6 +28,10 @@ import WorkLogo3 from '../assets/新光三越.svg';
 import WorkLogo4 from '../assets/HiSKIO.svg';
 import WorkLogo5 from '../assets/樂天市場.svg';
 import WorkLogo6 from '../assets/甲桂林廣告.svg';
+import AnimatedButton from '../components/AnimatedButton';
+import ResumePDF from '../assets/2025-Resume-KOHSIN.pdf';
+
+
 
 import { useEffect, useRef, useState } from 'react';
 
@@ -221,12 +225,18 @@ function ProfilePage() {
             </div>
 
             <div className="contact-buttons">
-              <button className="download-btn">
-                CV <img src={downloadIcon} alt="下載" />
-              </button>
-              <button className="download-btn">
-                履歷 <img src={downloadIcon} alt="下載" />
-              </button>
+            <AnimatedButton
+  submitText="CV"
+  successText="下載完成"
+  downloadLink={ResumePDF}
+/>
+
+<AnimatedButton
+  submitText="履歷"
+  successText="下載完成"
+  downloadLink={ResumePDF}
+/>
+
             </div>
           </div>
 
