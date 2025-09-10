@@ -374,7 +374,7 @@ svg:hover .line {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 750px;
+  height: 95vh;
   width: 100%;
   padding-top: 200px;
   /* ✅ 與標題英文間隔 */
@@ -427,6 +427,7 @@ svg:hover .line {
   gap: 2px;
 }
 
+
 /* 年份 (直式) */
 .work-card .year {
   writing-mode: vertical-rl;
@@ -467,6 +468,108 @@ svg:hover .line {
   font-size: 16px;
   font-weight: 300;
   line-height: 1.4;
+}
+
+/* === 卡片樣式 === */
+.work-img {
+  background: black;                /* ✅ 黑底 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;                  /* 滑鼠樣式提示可放大 */
+}
+
+.work-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;              /* ✅ 保持比例完整顯示 */
+  transition: transform 0.3s ease;
+}
+
+.work-img:hover img {
+  transform: scale(1.05);           /* ✅ hover 微放大 */
+}
+
+/* hover 提示遮罩 */
+.work-img .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);   /* ✅ 半透明黑底 */
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-img:hover .overlay {
+  opacity: 1;                       /* ✅ hover 出現提示 */
+}
+
+/* === Lightbox === */
+/* Lightbox 全螢幕 */
+.lightbox {
+  position: fixed;
+  inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+
+}
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1100;
+}
+/* 左右切換按鈕 */
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+  transition: opacity 0.2s;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 0.7;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
 }
 
 
@@ -617,7 +720,7 @@ svg:hover .line {
 
 .more-link-wrapper {
   position: absolute;
-  bottom: 70px;
+  bottom: 60px;
   width: fit-content;
   left: 50%;
   transform: translateX(-50%);
@@ -902,9 +1005,9 @@ svg:hover .line {
 .tv-container {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 55%;
   transform: translate(-50%, -50%);
-  width: 700px;
+  width:50vw;  /* 用螢幕寬度比例 */
   /* 可依需求調整 */
   height: auto;
   display: flex;
@@ -922,11 +1025,9 @@ svg:hover .line {
 
 .tv-mask-wrapper {
   position: absolute;
-  top: 38%;
-  left: 27%;
+  top: 62%;
+  left: 40%;
   transform: translate(-50%, -50%)scale(0.9);
-  width: 400px;
-  height: 147px;
   z-index: 2;
   background-position: center;
 
@@ -1010,11 +1111,6 @@ svg:hover .ContactLine {
     stroke-dashoffset: 0;
   }
 }
-
-
-
-
-
 
 .contact-svg-wrapper {
   position: fixed;

@@ -1,5 +1,5 @@
 import '../index.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react"; 
 import '../css/WorkPage.css';
 import workTitle from '../assets/work-title.svg';
 import HTMLFlipBook from 'react-pageflip';
@@ -20,6 +20,7 @@ import x from '../assets/x.svg';
 import video1 from '../assets/YT_片尾.MP4';
 import video2 from '../assets/YT_眾志成城篇_片頭.MP4';
 import video3 from '../assets/YT_繁星追逐篇_片頭.MP4';
+import video4 from '../assets/UCN.MP4';
 import oreginbarcover from '../assets/序_封面.PNG';
 import oreginbar1 from '../assets/序_菜單_1.jpg';
 import oreginbar2 from '../assets/序_菜單_2.jpg';
@@ -79,37 +80,133 @@ import wafa5 from '../assets/wafa_5.jpg';
 import wafa6 from '../assets/wafa_6.jpg';
 import wafa7 from '../assets/wafa_7.jpg';
 import wafa8 from '../assets/wafa_8.jpg';
+import wafa9 from '../assets/wafa_9.jpg';
 import wafa10 from '../assets/wafa_10.jpg';
 
+import social1 from '../assets/social1.jpg';
+import social2 from '../assets/social2.jpg';
+import social3 from '../assets/social3.jpg';
+import social4 from '../assets/social4.jpg';
+import social5 from '../assets/social5.jpg';
+import social6 from '../assets/social6.jpg';
+import social7 from '../assets/social7.jpg';
+import social8 from '../assets/social8.jpg';
+import social9 from '../assets/social9.jpg';
+import social10 from '../assets/social10.jpg';
+import social11 from '../assets/social11.jpg';
+import social12 from '../assets/social12.jpg';
+import social13 from '../assets/social13.jpg';
+import social14 from '../assets/social14.jpg';
+import social15 from '../assets/social15.jpg';
+import social16 from '../assets/social16.jpg';
+import social17 from '../assets/social17.jpg';
+import social18 from '../assets/social18.jpg';
+import social19 from '../assets/social19.jpg';
+import social20 from '../assets/social20.jpg';
+import social21 from '../assets/social21.jpeg';
+import social22 from '../assets/social22.jpeg';
+import social23 from '../assets/social23.jpeg';
+import other1 from '../assets/other1.jpg';
+import other2 from '../assets/other2.jpg';
+import other3 from '../assets/other3.png';
+import other4 from '../assets/other4.jpg';
+import other5 from '../assets/other5.jpg';
+import other6 from '../assets/other6.jpg';
+import other7 from '../assets/other7.jpg';
+import other8 from '../assets/other8.jpg';
+import other9 from '../assets/other9.png';
+import uiux1 from '../assets/uiux1.png';
+import uiux2 from '../assets/uiux2.jpg';
+import uiux3 from '../assets/uiux3.png';
+import uiux4 from '../assets/uiux4.png';
+import uiux5 from '../assets/uiux5.png';
+import uiux6 from '../assets/uiux6.png';
+import uiux7 from '../assets/uiux7.png';
 
-
-
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import { useNavigate } from 'react-router-dom'; 
 
 
-
+const groupImages = [
+  [
+    { src: uiux3, width: '25vw', height: '100vh' },
+    { src: uiux1, width: '25vw', height: '150vh' },
+    { src: uiux4, width: '25vw', height: '50vh' },
+    { src: uiux5, width: '25vw', height: '80vh' },
+  ],
+  [
+    { src: uiux2, width: '15vw', height: '60vh' },
+    { src: uiux1, width: '15vw', height: '50vh' },
+    { src: uiux5, width: '15vw', height: '60vh' },
+    { src: uiux3, width: '15vw', height: '50vh' },
+  ],
+    [
+    { src: uiux1, width: '15vw', height: '50vh' },
+    { src: uiux5, width: '15vw', height: '60vh' },
+    { src: uiux2, width: '15vw', height: '60vh' },
+    { src: uiux3, width: '15vw', height: '60vh' },
+  ],
+    [
+    { src: uiux4, width: '15vw', height: '30vh' },
+    { src: uiux6, width: '15vw', height: '60vh' },
+    { src: uiux7, width: '15vw', height: '60vh' },
+    { src: uiux1, width: '15vw', height: '60vh' },
+  ],
+  // 其他 group 同理
+];
 
 // ✅ 平面設計作品資料（增加 tag）
 const workCards = [
-  { year: '2025', title: '作品標題 1', desc: '這是第 1 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2025', title: '作品標題 2', desc: '這是第 2 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2025', title: '作品標題 3', desc: '這是第 3 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2024', title: '作品標題 4', desc: '這是第 4 組作品的解說文字', img: wafa2, imgWidth: 320, imgHeight: 320, tag: '宣傳文宣' },
-  { year: '2024', title: '作品標題 5', desc: '這是第 5 組作品的解說文字', img: wafa3, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2023', title: '作品標題 6', desc: '這是第 6 組作品的解說文字', img: wafa4, imgWidth: 320, imgHeight: 320, tag: '宣傳文宣' },
-  { year: '2023', title: '作品標題 7', desc: '這是第 7 組作品的解說文字', img: wafa5, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
-  { year: '2022', title: '作品標題 8', desc: '這是第 8 組作品的解說文字', img: wafa6, imgWidth: 340, imgHeight: 320, tag: '宣傳文宣' },
+  { year: '2024', title: '樂天kobo', desc: '新年活動-社群圖文', img: social1, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2024', title: '樂天kobo', desc: '裝飾閱讀器-社群圖文', img: social2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2024', title: '樂天kobo', desc: '訂閱方案-社群圖文', img: social3, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2024', title: '樂天kobo', desc: '訂閱方案-社群圖文', img: social4, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2024', title: '樂天kobo', desc: '國際書展視覺延伸-講者介紹', img: social5, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2023', title: '樂天kobo', desc: '國際書展視覺延伸-活動介紹', img: social6, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2023', title: '樂天kobo', desc: '國際書展視覺延伸-攤位資訊', img: social7, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '樂天kobo', desc: 'IG常見問題-系列懶人包', img: social8, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '樂天kobo', desc: 'IG常見問題-系列懶人包', img: social9, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+{ year: '2025', title: '樂天kobo', desc: 'IG常見問題-系列懶人包', img: social10, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+{ year: '2025', title: '樂天kobo', desc: 'IG套書推薦系列-模板設計', img: social11, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2025', title: '樂天kobo', desc: 'IG套書推薦系列-模板設計', img: social12, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2025', title: '樂天kobo', desc: 'IG套書推薦系列-模板設計', img: social13, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '癌症問康健', desc: '線下論壇-主視覺設計', img: social14, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '癌症問康健', desc: '子宮頸癌分期說明-官網&社群圖文', img: social15, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '癌症問康健', desc: '清冠一號注意事項-官網&社群圖文', img: social16, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2023', title: '癌症問康健', desc: '卵巢癌分期說明-官網&社群圖文', img: social17, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '癌症問康健', desc: '補鐵大全-官網&社群圖文', img: social18, imgWidth: 340, imgHeight: 320, tag: '社群圖文' },
+  { year: '2022', title: '癌症問康健', desc: '嘴破吃法-官網&社群圖文', img: social19, imgWidth: 340, imgHeight: 320, tag: '社群圖文' },
+{ year: '2022', title: '癌症問康健', desc: '癌症自我檢測-官網&社群圖文', img: social20, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+{ year: '2022', title: '癌症問康健', desc: '嘴破常備藥品-官網&社群圖文', img: social21, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2024', title: '樂天kobo', desc: '國際書展-社群宣傳圖文', img: social22, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+  { year: '2024', title: '樂天kobo', desc: '國際書展-社群宣傳圖文', img: social23, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
+   { year: '2024', title: '凨餐酒 Fong Bar & Kitchen', desc: '電影日主題酒單', img: other1, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2024', title: '梟夜', desc: '兩週年-現場宣傳單', img: other2, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2024', title: 'Tonight Bistro', desc: '兩週年-VIP邀請卡', img: other3, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2024', title: '凨餐酒 Fong Bar & Kitchen', desc: '一頁式菜單', img: other4, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2023', title: '琢白美學牙醫診所', desc: '治療項目介紹', img: other5, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2023', title: '琢白美學牙醫診所', desc: '治療項目介紹', img: other6, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2023', title: '琢白美學牙醫診所', desc: '診所介紹系列', img: other7, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2023', title: '僑梓企業', desc: 'LOGO設計', img: other8, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+  { year: '2023', title: '暢快生活', desc: 'LOGO設計', img: other9, imgWidth: 320, imgHeight: 320, tag: '其他設計' },
+
 ];
 
 function WorkPage() {
+  const [lightboxOpen, setLightboxOpen] = useState(false); // 是否開啟 Lightbox
+  const [lightboxIndex, setLightboxIndex] = useState(0);   // 當前 Lightbox 顯示的圖片索引
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeBook, setActiveBook] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showBottomSvg, setShowBottomSvg] = useState(false);
   
-
+  const filteredWorkCards = workCards.filter(
+  work => selectedTags.length === 0 || selectedTags.includes(work.tag)
+);
 const navigate = useNavigate();
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -197,6 +294,7 @@ const videoList = [
   video1,
   video2,
   video3,
+  video4,
 ];
 const [videoIndex, setVideoIndex] = useState(0);
 
@@ -319,127 +417,188 @@ const handlePrevVideo = () => {
         </div>
       )}
 
-      {/* 平面設計 */}
-      {activeCategory === 'all' && (
-        <section className="graphic-design-section">
-          <div className="section-title">
-            <div className="zh">平面設計</div>
-            <div className="en">Graphic Design</div>
+{/* 平面設計 */}
+{activeCategory === 'all' && (
+  <section className="graphic-design-section">
+    <div className="section-title">
+      <div className="zh">平面設計</div>
+      <div className="en">Graphic Design</div>
 
-            <div className="tag-container tag-under-title">
-              <button
-                className={`tag-btn social ${selectedTags.includes('社群圖文') ? 'active' : ''}`}
-                onClick={() => toggleTag('社群圖文')}
-              >
-                社群圖文
-                {selectedTags.includes('社群圖文') && <img src={xblue} alt="x-blue" className="tag-icon" />}
-              </button>
+      <div className="tag-container tag-under-title">
+        <button
+          className={`tag-btn social ${selectedTags.includes('社群圖文') ? 'active' : ''}`}
+          onClick={() => toggleTag('社群圖文')}
+        >
+          社群圖文
+          {selectedTags.includes('社群圖文') && <img src={xblue} alt="x-blue" className="tag-icon" />}
+        </button>
 
-              <button
-                className={`tag-btn promo ${selectedTags.includes('宣傳文宣') ? 'active' : ''}`}
-                onClick={() => toggleTag('宣傳文宣')}
-              >
-                宣傳文宣
-                {selectedTags.includes('宣傳文宣') && <img src={xyellow} alt="x-yellow" className="tag-icon" />}
-              </button>
-
-            </div>
-          </div>
-
-          <div className="works-wrapper">
-            <div className="works-inner" style={{
-  transform: `translateX(-${currentIndex * singleWidth}px)`,
-  width: `${loopCards.length * singleWidth}px`,
-  transition: 'transform 0.5s ease',
-  display: 'flex',
-}}>
-  {loopCards.map((work, idx) => (
-    <div className="work-card-wrapper" key={idx}>
-      <div className="work-card">
-        <div className="year">{work.year}</div>
-        <div className="work-content">
-          <div className="work-img" style={{
-            backgroundImage: `url(${work.img})`,
-            width: work.imgWidth ? `${work.imgWidth}px` : '100%',
-            height: work.imgHeight ? `${work.imgHeight}px` : '200px',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}></div>
-          <div className="work-title">{work.title}</div>
-          <div className="work-desc">{work.desc}</div>
-        </div>
+        <button
+          className={`tag-btn promo ${selectedTags.includes('其他設計') ? 'active' : ''}`}
+          onClick={() => toggleTag('其他設計')}
+        >
+          其他設計
+          {selectedTags.includes('其他設計') && <img src={xyellow} alt="x-yellow" className="tag-icon" />}
+        </button>
       </div>
     </div>
-  ))}
-</div>
 
-          </div>
-
-          <div className="graphic-nav">
-            <button
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className="prev"
-            ></button>
-            <button
-              onClick={handleNext}
-              disabled={currentIndex === maxIndex}
-              className="next"
-            ></button>
-          </div>
-          <div className="more-link-wrapper">
-            <div className="more-link">查看更多</div>
-            <div className="more-circle">
-              <img src={goarrow} alt="go arrow" className="go-arrow" />
-            </div>
-          </div>
-
-
-
-
-        </section>
-      )}
-
-      {/* UI/UX 設計 */}
-      {activeCategory === 'all' && (
-        <section className="uiux-design-section">
-          {/* 標題 */}
-          <div className="uiux-section-title">
-            <div className="zh">UI / UX</div>
-            <div className="en">UI / UX Design</div>
-          </div>
-
-          {/* 查看更多 */}
-          <div className="uiux-more-link-wrapper">
-            <div className="more-link">查看更多</div>
-            <div className="more-circle">
-              <img src={goarrow} alt="go arrow" className="go-arrow" />
-            </div>
-          </div>
-
-          {/* 卡片展示遮罩 */}
-          <div className="uiux-overlay">
-            {[0, 1, 2, 3].map((gIdx) => (
-              <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
-                <div className="card-list">
-                  {/* 原始卡片 */}
-                  {[1, 2, 3, 4].map((cIdx) => (
-                    <div className="uiux-card" key={`orig-${cIdx}`}>
-                      <img src={wafa2} alt={`Group ${gIdx} Card ${cIdx}`} />
+    <div className="works-wrapper">
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={30}
+        slidesPerView={3}
+        navigation={{
+          nextEl: ".next",
+          prevEl: ".prev",
+        }}
+        loop={true}
+      >
+        {workCards
+          .filter(work => selectedTags.length === 0 || selectedTags.includes(work.tag))
+          .map((work, idx) => (
+            <SwiperSlide key={idx}>
+              <div className="work-card-wrapper">
+                <div className="work-card">
+                  <div className="year">{work.year}</div>
+                  <div className="work-content">
+                    <div
+                      className="work-img"
+                      style={{
+                        width: work.imgWidth ? `${work.imgWidth}px` : "100%",
+                        height: work.imgHeight ? `${work.imgHeight}px` : "200px",
+                      }}
+                      onClick={() => {
+                        setLightboxIndex(idx); // 使用篩選後索引
+                        setLightboxOpen(true);
+                      }}
+                    >
+                      <img src={work.img} alt={work.title} />
+                      <div className="overlay">點擊放大</div>
                     </div>
-                  ))}
-                  {/* 複製一份卡片，保證無縫 */}
-                  {[1, 2, 3, 4].map((cIdx) => (
-                    <div className="uiux-card" key={`copy-${cIdx}`}>
-                      <img src={wafa2} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
-                    </div>
-                  ))}
+
+                    <div className="work-title">{work.title}</div>
+                    <div className="work-desc">{work.desc}</div>
+                  </div>
                 </div>
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </div>
+
+    <div className="graphic-nav">
+      <button className="prev"></button>
+      <button className="next"></button>
+    </div>
+
+    <div className="more-link-wrapper">
+      <div className="more-link">查看更多</div>
+      <div className="more-circle">
+        <img src={goarrow} alt="go arrow" className="go-arrow" />
+      </div>
+    </div>
+
+    {/* === Lightbox 全螢幕預覽 === */}
+    {lightboxOpen && (
+      <div className="lightbox" onClick={() => setLightboxOpen(false)}>
+        {/* ❌ 明顯關閉按鈕 */}
+        <button
+          className="lightbox-close"
+          onClick={(e) => {
+            e.stopPropagation();
+            setLightboxOpen(false);
+          }}
+        >
+          ×
+        </button>
+
+        <button
+          className="lightbox-prev"
+          onClick={(e) => {
+            e.stopPropagation();
+            setLightboxIndex(
+              (lightboxIndex - 1 + filteredWorkCards.length) % filteredWorkCards.length
+            );
+          }}
+        >
+          ‹
+        </button>
+
+        <img
+          src={filteredWorkCards[lightboxIndex].img}
+          alt={filteredWorkCards[lightboxIndex].title}
+          onClick={(e) => e.stopPropagation()} // 點圖片不關閉 Lightbox
+        />
+
+        <button
+          className="lightbox-next"
+          onClick={(e) => {
+            e.stopPropagation();
+            setLightboxIndex(
+              (lightboxIndex + 1) % filteredWorkCards.length
+            );
+          }}
+        >
+          ›
+        </button>
+      </div>
+    )}
+  </section>
+)}
+
+
+
+
+{/* UI/UX 設計 */}
+{activeCategory === 'all' && (
+  <section className="uiux-design-section">
+    {/* 標題 */}
+    <div className="uiux-section-title">
+      <div className="zh">UI / UX</div>
+      <div className="en">UI / UX Design</div>
+    </div>
+
+    {/* 查看更多 */}
+    <div className="uiux-more-link-wrapper">
+      <div className="more-link">查看更多</div>
+      <div className="more-circle">
+        <img src={goarrow} alt="go arrow" className="go-arrow" />
+      </div>
+    </div>
+
+    {/* 卡片展示遮罩 */}
+    <div className="uiux-overlay">
+      {groupImages.map((group, gIdx) => (
+        <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
+          <div className="card-list">
+            {group.map(({ src, width, height }, cIdx) => (
+              <div
+                className="uiux-card"
+                key={`orig-${cIdx}`}
+                style={{ width: width, height: height }}
+              >
+                <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
+              </div>
+            ))}
+            {/* 複製一份卡片保證無縫 */}
+            {group.map(({ src, width, height }, cIdx) => (
+              <div
+                className="uiux-card"
+                key={`copy-${cIdx}`}
+                style={{ width: width, height: height }}
+              >
+                <img src={src} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
               </div>
             ))}
           </div>
-        </section>
-      )}
+        </div>
+      ))}
+    </div>
+  </section>
+)}
+
+
 
       {/* 動畫設計 */}
       {activeCategory === 'all' && (

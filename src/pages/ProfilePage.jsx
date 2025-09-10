@@ -37,6 +37,7 @@ import { useEffect, useRef, useState } from 'react';
 
 
 function ProfilePage() {
+  
   const photoRef = useRef(null);
   const wrapperRef = useRef(null);
   const [translateY, setTranslateY] = useState(150);
@@ -65,6 +66,26 @@ function ProfilePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+useEffect(() => {
+  const stars = document.querySelectorAll(".honor-card .star-icon");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active"); // 進入視窗就加動畫
+        } else {
+          entry.target.classList.remove("active"); // 離開視窗就移除動畫
+        }
+      });
+    },
+    { threshold: 0.5 } // 滾動到一半觸發
+  );
+
+  stars.forEach((star) => observer.observe(star));
+
+  return () => observer.disconnect();
+}, []);
 
 
   const honors1 = [

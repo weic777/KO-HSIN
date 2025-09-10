@@ -1,10 +1,13 @@
 import '../css/ContactPage.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import contactTitle from '../assets/contact-title.svg';
-
+import x from '../assets/x.svg';
 
 function ContactPage() {
-  const formRef = useRef(null); 
+  const formRef = useRef(null);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     company: '',
     contactName: '',
@@ -17,6 +20,7 @@ function ContactPage() {
 
   const [errors, setErrors] = useState({});
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showBottomSvg, setShowBottomSvg] = useState(false);
 
   const inquiryOptions = [
     '專案合作 / Project Collaboration',
@@ -24,9 +28,14 @@ function ContactPage() {
     '職缺應徵 / Job Opportunity'
   ];
 
+  useEffect(() => {
+    const timer = setTimeout(() => setShowBottomSvg(true), 10000); // 10秒後顯示
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: '' }); // 輸入時清掉錯誤
+    setErrors({ ...errors, [e.target.name]: '' });
   };
 
   const handleSelect = (option) => {
@@ -55,7 +64,7 @@ function ContactPage() {
       setErrors(newErrors);
       return;
     }
-     formRef.current.submit(); // ✅ 現在可以正確提交
+    formRef.current.submit();
   };
 
   return (
@@ -77,12 +86,12 @@ function ContactPage() {
 
           <div className="form-wrapper">
             <form
-  className="contact-form"
-  onSubmit={handleSubmit}
-  action="https://formspree.io/f/mdkllgzd"
-  method="POST"
-  ref={formRef} // 如果你要用 ref.submit() 的話
->
+              className="contact-form"
+              onSubmit={handleSubmit}
+              action="https://formspree.io/f/mdkllgzd"
+              method="POST"
+              ref={formRef}
+            >
               {[
                 { name: 'company', zh: '公司名稱', en: 'Company Name', type: 'text' },
                 { name: 'contactName', zh: '聯絡人姓名', en: 'Contact Name', type: 'text' },
@@ -116,31 +125,30 @@ function ContactPage() {
                   <span className="label-en">Inquiry Type</span>
                 </div>
                 <div className="input-wrapper">
-  <div
-    className={`custom-select ${errors.inquiry ? 'input-error' : ''}`}
-    onClick={() => setDropdownOpen(!dropdownOpen)}
-  >
-    <span className={`select-placeholder ${!formData.inquiry ? '' : 'selected'}`}>
-      {formData.inquiry || '請選擇合作類型'}
-    </span>
-    <span className={`arrow ${dropdownOpen ? 'up' : 'down'}`}></span>
-  </div>
-  {dropdownOpen && (
-    <div className="dropdown-options">
-      {inquiryOptions.map((option, idx) => (
-        <div
-          key={idx}
-          className="dropdown-option"
-          onClick={() => handleSelect(option)}
-        >
-          {option}
-        </div>
-      ))}
-    </div>
-  )}
-  {errors.inquiry && <div className="error-text">{errors.inquiry}</div>}
-</div>
-
+                  <div
+                    className={`custom-select ${errors.inquiry ? 'input-error' : ''}`}
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  >
+                    <span className={`select-placeholder ${!formData.inquiry ? '' : 'selected'}`}>
+                      {formData.inquiry || '請選擇合作類型'}
+                    </span>
+                    <span className={`arrow ${dropdownOpen ? 'up' : 'down'}`}></span>
+                  </div>
+                  {dropdownOpen && (
+                    <div className="dropdown-options">
+                      {inquiryOptions.map((option, idx) => (
+                        <div
+                          key={idx}
+                          className="dropdown-option"
+                          onClick={() => handleSelect(option)}
+                        >
+                          {option}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {errors.inquiry && <div className="error-text">{errors.inquiry}</div>}
+                </div>
               </div>
 
               {/* 留言欄位 */}
@@ -159,7 +167,6 @@ function ContactPage() {
                 {errors.message && <div className="error-text">{errors.message}</div>}
               </div>
 
-              {/* 送出按鈕 */}
               <div style={{ marginTop: '5vh', textAlign: 'center' }}>
                 <button type="submit" className="submit-btn">送出</button>
               </div>
@@ -167,6 +174,34 @@ function ContactPage() {
           </div>
         </div>
       </div>
+
+      {/* 底部 SVG */}
+      {showBottomSvg && (
+        <div className="contact-svg-wrapper" onClick={() => navigate('/contact')}>
+          <img
+            src={x}
+            alt="close"
+            className="contact-close"
+            onClick={(e) => { e.stopPropagation(); setShowBottomSvg(false); }}
+          />
+<svg
+  className="my-svg-fixed fly-in"
+  viewBox="0 0 150 150"
+  width="100%"
+  height="100%"
+>
+  <circle
+    className="contact-circle"
+    cx="35"
+    cy="70"
+    r="50"
+  />
+</svg>
+
+
+          <div className="contact-tag-text">下載履歷</div>
+        </div>
+      )}
     </div>
   );
 }

@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://weic777.github.io/KO-HSIN",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,7 +16,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-pageflip": "^2.0.3",
-    "react-router-dom": "^7.7.1"
+    "react-router-dom": "^7.7.1",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

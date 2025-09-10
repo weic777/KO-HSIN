@@ -340,6 +340,18 @@ p, .exp-detail-desc, .contact-item span {
   width: 60px;
   margin-bottom: 10px;
 }
+/* 初始隱藏，旋轉 0 度 */
+.star-icon {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* 滾動到區塊時加上 active 顯示 */
+.star-icon.active {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
 
 .honor-card .honor-title {
   font-size: 20px;
