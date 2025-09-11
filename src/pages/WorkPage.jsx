@@ -45,7 +45,9 @@ import oreginbar20 from '../assets/序_菜單_20.jpg';
 import oreginbar21 from '../assets/序_菜單_21.jpg';
 import oreginbar22 from '../assets/序_菜單_22.jpg';
 import oreginbar23 from '../assets/序_菜單_23.jpg';
-import oreginbar24 from '../assets/序_菜單_24.jpg';
+import oreginbarend from '../assets/oreginbarend.png';
+import longfuend from '../assets/longfuend.png';
+
 import longfucover from '../assets/longfucover.jpg';
 import longfu1 from '../assets/longfu _1.jpg';
 import longfu2 from '../assets/longfu _2.jpg';
@@ -72,6 +74,8 @@ import xiaoguo7 from '../assets/xiaoguo _7.jpg';
 import xiaoguo8 from '../assets/xiaoguo _8.jpg';
 import xiaoguo9 from '../assets/xiaoguo _9.jpg';
 import xiaoguo10 from '../assets/xiaoguo _10.jpg';
+import xiaoguoend from '../assets/xiaoguoend.png';
+
 import wafacover from '../assets/wafacover.jpg';
 import wafa2 from '../assets/wafa_2.jpg';
 import wafa3 from '../assets/wafa_3.jpg';
@@ -82,6 +86,7 @@ import wafa7 from '../assets/wafa_7.jpg';
 import wafa8 from '../assets/wafa_8.jpg';
 import wafa9 from '../assets/wafa_9.jpg';
 import wafa10 from '../assets/wafa_10.jpg';
+import wafaend from '../assets/wafaend.png';
 
 import social1 from '../assets/social1.jpg';
 import social2 from '../assets/social2.jpg';
@@ -223,10 +228,10 @@ const navigate = useNavigate();
   ];
 
   const books = [
-    { cover: xiaoguocover, title: '龍府小鍋', backColor: '#082456ff', size: { cover: { w: 15, h: 23 }, page: { w: 443, h: 586 } }, pages: [[xiaoguocover, xiaoguo1], [xiaoguo2, xiaoguo3], [xiaoguo4, xiaoguo5], [xiaoguo6, xiaoguo7], [xiaoguo8, xiaoguo9], [xiaoguo10, xiaoguocover]] },
-    { cover: longfucover, title: '四川龍府', backColor: '#000000ff', size: { cover: {w: 15, h: 23 }, page: {  w: 443, h: 586  } }, pages: [[longfucover, longfu1], [longfu2,longfu5], [longfu6, longfu7], [longfu8, longfu9], [longfu10, longfu11], [longfu12, longfu13], [longfu14, longfucover]] },
-    { cover: oreginbarcover, title: 'Orriginbar-序', backColor: '#000631ff', size: { cover: { w: 15, h: 23 }, page: {  w: 330, h: 586 } }, pages: [[oreginbarcover,oreginbar2 ], [oreginbar3, oreginbar4], [oreginbar5, oreginbar6], [oreginbar7, oreginbar8], [oreginbar9, oreginbar10], [oreginbar11, oreginbar12], [oreginbar13, oreginbar14], [oreginbar15, oreginbar16], [oreginbar17, oreginbar18], [oreginbar19, oreginbar20], [oreginbar21, oreginbar22], [oreginbar23, oreginbarcover]] },
-    { cover: wafacover, title: '瓦法奇朵', backColor: '#075524ff', size: { cover: { w: 12, h: 23}, page: { w: 285, h: 571 } }, pages: [[wafacover, wafa2], [wafa3,wafa4], [ wafa5,wafa6], [ wafa7,wafa8],[wafa10,wafacover] ] },
+    { cover: xiaoguocover, title: '龍府小鍋', backColor: '#082456ff', size: { cover: { w: 15, h: 23 }, page: { w: 443, h: 586 } }, pages: [[xiaoguocover, xiaoguo1], [xiaoguo2, xiaoguo3], [xiaoguo4, xiaoguo5], [xiaoguo6, xiaoguo7], [xiaoguo8, xiaoguo9], [xiaoguo10, xiaoguoend]] },
+    { cover: longfucover, title: '四川龍府', backColor: '#000000ff', size: { cover: {w: 15, h: 23 }, page: {  w: 443, h: 586  } }, pages: [[longfucover, longfu1], [longfu2,longfu5], [longfu6, longfu7], [longfu8, longfu9], [longfu10, longfu11], [longfu12, longfu13], [longfu14, longfuend]] },
+    { cover: oreginbarcover, title: 'Orriginbar-序', backColor: '#000631ff', size: { cover: { w: 15, h: 23 }, page: {  w: 330, h: 586 } }, pages: [[oreginbarcover,oreginbar2 ], [oreginbar3, oreginbar4], [oreginbar5, oreginbar6], [oreginbar7, oreginbar8], [oreginbar9, oreginbar10], [oreginbar11, oreginbar12], [oreginbar13, oreginbar14], [oreginbar15, oreginbar16], [oreginbar17, oreginbar18], [oreginbar19, oreginbar20], [oreginbar21, oreginbar22], [oreginbar23, oreginbarend]] },
+    { cover: wafacover, title: '瓦法奇朵', backColor: '#075524ff', size: { cover: { w: 12, h: 23}, page: { w: 285, h: 571 } }, pages: [[wafacover, wafa2], [wafa3,wafa4], [ wafa5,wafa6], [ wafa7,wafa8],[wafa10,wafaend] ] },
   ];
 
   const cardWidth = 320;

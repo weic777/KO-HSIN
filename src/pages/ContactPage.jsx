@@ -175,33 +175,44 @@ function ContactPage() {
         </div>
       </div>
 
-      {/* 底部 SVG */}
-      {showBottomSvg && (
-        <div className="contact-svg-wrapper" onClick={() => navigate('/contact')}>
-          <img
-            src={x}
-            alt="close"
-            className="contact-close"
-            onClick={(e) => { e.stopPropagation(); setShowBottomSvg(false); }}
-          />
-<svg
-  className="my-svg-fixed fly-in"
-  viewBox="0 0 150 150"
-  width="100%"
-  height="100%"
->
-  <circle
-    className="contact-circle"
-    cx="35"
-    cy="70"
-    r="50"
-  />
-</svg>
+{/* 底部 SVG */}
+{showBottomSvg && (
+  <div className="contact-svg-wrapper">
+    
+    {/* 圓圈 + 文字 點擊區 */}
+    <div className="click-area" onClick={() => navigate('/contact')}>
+      <svg viewBox="0 0 150 150" width="100%" height="100%">
+        <circle className="contact-circle" cx="75" cy="75" r="50" fill="none" />
+        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="20" fontWeight="bold" fill="black">
+          <tspan x="50%" dy="-0.6em">下載</tspan>
+          <tspan x="50%" dy="1.2em">履歷</tspan>
+        </text>
+      </svg>
+    </div>
+
+    {/* x 按鈕，絕對定位 + transform，獨立 */}
+    <img
+      src={x}
+      alt="close"
+      className="resume-close"
+      onClick={(e) => { 
+        e.stopPropagation(); 
+        setShowBottomSvg(false); 
+      }}
+    />
+
+  </div>
+)}
 
 
-          <div className="contact-tag-text">下載履歷</div>
-        </div>
-      )}
+
+
+
+
+
+
+
+
     </div>
   );
 }

@@ -340,13 +340,16 @@ useEffect(() => {
             <span className="en">SKILLS</span>
           </div>
 
-          <div className="icon-scroll-wrapper">
-            <div className="icon-scroll">
-              {[...skills, ...skills].map((logo, i) => (
-                <img key={i} src={logo} alt="技能圖標" className="skill-icon" />
-              ))}
-            </div>
-          </div>
+<div className="icon-scroll-wrapper">
+  <div className="icon-scroll">
+    {[...skills, ...skills].map((logo, i) => (
+      <img key={i} src={logo} alt="技能圖標" />
+    ))}
+  </div>
+</div>
+
+
+
         </div>
       </section>
 

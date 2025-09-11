@@ -101,7 +101,6 @@ p, .exp-detail-desc, .contact-item span {
   justify-content: center;
   /* 整個容器垂直置中內容 */
   position: relative;
-  padding-top: 40px;
   /* 給標題一點空間 */
   box-sizing: border-box;
 }
@@ -111,26 +110,21 @@ p, .exp-detail-desc, .contact-item span {
 /* 經歷 Experience 區塊 */
 .experience-wrapper {
   width: 100%;
-  height: 750px;
-  /* 區塊高度 */
+  height: 600px;
   background-color: #EFEC64;
   display: flex;
-  /* 變成 flex 容器 */
   flex-direction: column;
-  /* 上下排列 */
-  justify-content: center;
-  /* 垂直置中 */
+  justify-content: flex-start; /* 從上方開始排列 */
   align-items: center;
-  /* 水平置中 */
   gap: 40px;
-  /* 標題與卡片間距 */
   position: relative;
-  padding: 0;
-  /* 移除原先 padding-top */
+  padding-top: 5%; /* 控制離上方距離，可調整 */
   box-sizing: border-box;
 }
 
+
 .experience-wrapper .section-title {
+  
   position: static;
   /* 移除絕對定位 */
   transform: none;
@@ -497,7 +491,7 @@ p, .exp-detail-desc, .contact-item span {
   align-items: center;
   height: 100%;
   width: max-content;
-  animation: scroll-left 150s linear infinite;
+  animation: scroll-left 250s linear infinite;
   animation-play-state: running !important;
 }
 
