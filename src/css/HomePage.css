@@ -1,4 +1,4 @@
-.home-page * {
+/*.home-page * {
   box-sizing: border-box;
 }
 
@@ -45,6 +45,7 @@
 }
 
 /* body */
+/*
 .home-page .body {
   position: absolute;
   height: 30px;
@@ -70,6 +71,7 @@
 }
 
 /* head */
+/*
 .home-page .cat_head {
   position: absolute;
   height: 40px;
@@ -86,6 +88,7 @@
 }
 
 /* tail */
+/*
 .home-page .tail {
   position: absolute;
   top: -25px;
@@ -112,6 +115,7 @@
 }
 
 /* legs */
+/*
 .home-page .leg {
   position: absolute;
   height: 20px;
@@ -125,7 +129,7 @@
   height: 30px;
   transition: 0.7s;
 }
-
+/*
 .home-page .front_legs { width: 30px; right: 0; }
 .home-page .back_legs { width: 25px; left: 0; }
 
@@ -160,6 +164,7 @@
 }
 
 /* jump */
+/*
 .home-page .cat_wrapper { position: absolute; bottom: 0; }
 
 .home-page .cat_wrapper.jump .one { animation: infinite 0.3s walk; }
