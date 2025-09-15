@@ -197,6 +197,7 @@ const workCards = [
 ];
 
 function WorkPage() {
+  <div id="work-top"></div>
   const [lightboxOpen, setLightboxOpen] = useState(false); // 是否開啟 Lightbox
   const [lightboxIndex, setLightboxIndex] = useState(0);   // 當前 Lightbox 顯示的圖片索引
   const [activeCategory, setActiveCategory] = useState('all');
@@ -204,7 +205,23 @@ function WorkPage() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showBottomSvg, setShowBottomSvg] = useState(false);
-  
+const handleScroll = (id) => {
+  const map = { all: 'work-top', uiux: 'uiux-section', graphic: 'menu-section', Animation: 'animation-section' };
+  const el = document.getElementById(map[id]);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+React.useEffect(() => {
+  const setHeaderVar = () => {
+    const header = document.querySelector('.site-header'); // ← 改成你 header 的 selector
+    const h = header ? header.offsetHeight : 80;
+    document.documentElement.style.setProperty('--header-offset', `${h}px`);
+  };
+  setHeaderVar();
+  window.addEventListener('resize', setHeaderVar);
+  return () => window.removeEventListener('resize', setHeaderVar);
+}, []);
+
+
   const filteredWorkCards = workCards.filter(
   work => selectedTags.length === 0 || selectedTags.includes(work.tag)
 );
@@ -217,10 +234,9 @@ const navigate = useNavigate();
   }, []);
 
   const categories = [
-    { label: 'All', id: 'all' },
-    { label: 'Graphic', id: 'graphic' },
-    { label: 'Motion', id: 'motion' },
-    { label: 'UI/UX', id: 'uiux' },
+    { label: '前端開發 & UI/UX', id: 'uiux' },
+    { label: '平面設計', id: 'graphic' },
+    { label: '動畫設計', id: 'Animation' },
   ];
 
   const books = [
@@ -229,7 +245,24 @@ const navigate = useNavigate();
     { cover: oreginbarcover, title: 'Orriginbar-序', backColor: '#000631ff', size: { cover: { w: 15, h: 23 }, page: {  w: 330, h: 586 } }, pages: [[oreginbarcover,oreginbar2 ], [oreginbar3, oreginbar4], [oreginbar5, oreginbar6], [oreginbar7, oreginbar8], [oreginbar9, oreginbar10], [oreginbar11, oreginbar12], [oreginbar13, oreginbar14], [oreginbar15, oreginbar16], [oreginbar17, oreginbar18], [oreginbar19, oreginbar20], [oreginbar21, oreginbar22], [oreginbar23, oreginbarend]] },
     { cover: wafacover, title: '瓦法奇朵', backColor: '#075524ff', size: { cover: { w: 12, h: 23}, page: { w: 285, h: 571 } }, pages: [[wafacover, wafa2], [wafa3,wafa4], [ wafa5,wafa6], [ wafa7,wafa8],[wafa10,wafaend] ] },
   ];
+ const [showScrollTop, setShowScrollTop] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) { // 捲動超過 100px 才顯示
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const cardWidth = 320;
   const gap = 60;
   const visibleCards = 3;
@@ -278,7 +311,6 @@ const handlePrev = () => {
 
 
   const getSectionBgColor = (section) => {
-    if (activeCategory !== 'all') return 'white';
     switch (section) {
       case 'menu': return 'rgba(13, 183, 214, 0.5)';
       case 'graphic': return 'white';
@@ -308,36 +340,83 @@ const handlePrevVideo = () => {
 };
 
   return (
+    
     <div className="App">
       {/* 標題 */}
-      <section className="title-section">
+      <section id='work-top' className="title-section">
         <img src={workTitle} alt="作品標題圖" />
       </section>
 
       {/* 分類選單 */}
       <section className="category-section" style={{ marginTop: '50px', textAlign: 'center' }}>
         <div className="inline-flex flex-wrap justify-center gap-x-8 gap-y-4 font-bold text-xl">
-          {categories.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveCategory(item.id)}
-              className={`hover-link ${activeCategory === item.id ? 'active' : ''}`}
-              type="button"
-            >
-              <span className="hover-label">{item.label}<span className="count-text">(66)</span></span>
-            </button>
-          ))}
+{categories.map((item) => (
+  <button
+    key={item.id}
+    onClick={() => handleScroll(item.id)}
+    className="hover-link"
+    type="button"
+  >
+    <span className="hover-label">{item.label}</span>
+  </button>
+))}
+
         </div>
         <div className="line-grow" style={{ width: '100%', height: '3px', backgroundColor: 'black', marginTop: '20px' }}></div>
       </section>
+{/* UI/UX 設計 */}
+  <section id='uiux-section' className="uiux-design-section">
+    {/* 標題 */}
+    <div  className="uiux-section-title">
+      <div className="zh">UI / UX</div>
+      <div className="en">UI / UX Design</div>
+    </div>
+
+    {/* 查看更多 */}
+    <div className="uiux-more-link-wrapper">
+      <div className="more-link">查看更多</div>
+      <div className="more-circle">
+        <img src={goarrow} alt="go arrow" className="go-arrow" />
+      </div>
+    </div>
+
+    {/* 卡片展示遮罩 */}
+    <div className="uiux-overlay">
+      {groupImages.map((group, gIdx) => (
+        <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
+          <div className="card-list">
+            {group.map(({ src, width, height }, cIdx) => (
+              <div
+                className="uiux-card"
+                key={`orig-${cIdx}`}
+                style={{ width: width, height: height }}
+              >
+                <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
+              </div>
+            ))}
+            {/* 複製一份卡片保證無縫 */}
+            {group.map(({ src, width, height }, cIdx) => (
+              <div
+                className="uiux-card"
+                key={`copy-${cIdx}`}
+                style={{ width: width, height: height }}
+              >
+                <img src={src} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
       {/* 菜單設計 */}
-      {activeCategory === 'all' && (
         <section
+        id='menu-section'
           className="menu-design-section"
           style={{
             backgroundColor: getSectionBgColor('menu'),
-            height: '730px',
+            height: '700px',
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -402,7 +481,7 @@ const handlePrevVideo = () => {
           </div>
         </section>
 
-      )}
+      
 
       {/* 翻書彈窗 */}
       {activeBook !== null && (
@@ -419,8 +498,7 @@ const handlePrevVideo = () => {
       )}
 
 {/* 平面設計 */}
-{activeCategory === 'all' && (
-  <section className="graphic-design-section">
+  <section id='graphic-section' className="graphic-design-section">
     <div className="section-title">
       <div className="zh">平面設計</div>
       <div className="en">Graphic Design</div>
@@ -500,110 +578,67 @@ const handlePrevVideo = () => {
       </div>
     </div>
 
-    {/* === Lightbox 全螢幕預覽 === */}
-    {lightboxOpen && (
-      <div className="lightbox" onClick={() => setLightboxOpen(false)}>
-        {/* ❌ 明顯關閉按鈕 */}
-        <button
-          className="lightbox-close"
-          onClick={(e) => {
-            e.stopPropagation();
-            setLightboxOpen(false);
-          }}
-        >
-          ×
-        </button>
+{/* === Lightbox 全螢幕預覽 === */}
+{lightboxOpen && (
+  <div className="lightbox" onClick={() => setLightboxOpen(false)}>
+    {/* ❌ 關閉按鈕 */}
+    <button
+      className="lightbox-close"
+      onClick={(e) => {
+        e.stopPropagation();
+        setLightboxOpen(false);
+      }}
+    >
+      ×
+    </button>
 
-        <button
-          className="lightbox-prev"
-          onClick={(e) => {
-            e.stopPropagation();
-            setLightboxIndex(
-              (lightboxIndex - 1 + filteredWorkCards.length) % filteredWorkCards.length
-            );
-          }}
-        >
-          ‹
-        </button>
+    <button
+      className="lightbox-prev"
+      onClick={(e) => {
+        e.stopPropagation();
+        setLightboxIndex(
+          (lightboxIndex - 1 + filteredWorkCards.length) % filteredWorkCards.length
+        );
+      }}
+    >
+      ‹
+    </button>
 
-        <img
-          src={filteredWorkCards[lightboxIndex].img}
-          alt={filteredWorkCards[lightboxIndex].title}
-          onClick={(e) => e.stopPropagation()} // 點圖片不關閉 Lightbox
-        />
+    {/* 圖片容器 */}
+    <div className="lightbox-image-wrapper">
+      <img
+        src={filteredWorkCards[lightboxIndex].img}
+        alt={filteredWorkCards[lightboxIndex].title}
+        onClick={(e) => e.stopPropagation()}
+      />
+    </div>
 
-        <button
-          className="lightbox-next"
-          onClick={(e) => {
-            e.stopPropagation();
-            setLightboxIndex(
-              (lightboxIndex + 1) % filteredWorkCards.length
-            );
-          }}
-        >
-          ›
-        </button>
-      </div>
-    )}
-  </section>
+    <button
+      className="lightbox-next"
+      onClick={(e) => {
+        e.stopPropagation();
+        setLightboxIndex(
+          (lightboxIndex + 1) % filteredWorkCards.length
+        );
+      }}
+    >
+      ›
+    </button>
+  </div>
 )}
 
-
-
-
-{/* UI/UX 設計 */}
-{activeCategory === 'all' && (
-  <section className="uiux-design-section">
-    {/* 標題 */}
-    <div className="uiux-section-title">
-      <div className="zh">UI / UX</div>
-      <div className="en">UI / UX Design</div>
-    </div>
-
-    {/* 查看更多 */}
-    <div className="uiux-more-link-wrapper">
-      <div className="more-link">查看更多</div>
-      <div className="more-circle">
-        <img src={goarrow} alt="go arrow" className="go-arrow" />
-      </div>
-    </div>
-
-    {/* 卡片展示遮罩 */}
-    <div className="uiux-overlay">
-      {groupImages.map((group, gIdx) => (
-        <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
-          <div className="card-list">
-            {group.map(({ src, width, height }, cIdx) => (
-              <div
-                className="uiux-card"
-                key={`orig-${cIdx}`}
-                style={{ width: width, height: height }}
-              >
-                <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
-              </div>
-            ))}
-            {/* 複製一份卡片保證無縫 */}
-            {group.map(({ src, width, height }, cIdx) => (
-              <div
-                className="uiux-card"
-                key={`copy-${cIdx}`}
-                style={{ width: width, height: height }}
-              >
-                <img src={src} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
   </section>
-)}
+
+
+
+
+
+
 
 
 
       {/* 動畫設計 */}
-      {activeCategory === 'all' && (
-        <section className="animation-design-section">
+        <section id='animation-section' className="animation-design-section">
           {/* 標題 */}
           <div className="uiux-section-title">
             <div className="zh">動畫設計</div>
@@ -725,8 +760,13 @@ const handlePrevVideo = () => {
 
 
         </section>
-      )}
-
+      
+<button
+        className={`scroll-top-btn ${showScrollTop ? "visible" : ""}`}
+        onClick={scrollToTop}
+      >
+        ⬆
+      </button>
 
 
     </div>

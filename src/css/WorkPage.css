@@ -3,6 +3,23 @@
   height: 200px;
 }
 
+/* 讓所有 section 在被 scrollIntoView 時，會預留 header 的高度 */
+section {
+  scroll-margin-top: var(--header-offset, 80px);
+}
+
+/* 或只針對你的設計區塊 */
+.uiux-design-section,
+.menu-design-section,
+.graphic-design-section,
+.animation-design-section {
+  scroll-margin-top: var(--header-offset, 80px);
+}
+
+/* 也可以在全站開啟 smooth 行為（可選） */
+html {
+  scroll-behavior: smooth;
+}
 
 .title-section {
   margin-Top: 110px;
@@ -522,13 +539,21 @@ svg:hover .line {
   align-items: center;
   z-index: 9999;
 }
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-
+.lightbox-image-wrapper {
+  width: 90vw;     /* 固定 Lightbox 的展示框大小 */
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.lightbox-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 保持比例，完整顯示在框內 */
+}
+
+
 .lightbox-close {
   position: fixed;
   top: 20px;
@@ -1114,8 +1139,8 @@ svg:hover .ContactLine {
 
 .contact-svg-wrapper {
   position: fixed;
-  bottom: 2%;
-  right: -3%;
+  bottom: 10%;
+  right: -4%;
   width: 200px;
   height: 150px;
   cursor: pointer;
@@ -1207,4 +1232,48 @@ svg:hover .ContactLine {
   h1 {
     font-size: 10vw;
   }
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;   /* 會跟隨字體大小縮放 */
+  right: 3.5rem;
+  width: clamp(2.5rem, 5vw, 3.5rem);   /* 最小 2.5rem, 最大 3.5rem, 中間用視窗比例 */
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: 50%;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: clamp(1.2rem, 3vw, 1.6rem); /* 箭頭大小響應式 */
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+  transform: scale(1.1);  /* hover 時微微放大 */
+}
+.skill-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center; /* 標籤置中 */
+}
+
+.skill-label {
+  padding: 3px;
+  height: 20px;
+  border: 3px solid #000;
+  border-radius: 9px; /* 圓角 */
+  background-color: #fff;
+  font-size: 12px;
+  white-space: nowrap; /* 自動 hug 文字 */
+  text-align: center;
 }
