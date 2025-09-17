@@ -327,12 +327,13 @@
 
 
 
-.contact-svg-wrapper {
+.contact-contact-svg-wrapper {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 1% !important;
+  right: -1% !important;
   width: 150px;
   height: 150px;
+  z-index: 9999 !important;
 }
 
 .click-area {
@@ -360,9 +361,9 @@
 }
 
 /* x 按鈕 */
-.resume-close {
+.contact-resume-close {
   position: absolute;        /* 相對 contact-svg-wrapper */
-transform: translate(38px, -40px);  /* X 偏移 + Y 偏移，直接移到圓圈右上角 */
+transform: translate(100px, -130px);  /* X 偏移 + Y 偏移，直接移到圓圈右上角 */
   width: 25px;
   height: 25px;
   z-index: 20;

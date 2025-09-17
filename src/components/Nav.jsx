@@ -10,14 +10,14 @@ import linkedinIconHover from '../assets/Group_linkedin_hover.svg';
 function Header() {
   const location = useLocation();
   const [hoveredIcon, setHoveredIcon] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const menuItems = [
     { label: 'WORK', to: '/work', tooltip: '作品一覽' },
     { label: 'PROFILE', to: '/profile', tooltip: '個人簡介' },
-    { label: 'CONTACT', to: '/contact', tooltip: '聯絡資訊' },
+    { label: 'CONTACT', to: '/contact', tooltip: '聯絡我' },
   ];
 
-  // 當路徑改變時自動滾動到最上方
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -25,23 +25,15 @@ function Header() {
   return (
     <header className="header sticky-header">
       <div className="title">
-        <p className="subtitle">
-          <span className="en-label">
-            <span className="space-left"></span>
-            <span className="word">Visual</span>
-            <span className="space"></span>
-            <span className="word">Designer</span>
-          </span>
-          <span className="zh-label">視覺設計師</span>
-        </p>
-        <h1 className="logo">
+        <h1 className="nav-logo">
           <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
             WEI KO-HSIN
           </Link>
         </h1>
       </div>
 
-      <nav className="nav">
+      {/* 桌面版 nav */}
+      <nav className="nav desktop-nav">
         {menuItems.map((item) => (
           <div className="nav-item" key={item.to}>
             <Link to={item.to}>{item.label}</Link>
@@ -55,7 +47,6 @@ function Header() {
           className="nav-item"
           onMouseEnter={() => setHoveredIcon('linkedin')}
           onMouseLeave={() => setHoveredIcon(null)}
-          style={{ marginLeft: '5px' }}
         >
           <a
             href="https://www.linkedin.com/in/ko-hsin-wei-312574241"
@@ -75,7 +66,6 @@ function Header() {
           className="nav-item"
           onMouseEnter={() => setHoveredIcon('behance')}
           onMouseLeave={() => setHoveredIcon(null)}
-          style={{ marginLeft: '-5px' }}
         >
           <a
             href="https://www.behance.net/gallery/174963007/2025-"
@@ -89,6 +79,61 @@ function Header() {
             />
           </a>
           <div className="tooltip">Behance</div>
+        </div>
+      </nav>
+
+      {/* 漢堡按鈕 */}
+      <div
+        className={`burger ${menuOpen ? 'open' : ''}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* 右側滑出選單 */}
+      <nav className={`mobile-nav ${menuOpen ? 'active' : ''}`}>
+<div className="mobile-menu-items">
+  {menuItems.map((item) => (
+    <Link
+      key={item.to}
+      to={item.to}
+      onClick={() => setMenuOpen(false)}
+      className="mobile-nav-link"
+    >
+      <span className="mobile-nav-zh">{item.tooltip}</span>
+      <span className="mobile-nav-en">{item.label}</span>
+    </Link>
+  ))}
+</div>
+
+
+        <div className="mobile-socials">
+          <a
+            href="https://www.linkedin.com/in/ko-hsin-wei-312574241"
+            target="_blank"
+            rel="noreferrer"
+            onMouseEnter={() => setHoveredIcon('linkedin')}
+            onMouseLeave={() => setHoveredIcon(null)}
+          >
+            <img
+              src={hoveredIcon === 'linkedin' ? linkedinIconHover : linkedinIcon}
+              alt="LinkedIn"
+            />
+          </a>
+          <a
+            href="https://www.behance.net/gallery/174963007/2025-"
+            target="_blank"
+            rel="noreferrer"
+            onMouseEnter={() => setHoveredIcon('behance')}
+            onMouseLeave={() => setHoveredIcon(null)}
+          >
+            <img
+              src={hoveredIcon === 'behance' ? behanceIconHover : behanceIcon}
+              alt="Behance"
+            />
+          </a>
         </div>
       </nav>
     </header>

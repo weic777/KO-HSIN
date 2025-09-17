@@ -198,6 +198,26 @@ const workCards = [
 
 function WorkPage() {
   <div id="work-top"></div>
+
+const [visibleGroups, setVisibleGroups] = useState(groupImages.length); // 初始全部顯示
+useEffect(() => {
+  const handleResize = () => {
+    const width = window.innerWidth;
+    if (width < 600) {
+      setVisibleGroups(1); // 500 以下只顯示 1 組
+    } else if (width < 820) {
+      setVisibleGroups(2); // 820 以下顯示 2 組
+    } else {
+      setVisibleGroups(4); // 大於 820 顯示 4 組
+    }
+  };
+
+  handleResize(); // 初始化呼叫一次
+  window.addEventListener('resize', handleResize);
+
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
   const [lightboxOpen, setLightboxOpen] = useState(false); // 是否開啟 Lightbox
   const [lightboxIndex, setLightboxIndex] = useState(0);   // 當前 Lightbox 顯示的圖片索引
   const [activeCategory, setActiveCategory] = useState('all');
@@ -349,7 +369,7 @@ const handlePrevVideo = () => {
 
       {/* 分類選單 */}
       <section className="category-section" style={{ marginTop: '50px', textAlign: 'center' }}>
-        <div className="inline-flex flex-wrap justify-center gap-x-8 gap-y-4 font-bold text-xl">
+        <div className="inline-flex">
 {categories.map((item) => (
   <button
     key={item.id}
@@ -368,8 +388,8 @@ const handlePrevVideo = () => {
   <section id='uiux-section' className="uiux-design-section">
     {/* 標題 */}
     <div  className="uiux-section-title">
-      <div className="zh">UI / UX</div>
-      <div className="en">UI / UX Design</div>
+      <div className="zh">前端開發 & UI/UX</div>
+      <div className="en">Frontend Developer <br/> UI / UX Design</div>
     </div>
 
     {/* 查看更多 */}
@@ -381,33 +401,25 @@ const handlePrevVideo = () => {
     </div>
 
     {/* 卡片展示遮罩 */}
-    <div className="uiux-overlay">
-      {groupImages.map((group, gIdx) => (
-        <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
-          <div className="card-list">
-            {group.map(({ src, width, height }, cIdx) => (
-              <div
-                className="uiux-card"
-                key={`orig-${cIdx}`}
-                style={{ width: width, height: height }}
-              >
-                <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
-              </div>
-            ))}
-            {/* 複製一份卡片保證無縫 */}
-            {group.map(({ src, width, height }, cIdx) => (
-              <div
-                className="uiux-card"
-                key={`copy-${cIdx}`}
-                style={{ width: width, height: height }}
-              >
-                <img src={src} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
-              </div>
-            ))}
+<div className="uiux-overlay">
+  {groupImages.slice(0, visibleGroups).map((group, gIdx) => (
+    <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
+      <div className="card-list">
+        {group.map(({ src, width, height }, cIdx) => (
+          <div className="uiux-card" key={`orig-${cIdx}`} style={{ width, height }}>
+            <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
           </div>
-        </div>
-      ))}
+        ))}
+        {group.map(({ src, width, height }, cIdx) => (
+          <div className="uiux-card" key={`copy-${cIdx}`} style={{ width, height }}>
+            <img src={src} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
+          </div>
+        ))}
+      </div>
     </div>
+  ))}
+</div>
+
   </section>
 
       {/* 菜單設計 */}

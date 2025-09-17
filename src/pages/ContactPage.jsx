@@ -177,12 +177,12 @@ function ContactPage() {
 
 {/* 底部 SVG */}
 {showBottomSvg && (
-  <div className="contact-svg-wrapper">
+  <div className="contact-contact-svg-wrapper">
     
     {/* 圓圈 + 文字 點擊區 */}
     <div className="click-area" onClick={() => navigate('/contact')}>
       <svg viewBox="0 0 150 150" width="100%" height="100%">
-        <circle className="contact-circle" cx="75" cy="75" r="50" fill="none" />
+        <circle className="contact-circle" cx="75" cy="75" r="50" fill="none" transform="rotate(-45 75 75)" />
         <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="20" fontWeight="bold" fill="black">
           <tspan x="50%" dy="-0.6em">下載</tspan>
           <tspan x="50%" dy="1.2em">履歷</tspan>
@@ -194,7 +194,7 @@ function ContactPage() {
     <img
       src={x}
       alt="close"
-      className="resume-close"
+      className="contact-resume-close"
       onClick={(e) => { 
         e.stopPropagation(); 
         setShowBottomSvg(false); 
