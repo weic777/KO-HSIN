@@ -8,11 +8,14 @@ import WorkPage from './pages/WorkPage';
 
 function App() {
   const location = useLocation();
-  const showFooter = location.pathname !== '/home'; // HomePage 不顯示 Footer
+
+  // 在 HomePage (/home) 不顯示 Nav 和 Footer
+  const showLayout = location.pathname !== '/home';
 
   return (
     <>
-      <Nav />
+      {showLayout && <Nav />}
+
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<HomePage />} />
@@ -20,7 +23,8 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/work" element={<WorkPage />} />
       </Routes>
-      {showFooter && <Footer />}
+
+      {showLayout && <Footer />}
     </>
   );
 }

@@ -1,158 +1,107 @@
-import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../css/HomePage.css";
-import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx"; // 路徑依實際情況調整
+import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx";
+import React, { useEffect, useState } from "react";
+
+import WorkTitle from "../assets/work-title-w.svg";
+import ProfileTitle from "../assets/profile-title-w.svg";
+import ContactTitle from "../assets/contact-title-w.svg";
+
+import bg1 from "../assets/bg1.svg";
+import bg2 from "../assets/bg2.svg";
+import bg3 from "../assets/bg3.svg";
+import Star6 from "../assets/6star.svg";
+import Star12 from "../assets/12star.svg";
+
+import title from "../assets/title.svg";
+import rocket from "../assets/rocket.svg";
+import people from "../assets/people.png";
+import phone from "../assets/phone-HOME.svg";
+import peopleO from "../assets/peopleO.png";
+
 
 export default function HomePage() {
-  // useEffect(() => {
-  //   const catWrapper = document.querySelector(".home-page .cat_wrapper");
-  //   const wrapper = document.querySelector(".home-page .wrapper");
-  //   const cat = document.querySelector(".home-page .cat");
-  //   const head = document.querySelector(".home-page .cat_head");
-  //   const legs = document.querySelectorAll(".home-page .leg");
-  //   const pos = { x: null, y: null };
 
-  //   const walk = () => {
-  //     cat.classList.remove("first_pose");
-  //     legs.forEach((leg) => leg.classList.add("walk"));
-  //   };
+useEffect(() => {
+  const handleScroll = () => {
+    // ✅ 只針對 homepage 的 wrapperRef
+    if (!wrapperRef.current) return;
+    const scrollY = window.scrollY;
+    wrapperRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
+  };
 
-  //   const handleMouseMotion = (e) => {
-  //     pos.x = e.clientX;
-  //     pos.y = e.clientY;
-  //     walk();
-  //   };
+  window.addEventListener('scroll', handleScroll);
 
-  //   const handleTouchMotion = (e) => {
-  //     if (!e.targetTouches) return;
-  //     pos.x = e.targetTouches[0].clientX;
-  //     pos.y = e.targetTouches[0].clientY;
-  //     walk();
-  //   };
+  return () => {
+    // ✅ 卸載時清除事件，避免影響其他頁
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
 
-  //   const turnRight = () => {
-  //     cat.style.left = `${pos.x - 90}px`;
-  //     cat.classList.remove("face_left");
-  //     cat.classList.add("face_right");
-  //   };
-
-  //   const turnLeft = () => {
-  //     cat.style.left = `${pos.x + 10}px`;
-  //     cat.classList.remove("face_right");
-  //     cat.classList.add("face_left");
-  //   };
-
-  //   const decideTurnDirection = () => {
-  //     cat.getBoundingClientRect().x < pos.x ? turnRight() : turnLeft();
-  //   };
-
-  //   const headMotion = () => {
-  //     pos.y > wrapper.clientHeight - 100
-  //       ? (head.style.top = "-15px")
-  //       : (head.style.top = "-30px");
-  //   };
-
-  //   const jump = () => {
-  //     catWrapper.classList.remove("jump");
-  //     if (pos.y < wrapper.clientHeight - 250) {
-  //       setTimeout(() => {
-  //         catWrapper.classList.add("jump");
-  //       }, 100);
-  //     }
-  //   };
-
-  //   const decideStop = () => {
-  //     if (
-  //       (cat.classList.contains("face_right") && pos.x - 90 === cat.offsetLeft) ||
-  //       (cat.classList.contains("face_left") && pos.x + 10 === cat.offsetLeft)
-  //     ) {
-  //       legs.forEach((leg) => leg.classList.remove("walk"));
-  //     }
-  //   };
-
-  //   const interval1 = setInterval(() => {
-  //     if (!pos.x || !pos.y) return;
-  //     decideTurnDirection();
-  //     headMotion();
-  //     decideStop();
-  //   }, 100);
-
-  //   const interval2 = setInterval(() => {
-  //     if (!pos.x || !pos.y) return;
-  //     jump();
-  //   }, 1000);
-
-  //   document.addEventListener("mousemove", handleMouseMotion);
-  //   document.addEventListener("touchmove", handleTouchMotion);
-
-  //   return () => {
-  //     clearInterval(interval1);
-  //     clearInterval(interval2);
-  //     document.removeEventListener("mousemove", handleMouseMotion);
-  //     document.removeEventListener("touchmove", handleTouchMotion);
-  //   };
-  // }, []);
+  // 隨機生成圓圈，大小 5~30px
+  const circles = Array.from({ length: 50 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 10 + 5,   // 5~30px
+    top: Math.random() * 100 + "%", // 0%~100%
+    left: Math.random() * 100 + "%",// 0%~100%
+    opacity: Math.random() * 0.6 + 0.2 // 0.2~0.8
+  }));
 
   return (
+    
     <div className="home-page">
       <div className="outer_wrapper">
-          <SpaceshipAnimation />
-        {/* <div className="wrapper">
-          <div className="cat_wrapper">
-            <div className="cat first_pose">
-              <div className="cat_head">
-                <svg viewBox="0 0 76.4 61.2">
-                  <polygon
-                    className="eyes"
-                    points="63.8,54.1 50.7,54.1 50.7,59.6 27.1,59.6 27.1,54.1 12.4,54.1 12.4,31.8 63.8,31.8"
-                  />
-                  <path d="M15.3,45.9h5.1V35.7h-5.1..." />
-                </svg>
-              </div>
+        {/* 6.12星星 */}
+ <img src={Star6} alt="6star" className="star-svg star6" />
+        <img src={Star12} alt="12star" className="star-svg star12" />
+{/* Title SVG */}
+        <img src={title} alt="Title" className="top-layer title-svg" />
+        {/* 背景 SVG */}
+        <img src={bg1} alt="bg1" className="bg-svg bg1" />
+        <img src={bg2} alt="bg2" className="bg-svg bg2" />
+        <img src={bg3} alt="bg3" className="bg-svg bg3" />
 
-              <div className="body">
-                <svg viewBox="0 0 91.7 40.8">
-                  <path d="M91.7,40.8H0V10.2h5.1V5.1h5.1V0h66.2v5.1h10.2v5.1h5.1L91.7,40.8z" />
-                </svg>
-                <div className="tail">
-                  <svg viewBox="0 0 25.5 61.1">
-                    <polygon points="10.2,56 10.2,50.9 5.1,50.9 5.1,40.7..." />
-                  </svg>
-                </div>
-              </div>
+        {/* 隨機生成白色小圓圈 */}
+{circles.map(c => {
+  // 隨機生成閃爍周期：2~5秒
+  const duration = (Math.random() * 3 + 2).toFixed(2) + "s"; 
+  // 隨機生成延遲：0~5秒
+  const delay = (Math.random() * 5).toFixed(2) + "s"; 
 
-              <div className="front_legs">
-                <div className="leg one">
-                  <svg viewBox="0 0 14 30.5">
-                    <polygon points="15.3,30.5 5.1,30.5 5.1,25.4..." />
-                  </svg>
-                </div>
-                <div className="leg two">
-                  <svg viewBox="0 0 14 30.5">
-                    <polygon points="15.3,30.5 5.1,30.5 5.1,25.4..." />
-                  </svg>
-                </div>
-              </div>
+  return (
+    <div
+      key={c.id}
+      className="circle"
+      style={{
+        width: c.size,
+        height: c.size,
+        top: c.top,
+        left: c.left,
+        opacity: c.opacity,
+        animationDuration: duration,
+        animationDelay: delay
+      }}
+    ></div>
+  );
+})}
 
-              <div className="back_legs">
-                <div className="leg three">
-                  <svg viewBox="0 0 14 30.5">
-                    <polygon points="15.3,30.5 5.1,30.5 5.1,25.4..." />
-                  </svg>
-                </div>
-                <div className="leg four">
-                  <svg viewBox="0 0 14 30.5">
-                    <polygon points="15.3,30.5 5.1,30.5 5.1,25.4..." />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
-        {/* <div className="ground"></div>
-        <div className="sign">
-          by masahito / <a href="http://www.ma5a.com/">ma5a.com</a>
-        </div> */}
+        {/* 飛船動畫 */}
+        <SpaceshipAnimation />
+{/* 新增元素區 */}
+<div className="home-objects">
+  <img src={rocket} alt="Rocket" className="rocket" />
+  {/* <img src={people} alt="People" className="people" /> */}
+  <img src={peopleO} alt="People Outline" className="people-outline" />
+  <img src={phone} alt="Phone" className="phone" />
+</div>
+        {/* 導頁按鈕 */}
+        <div className="home-links">
+          <Link to="/work"><img src={WorkTitle} alt="Work" className="home-link-icon work-icon" /></Link>
+          <Link to="/profile"><img src={ProfileTitle} alt="Profile" className="home-link-icon profile-icon" /></Link>
+          <Link to="/contact"><img src={ContactTitle} alt="Contact" className="home-link-icon contact-icon" /></Link>
+        </div>
+
       </div>
     </div>
   );
