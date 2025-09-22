@@ -1,214 +1,141 @@
-/*.home-page * {
-  box-sizing: border-box;
-}
-
 .home-page {
-  font-family: sans-serif;
-  background-color: #63ec85;
-  height: 100vh;
   width: 100%;
-  overflow: hidden;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative; /* 關鍵：讓子元素 absolute 參考 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 背景 SVG */
+.bg-svg { position: absolute; z-index: 0; }
+.bg1 { top: 5%; left: 0; width: 200px; }
+.bg2 { top: -10%; left: 85%; width: 350px; }
+.bg3 { bottom: 0; right: 0; width: 250px; }
+
+/* 白色圓圈 */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 1;
+  pointer-events: none; 
+  animation: flicker infinite alternate; /* 無限閃爍，交替 opacity */
+}
+
+/* 閃爍動畫：從初始透明到全亮再回去 */
+@keyframes flicker {
+  from { opacity: 0.2; }
+  to { opacity: 0.8; }
+}
+
+
+/* 飛船動畫和導頁按鈕 */
+.SpaceshipAnimation,
+.home-links {
+  position: relative; /* 讓子元素絕對定位參考此層 */
+  width: 100%;
+  height: 100%; /* 或你想要的範圍 */
+}
+
+/* 導頁按鈕 */
+.home-links { display: flex; justify-content: center; gap: 40px; margin-top: 50px; }
+.home-link-icon { height: 120px; width: auto; cursor: pointer; transition: transform 0.3s ease; }
+.home-link-icon:hover { transform: scale(1.1); }
+
+/* 個別按鈕絕對定位 */
+.work-icon { position: absolute; top: 10px; left: 20%; }
+.profile-icon { position: absolute; top: -150px; left: 45%; }
+.contact-icon { position: absolute; top: 100px; left: 60%; }
+/* 星星漂浮動畫 */
+@keyframes floatRotate {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(15deg); }
+  100% { transform: translateY(0px) rotate(-15deg); }
+}
+
+/* 所有星星 SVG */
+.star-svg {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  animation: floatRotate 6s infinite alternate;
+}
+
+/* 單獨調整 6star、12star 位置大小 */
+.star6 {
+  width: 50px;
+  height: 50px;
+  top: 15%;
+  left: 15%;
+}
+
+.star12 {
+  width: 70px;
+  height: 70px;
+  top: 25%;
+  left: 43%;
+}
+
+/* Title SVG 放在最上層 */
+.title-svg {
+  position: absolute;
+  z-index: 3;
+  width: 500px; /* 可自行調整大小 */
+  top: 15%;
+  left: 30%;
+  transform: translateX(-50%);
+}
+
+/* 背景 SVG */
+.bg-svg {
+  position: absolute;
+  z-index: 0;
+}
+
+/* 父層設定 relative，讓子元素可以絕對定位 */
+.home-objects {
   position: relative;
-}
-
-.home-page .outer_wrapper {
-  position: absolute;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%; /* 或你想要的範圍 */
 }
 
-.home-page .wrapper {
+/* 各元素單獨定位 */
+.rocket {
   position: absolute;
-  height: calc(100vh - 100px);
-  width: 100%;
-  top: 0;
+  top: 110%;   /* 你想放哪裡就改 top / left */
+  left: 5%;
+  width: 250px; /* 可調整大小 */
+  height: auto;
 }
 
-.home-page .ground {
+.people {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 150px;
-  background-color: rgb(1, 143, 96);
+  top: 50%;
+  left: 30%;
+  width: 150px;
 }
 
-.home-page .cat {
+.people-outline {
   position: absolute;
-  bottom: 65px;
-  left: 100px;
-  height: 30px;
-  width: 60px;
-  transition: 1.5s;
-  transform-origin: center;
-  background-color: transparent;
+  top: 120%;
+  left: 40%;
+  width: 290px;
 }
 
-/* body */
-/*
-.home-page .body {
+.phone {
   position: absolute;
-  height: 30px;
-  width: 60px;
+  top: 128%;
+  left:53.5%;
+  width: 50px;
 }
-
-.home-page .face_left .body { 
-  animation: turn_body_left forwards 0.5s;
-}
-
-@keyframes turn_body_left {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(0.5, 1); }
-}
-
-.home-page .face_right .body {
-  animation: turn_body_right forwards 0.5s;
-}
-
-@keyframes turn_body_right {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(0.5, 1); }
-}
-
-/* head */
-/*
-.home-page .cat_head {
-  position: absolute;
-  height: 40px;
-  width: 48px;
-  right: -10px;
-  top: -30px;
-  transition: 0.5s;
-  z-index: 50;
-}
-
-.home-page .first_pose .cat_head,
-.home-page .face_left .cat_head { 
-  right: 22px;
-}
-
-/* tail */
-/*
-.home-page .tail {
-  position: absolute;
-  top: -25px;
-  height: 36px;
-  width: 15px;
-  animation: tail_motion forwards 2s;
-  transform-origin: bottom right;
-}
-
-@keyframes tail_motion {
-  0%,100% { left: -5px; transform: rotate(0deg) scale(1); }
-  50% { left: -10px; transform: rotate(-50deg) scale(-1,1); }
-}
-
-.home-page .first_pose .tail,
-.home-page .face_left .tail {
-  left: 45px;
-  animation: tail_motion_alt forwards 2s;
-}
-
-@keyframes tail_motion_alt {
-  0%,100% { left: 45px; transform: rotate(0deg) scale(1); }
-  50% { left: 40px; transform: rotate(50deg) scale(-1,1); }
-}
-
-/* legs */
-/*
-.home-page .leg {
-  position: absolute;
-  height: 20px;
-  width: 10px;
-  transform-origin: top center;
-}
-
-.home-page .front_legs,
-.home-page .back_legs {
-  position: absolute;
-  height: 30px;
-  transition: 0.7s;
-}
-/*
-.home-page .front_legs { width: 30px; right: 0; }
-.home-page .back_legs { width: 25px; left: 0; }
-
-.home-page .face_left .leg svg { transform: scale(-1,1); }
-.home-page .face_right .front_legs { right: 0; }
-
-.home-page .first_pose .front_legs,
-.home-page .face_left .front_legs { right: 30px; }
-
-.home-page .face_right .back_legs { left: 0; }
-.home-page .first_pose .back_legs,
-.home-page .face_left .back_legs { left: 35px; }
-
-.home-page .one,
-.home-page .three { bottom: -15px; right: 0; }
-.home-page .two,
-.home-page .four { bottom: -15px; left: 0px; }
-
-.home-page .one.walk,
-.home-page .three.walk { animation: infinite 0.3s walk; }
-.home-page .two.walk,
-.home-page .four.walk { animation: infinite 0.3s walk_alt; }
-
-@keyframes walk {
-  0%,100% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-}
-
-@keyframes walk_alt {
-  0%,100% { transform: rotate(10deg); }
-  50% { transform: rotate(-10deg); }
-}
-
-/* jump */
-/*
-.home-page .cat_wrapper { position: absolute; bottom: 0; }
-
-.home-page .cat_wrapper.jump .one { animation: infinite 0.3s walk; }
-.home-page .cat_wrapper.jump .two { animation: infinite 0.3s walk_alt; }
-.home-page .cat_wrapper.jump .three,
-.home-page .cat_wrapper.jump .four { animation: none; }
-
-.home-page .cat_wrapper.jump .cat.face_right .back_legs { transform-origin: center; transform: rotate(50deg); }
-.home-page .cat_wrapper.jump .cat.face_left .back_legs { transform-origin: center; transform: rotate(-50deg); }
-.home-page .cat_wrapper.jump .cat.face_right .front_legs { transform-origin: center; transform: rotate(-60deg); }
-.home-page .cat_wrapper.jump .cat.face_left .front_legs { transform-origin: center; transform: rotate(60deg); }
-
-.home-page .cat_wrapper.jump { animation: jump forwards 1s; }
-
-@keyframes jump {
-  0%,100% { bottom: 0px; }
-  50% { bottom: 200px; }
-}
-
-.home-page .jump .face_left { animation: forwards 0.5s body_stand_left; transform-origin: right bottom; }
-.home-page .jump .face_right { animation: forwards 0.5s body_stand_right; transform-origin: left bottom; }
-
-@keyframes body_stand_right {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-45deg); }
-}
-
-@keyframes body_stand_left {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(45deg); }
-}
-
-.home-page svg { height: 100%; width: 100%; }
-.home-page polygon.eyes { fill: rgb(1, 143, 96); }
-.home-page polygon,
-.home-page path { fill: white; }
-
-.home-page .sign {
-  position: absolute;
-  color: white;
-  bottom: 10px;
-  right: 10px;
-  font-size: 10px;
-}
-
-.home-page a { color: white; text-decoration: none; }
-.home-page a:hover { text-decoration: underline; }
