@@ -1,214 +1,187 @@
-/*.home-page * {
-  box-sizing: border-box;
-}
-
+/* =============================
+   HomePage 專屬全域樣式
+============================= */
 .home-page {
-  font-family: sans-serif;
-  background-color: #63ec85;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
   width: 100%;
-  overflow: hidden;
-  position: relative;
+  height: 100vh;
 }
 
+.home-page *,
+.home-page *::before,
+.home-page *::after {
+  box-sizing: inherit;
+}
+
+/* 外層容器 */
 .home-page .outer_wrapper {
-  position: absolute;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  position: relative; /* 讓子元素 absolute 參考 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+    overflow: hidden; /* ✅ 超過 100vh 隱藏 */
+
 }
 
-.home-page .wrapper {
+/* 背景 SVG */
+.home-page .bg-svg { position: absolute; z-index: 0; }
+.home-page .bg1 { top: 5%; left: 0; width: 200px; }
+.home-page .bg2 { top: -10%; left: 85%; width: 350px; }
+.home-page .bg3 { bottom: 0; right: 0; width: 250px; }
+
+/* 白色圓圈 */
+.home-page .circle {
   position: absolute;
-  height: calc(100vh - 100px);
+  border-radius: 50%;
+  background-color: white;
+  z-index: 1;
+  pointer-events: none; 
+  animation: home-flicker infinite alternate;
+}
+
+/* 閃爍動畫 */
+@keyframes home-flicker {
+  from { opacity: 0.2; }
+  to { opacity: 0.8; }
+}
+
+/* 飛船動畫和導頁按鈕容器 */
+.home-page .SpaceshipAnimation,
+.home-page .home-links {
+  position: relative;
   width: 100%;
-  top: 0;
+  height: 100%;
 }
 
-.home-page .ground {
+/* 導頁按鈕 */
+.home-page .home-links { 
+  display: flex; 
+  justify-content: center; 
+  gap: 40px; 
+  margin-top: 50px; 
+}
+
+.home-page .home-link-icon { 
+  height: 120px; 
+  width: auto; 
+  cursor: pointer; 
+  transition: transform 0.3s ease; 
+}
+
+.home-page .home-link-icon:hover { 
+  transform: scale(1.1); 
+}
+
+/* 個別按鈕絕對定位 */
+.home-page .work-icon { position: absolute; top: 10px; left: 20%; }
+.home-page .profile-icon { position: absolute; top: -150px; left: 45%; }
+.home-page .contact-icon { position: absolute; top: 100px; left: 60%; }
+
+/* 星星漂浮動畫 */
+@keyframes home-floatRotate {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(15deg); }
+  100% { transform: translateY(0px) rotate(-15deg); }
+}
+
+/* 所有星星 SVG */
+.home-page .star-svg {
   position: absolute;
-  bottom: 0;
+  z-index: 0;      /* 最底層 */
+  pointer-events: none;
+  animation: home-floatRotate 6s infinite alternate;
+}
+
+/* 單獨調整星星位置大小 */
+.home-page .star6 {
+  width: 50px;
+  height: 50px;
+  top: 15%;
+  left: 15%;
+}
+
+.home-page .star12 {
+  width: 70px;
+  height: 70px;
+  top: 25%;
+  left: 43%;
+}
+
+/* Title SVG */
+.home-page .title-svg {
+  position: absolute;
+  z-index: 1; /* 星星下方 */
+  width: 500px; 
+  top: 15%;
+  left: 30%;
+  transform: translateX(-50%);
+}
+
+/* Home 物件容器 */
+.home-page .home-objects {
+  position: relative;
   width: 100%;
-  height: 150px;
-  background-color: rgb(1, 143, 96);
+  height: 100%;
 }
 
-.home-page .cat {
+/* 進場 + 漂浮動畫 */
+@keyframes home-slideUpFade {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes home-floatObject {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* 火箭 */
+.home-page .rocket {
   position: absolute;
-  bottom: 65px;
-  left: 100px;
-  height: 30px;
-  width: 60px;
-  transition: 1.5s;
-  transform-origin: center;
-  background-color: transparent;
+  top: 110%;
+  left: 5%;
+  width: 250px;
+  height: auto;
+  animation: 
+    home-slideUpFade 1s ease forwards, 
+    home-floatObject 3s ease-in-out infinite 1s;
+  animation-delay: 0.2s;
 }
 
-/* body */
-/*
-.home-page .body {
+/* 人物輪廓 */
+.home-page .people-outline {
   position: absolute;
-  height: 30px;
-  width: 60px;
+  top: 120%;
+  left: 40%;
+  width: 290px;
+  animation: 
+    home-slideUpFade 1s ease forwards, 
+    home-floatObject 3s ease-in-out infinite 1s;
+  animation-delay: 0.5s;
 }
 
-.home-page .face_left .body { 
-  animation: turn_body_left forwards 0.5s;
-}
-
-@keyframes turn_body_left {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(0.5, 1); }
-}
-
-.home-page .face_right .body {
-  animation: turn_body_right forwards 0.5s;
-}
-
-@keyframes turn_body_right {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(0.5, 1); }
-}
-
-/* head */
-/*
-.home-page .cat_head {
+/* 手機 */
+.home-page .phone {
   position: absolute;
-  height: 40px;
-  width: 48px;
-  right: -10px;
-  top: -30px;
-  transition: 0.5s;
-  z-index: 50;
+  top: 128%;
+  left: 53.5%;
+  width: 50px;
+  animation: 
+    home-slideUpFade 1s ease forwards, 
+    home-floatObject 3s ease-in-out infinite 1s;
+  animation-delay: 0.8s;
 }
-
-.home-page .first_pose .cat_head,
-.home-page .face_left .cat_head { 
-  right: 22px;
-}
-
-/* tail */
-/*
-.home-page .tail {
-  position: absolute;
-  top: -25px;
-  height: 36px;
-  width: 15px;
-  animation: tail_motion forwards 2s;
-  transform-origin: bottom right;
-}
-
-@keyframes tail_motion {
-  0%,100% { left: -5px; transform: rotate(0deg) scale(1); }
-  50% { left: -10px; transform: rotate(-50deg) scale(-1,1); }
-}
-
-.home-page .first_pose .tail,
-.home-page .face_left .tail {
-  left: 45px;
-  animation: tail_motion_alt forwards 2s;
-}
-
-@keyframes tail_motion_alt {
-  0%,100% { left: 45px; transform: rotate(0deg) scale(1); }
-  50% { left: 40px; transform: rotate(50deg) scale(-1,1); }
-}
-
-/* legs */
-/*
-.home-page .leg {
-  position: absolute;
-  height: 20px;
-  width: 10px;
-  transform-origin: top center;
-}
-
-.home-page .front_legs,
-.home-page .back_legs {
-  position: absolute;
-  height: 30px;
-  transition: 0.7s;
-}
-/*
-.home-page .front_legs { width: 30px; right: 0; }
-.home-page .back_legs { width: 25px; left: 0; }
-
-.home-page .face_left .leg svg { transform: scale(-1,1); }
-.home-page .face_right .front_legs { right: 0; }
-
-.home-page .first_pose .front_legs,
-.home-page .face_left .front_legs { right: 30px; }
-
-.home-page .face_right .back_legs { left: 0; }
-.home-page .first_pose .back_legs,
-.home-page .face_left .back_legs { left: 35px; }
-
-.home-page .one,
-.home-page .three { bottom: -15px; right: 0; }
-.home-page .two,
-.home-page .four { bottom: -15px; left: 0px; }
-
-.home-page .one.walk,
-.home-page .three.walk { animation: infinite 0.3s walk; }
-.home-page .two.walk,
-.home-page .four.walk { animation: infinite 0.3s walk_alt; }
-
-@keyframes walk {
-  0%,100% { transform: rotate(-10deg); }
-  50% { transform: rotate(10deg); }
-}
-
-@keyframes walk_alt {
-  0%,100% { transform: rotate(10deg); }
-  50% { transform: rotate(-10deg); }
-}
-
-/* jump */
-/*
-.home-page .cat_wrapper { position: absolute; bottom: 0; }
-
-.home-page .cat_wrapper.jump .one { animation: infinite 0.3s walk; }
-.home-page .cat_wrapper.jump .two { animation: infinite 0.3s walk_alt; }
-.home-page .cat_wrapper.jump .three,
-.home-page .cat_wrapper.jump .four { animation: none; }
-
-.home-page .cat_wrapper.jump .cat.face_right .back_legs { transform-origin: center; transform: rotate(50deg); }
-.home-page .cat_wrapper.jump .cat.face_left .back_legs { transform-origin: center; transform: rotate(-50deg); }
-.home-page .cat_wrapper.jump .cat.face_right .front_legs { transform-origin: center; transform: rotate(-60deg); }
-.home-page .cat_wrapper.jump .cat.face_left .front_legs { transform-origin: center; transform: rotate(60deg); }
-
-.home-page .cat_wrapper.jump { animation: jump forwards 1s; }
-
-@keyframes jump {
-  0%,100% { bottom: 0px; }
-  50% { bottom: 200px; }
-}
-
-.home-page .jump .face_left { animation: forwards 0.5s body_stand_left; transform-origin: right bottom; }
-.home-page .jump .face_right { animation: forwards 0.5s body_stand_right; transform-origin: left bottom; }
-
-@keyframes body_stand_right {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-45deg); }
-}
-
-@keyframes body_stand_left {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(45deg); }
-}
-
-.home-page svg { height: 100%; width: 100%; }
-.home-page polygon.eyes { fill: rgb(1, 143, 96); }
-.home-page polygon,
-.home-page path { fill: white; }
-
-.home-page .sign {
-  position: absolute;
-  color: white;
-  bottom: 10px;
-  right: 10px;
-  font-size: 10px;
-}
-
-.home-page a { color: white; text-decoration: none; }
-.home-page a:hover { text-decoration: underline; }

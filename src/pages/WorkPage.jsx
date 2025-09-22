@@ -125,10 +125,11 @@ import uiux6 from '../assets/uiux6.png';
 import uiux7 from '../assets/uiux7.png';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules"; // ✅ 使用 Pagination
 import "swiper/css";
 import "swiper/css/navigation";
 import { useNavigate } from 'react-router-dom'; 
+import "swiper/css/pagination"; // ✅ 引入 pagination 樣式
 
 
 const groupImages = [
@@ -405,20 +406,23 @@ const handlePrevVideo = () => {
   {groupImages.slice(0, visibleGroups).map((group, gIdx) => (
     <div className={`uiux-card-group group-${gIdx}`} key={gIdx}>
       <div className="card-list">
-        {group.map(({ src, width, height }, cIdx) => (
-          <div className="uiux-card" key={`orig-${cIdx}`} style={{ width, height }}>
+        {group.map(({ src }, cIdx) => (
+          <div className="uiux-card" key={`orig-${cIdx}`}>
             <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
           </div>
         ))}
-        {group.map(({ src, width, height }, cIdx) => (
-          <div className="uiux-card" key={`copy-${cIdx}`} style={{ width, height }}>
-            <img src={src} alt={`Group ${gIdx} Card Copy ${cIdx}`} />
-          </div>
+        {group.map(({ src }, cIdx) => (
+<div className="uiux-card" key={`orig-${cIdx}`}>
+
+  <img src={src} alt={`Group ${gIdx} Card ${cIdx}`} />
+</div>
+
         ))}
       </div>
     </div>
   ))}
 </div>
+
 
   </section>
 
@@ -442,55 +446,43 @@ const handlePrevVideo = () => {
           </div>
 
           {/* 所有書本包裹容器 */}
-          <div
-            className="books-container"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              gap: '60px',
-            }}
-          >
-            {books.map((book, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                }}
-              >
-                <div className="book-banner">
-                  <span className="circle"></span>
-                  <span className="banner-text">{book.title}</span>
-                  <span className="circle"></span>
-                </div>
-
 <div
-  className="book-3d-wrapper"
-  style={{ width: book.size.cover.w + 'vw', height: book.size.cover.h + 'vw' ,    '--back-color': book.backColor // 🔹 設定 CSS variable
-}}
-  onClick={() => openBook(i)}
+  className="books-container"
 >
-  <div className="book-3d">
-    <div className="book-3d__inner">
-      <img className="book-3d__cover" src={book.cover} alt={book.title} />
+  {books.map((book, i) => (
+    <div className="book-item" key={i}>
+      <div className="book-banner">
+        <span className="circle"></span>
+        <span className="banner-text">{book.title}</span>
+        <span className="circle"></span>
+      </div>
+
+      <div
+        className="book-3d-wrapper"
+        style={{
+          width: book.size.cover.w + 'vw',
+          height: book.size.cover.h + 'vw',
+          '--back-color': book.backColor
+        }}
+        onClick={() => openBook(i)}
+      >
+        <div className="book-3d">
+          <div className="book-3d__inner">
+            <img className="book-3d__cover" src={book.cover} alt={book.title} />
+          </div>
+        </div>
+      </div>
+
+      {i === 0 && (
+        <div className="finger-wrapper">
+          <img src={finger} alt="finger" className="finger-icon" />
+          <div className="finger-text">點擊翻閱</div>
+        </div>
+      )}
     </div>
-  </div>
+  ))}
 </div>
 
-
-                {/* 第一個書本顯示手指提示 */}
-                {i === 0 && (
-                  <div className="finger-wrapper">
-                    <img src={finger} alt="finger" className="finger-icon" />
-                    <div className="finger-text">點擊翻閱</div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
         </section>
 
       
@@ -534,49 +526,54 @@ const handlePrevVideo = () => {
       </div>
     </div>
 
-    <div className="works-wrapper">
-      <Swiper
-        modules={[Navigation]}
-        spaceBetween={30}
-        slidesPerView={3}
-        navigation={{
-          nextEl: ".next",
-          prevEl: ".prev",
-        }}
-        loop={true}
-      >
-        {workCards
-          .filter(work => selectedTags.length === 0 || selectedTags.includes(work.tag))
-          .map((work, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="work-card-wrapper">
-                <div className="work-card">
-                  <div className="year">{work.year}</div>
-                  <div className="work-content">
-                    <div
-                      className="work-img"
-                      style={{
-                        width: work.imgWidth ? `${work.imgWidth}px` : "100%",
-                        height: work.imgHeight ? `${work.imgHeight}px` : "200px",
-                      }}
-                      onClick={() => {
-                        setLightboxIndex(idx); // 使用篩選後索引
-                        setLightboxOpen(true);
-                      }}
-                    >
-                      <img src={work.img} alt={work.title} />
-                      <div className="overlay">點擊放大</div>
-                    </div>
-
-                    <div className="work-title">{work.title}</div>
-                    <div className="work-desc">{work.desc}</div>
-                  </div>
+<div className="works-wrapper">
+  <Swiper
+    modules={[Pagination]} // ✅ 移除 Navigation，改用 Pagination
+    spaceBetween={30}
+    loop={true}
+    pagination={{ 
+      clickable: true, 
+      dynamicBullets: true, 
+      dynamicMainBullets: 5 // ✅ 最多五個點
+    }}
+    breakpoints={{
+      0: { slidesPerView: 1 },   // 手機 (≤500px)
+      500: { slidesPerView: 1 },
+      820: { slidesPerView: 2 }, // 平板 (≤820px)
+      1200: { slidesPerView: 3 } // 桌機
+    }}
+  >
+    {workCards
+      .filter(work => selectedTags.length === 0 || selectedTags.includes(work.tag))
+      .map((work, idx) => (
+        <SwiperSlide key={idx}>
+          <div className="work-card-wrapper">
+            <div className="work-card">
+              <div className="year">{work.year}</div>
+              <div className="work-content">
+                <div
+                  className="work-img"
+                  style={{
+                    width: work.imgWidth ? `${work.imgWidth}px` : "100%",
+                    height: work.imgHeight ? `${work.imgHeight}px` : "200px"
+                  }}
+                  onClick={() => {
+                    setLightboxIndex(idx);
+                    setLightboxOpen(true);
+                  }}
+                >
+                  <img src={work.img} alt={work.title} />
+                  <div className="overlay">點擊放大</div>
                 </div>
+                <div className="work-title">{work.title}</div>
+                <div className="work-desc">{work.desc}</div>
               </div>
-            </SwiperSlide>
-          ))}
-      </Swiper>
-    </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+  </Swiper>
+</div>
 
     <div className="graphic-nav">
       <button className="prev"></button>
