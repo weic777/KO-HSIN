@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =============================
    HomePage 專屬全域樣式
 ============================= */
@@ -126,13 +127,147 @@
 
 /* Home 物件容器 */
 .home-page .home-objects {
+=======
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; 
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.home-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative; /* 關鍵：讓子元素 absolute 參考 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 背景 SVG */
+.bg-svg { position: absolute; z-index: 0; }
+.bg1 { top: 5%; left: 0; width: 200px; }
+.bg2 { top: -10%; left: 85%; width: 350px; }
+.bg3 { bottom: 0; right: 0; width: 250px; }
+
+/* 白色圓圈 */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 1;
+  pointer-events: none; 
+  animation: flicker infinite alternate; /* 無限閃爍，交替 opacity */
+}
+
+/* 閃爍動畫：從初始透明到全亮再回去 */
+@keyframes flicker {
+  from { opacity: 0.2; }
+  to { opacity: 0.8; }
+}
+
+
+/* 飛船動畫和導頁按鈕 */
+.SpaceshipAnimation,
+.home-links {
+  position: relative; /* 讓子元素絕對定位參考此層 */
+  width: 100%;
+  height: 100%; /* 或你想要的範圍 */
+}
+
+/* 導頁按鈕 */
+.home-links { display: flex; justify-content: center; gap: 40px; margin-top: 50px; }
+.home-link-icon { height: 120px; width: auto; cursor: pointer; transition: transform 0.3s ease; }
+.home-link-icon:hover { transform: scale(1.1); }
+
+/* 個別按鈕絕對定位 */
+.work-icon { position: absolute; top: 10px; left: 20%; }
+.profile-icon { position: absolute; top: -150px; left: 45%; }
+.contact-icon { position: absolute; top: 100px; left: 60%; }
+/* 星星漂浮動畫 */
+@keyframes floatRotate {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(15deg); }
+  100% { transform: translateY(0px) rotate(-15deg); }
+}
+
+/* 所有星星 SVG */
+.star-svg {
+  position: absolute;
+  z-index: 0;      /* 最底層 */
+  pointer-events: none;
+  animation: floatRotate 6s infinite alternate;
+}
+
+/* 單獨調整 6star、12star 位置大小 */
+.star6 {
+  width: 50px;
+  height: 50px;
+  top: 15%;
+  left: 15%;
+}
+
+.star12 {
+  width: 70px;
+  height: 70px;
+  top: 25%;
+  left: 43%;
+}
+
+/* Title SVG 放在最上層 */
+.title-svg {
+  position: absolute;
+  z-index: 1; /* 星星下方 */
+
+  width: 500px; /* 可自行調整大小 */
+  top: 15%;
+  left: 30%;
+  transform: translateX(-50%);
+
+}
+
+/* 背景 SVG */
+.bg-svg {
+  position: absolute;
+  z-index: 0;
+}
+
+/* 父層設定 relative，讓子元素可以絕對定位 */
+.home-objects {
+  position: relative;
+  width: 100%;
+  height: 100%; /* 或你想要的範圍 */
+}
+
+.home-objects {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   position: relative;
   width: 100%;
   height: 100%;
 }
 
+<<<<<<< HEAD
 /* 進場 + 漂浮動畫 */
 @keyframes home-slideUpFade {
+=======
+/* 進場動畫：從下方滑入 + 淡入 */
+@keyframes slideUpFade {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   0% {
     transform: translateY(50px);
     opacity: 0;
@@ -143,20 +278,30 @@
   }
 }
 
+<<<<<<< HEAD
 @keyframes home-floatObject {
+=======
+/* 漂浮動畫 */
+@keyframes floatObject {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0); }
 }
 
 /* 火箭 */
+<<<<<<< HEAD
 .home-page .rocket {
+=======
+.rocket {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   position: absolute;
   top: 110%;
   left: 5%;
   width: 250px;
   height: auto;
   animation: 
+<<<<<<< HEAD
     home-slideUpFade 1s ease forwards, 
     home-floatObject 3s ease-in-out infinite 1s;
   animation-delay: 0.2s;
@@ -164,24 +309,47 @@
 
 /* 人物輪廓 */
 .home-page .people-outline {
+=======
+    slideUpFade 1s ease forwards, 
+    floatObject 3s ease-in-out infinite 1s; /* 延遲 1s 開始漂浮 */
+  animation-delay: 0.2s; /* 進場延遲 */
+}
+
+/* 人 */
+.people-outline {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   position: absolute;
   top: 120%;
   left: 40%;
   width: 290px;
   animation: 
+<<<<<<< HEAD
     home-slideUpFade 1s ease forwards, 
     home-floatObject 3s ease-in-out infinite 1s;
+=======
+    slideUpFade 1s ease forwards, 
+    floatObject 3s ease-in-out infinite 1s;
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   animation-delay: 0.5s;
 }
 
 /* 手機 */
+<<<<<<< HEAD
 .home-page .phone {
+=======
+.phone {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   position: absolute;
   top: 128%;
   left: 53.5%;
   width: 50px;
   animation: 
+<<<<<<< HEAD
     home-slideUpFade 1s ease forwards, 
     home-floatObject 3s ease-in-out infinite 1s;
+=======
+    slideUpFade 1s ease forwards, 
+    floatObject 3s ease-in-out infinite 1s;
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
   animation-delay: 0.8s;
 }
