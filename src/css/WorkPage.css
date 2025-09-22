@@ -344,7 +344,15 @@ svg:hover .line {
     transform: scale(1); /* 縮小比例 */
   }
 }
+<<<<<<< HEAD
 @media (max-width: 550px) {
+=======
+<<<<<<< HEAD
+@media (max-width: 550px) {
+=======
+@media (max-width: 500px) {
+>>>>>>> b2b8c34ebd22ca1f16c825cecd055ac8b7c77011
+>>>>>>> 5347b5c8f1499f08dcac3c76e0d75f88a250c6f1
   .books-container {
     display: flex;
     flex-wrap: wrap;

@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import "../css/HomePage.css";
 import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx";
 import React, { useEffect, useState } from "react";
+=======
+import React from "react";
+import { Link } from "react-router-dom";
+import "../css/HomePage.css";
+import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx";
+>>>>>>> 5347b5c8f1499f08dcac3c76e0d75f88a250c6f1
 
 import WorkTitle from "../assets/work-title-w.svg";
 import ProfileTitle from "../assets/profile-title-w.svg";
@@ -21,6 +28,7 @@ import peopleO from "../assets/peopleO.png";
 
 
 export default function HomePage() {
+<<<<<<< HEAD
 
 useEffect(() => {
   const handleScroll = () => {
@@ -38,6 +46,10 @@ useEffect(() => {
   };
 }, []);
 
+=======
+
+
+>>>>>>> 5347b5c8f1499f08dcac3c76e0d75f88a250c6f1
   // 隨機生成圓圈，大小 5~30px
   const circles = Array.from({ length: 50 }, (_, i) => ({
     id: i,
