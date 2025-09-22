@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-import "../css/HomePage.css";
-import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx";
-import React, { useEffect, useState } from "react";
-=======
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/HomePage.css";
 import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx";
->>>>>>> 5347b5c8f1499f08dcac3c76e0d75f88a250c6f1
 
 import WorkTitle from "../assets/work-title-w.svg";
 import ProfileTitle from "../assets/profile-title-w.svg";
@@ -28,28 +21,8 @@ import peopleO from "../assets/peopleO.png";
 
 
 export default function HomePage() {
-<<<<<<< HEAD
-
-useEffect(() => {
-  const handleScroll = () => {
-    // ✅ 只針對 homepage 的 wrapperRef
-    if (!wrapperRef.current) return;
-    const scrollY = window.scrollY;
-    wrapperRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
-  };
-
-  window.addEventListener('scroll', handleScroll);
-
-  return () => {
-    // ✅ 卸載時清除事件，避免影響其他頁
-    window.removeEventListener('scroll', handleScroll);
-  };
-}, []);
-
-=======
 
 
->>>>>>> 5347b5c8f1499f08dcac3c76e0d75f88a250c6f1
   // 隨機生成圓圈，大小 5~30px
   const circles = Array.from({ length: 50 }, (_, i) => ({
     id: i,
@@ -60,7 +33,6 @@ useEffect(() => {
   }));
 
   return (
-    
     <div className="home-page">
       <div className="outer_wrapper">
         {/* 6.12星星 */}

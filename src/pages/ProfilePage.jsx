@@ -346,20 +346,11 @@ useEffect(() => {
       <img key={i} src={logo} alt="技能圖標" />
     ))}
   </div>
-
 </div>
-     {/* 統一放在 LOGO 下方的技能文字 tag */}
-      <div className="skill-tag-wrapper">
-        {[
-          "Html","CSS","SASS","JavaScript","React",
-          "RWD","User Research","Prototype","Wireframe"
-        ].map((name, i) => (
-          <div key={i} className="skill-tag-item">{name}</div>
-        ))}
-      </div>
-    </div>
 
 
+
+        </div>
       </section>
 
 
