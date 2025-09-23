@@ -108,19 +108,7 @@ useEffect(() => {
     idLogo, prLogo, aeLogo, figmaLogo, sketchLogo, reactLogo, htmlLogo, cssLogo, jsLogo
   ];
   const expItems = [
-    {
-      title: '中國時報',
-      logo: WorkLogo1,
-      date: '2021',
-          position: '平面設計剪輯',
 
-      jobtype: '短期兼職',
-    details: [
-      { title: '聯名產品設計', desc: '設計聯名產品封面，確保符合品牌規範並展現合作價值。' },
-      { title: '活動影片剪輯', desc: '剪輯「時報廣告金犢獎」與「金像獎」頒獎影片，整合素材並調整節奏以提升觀影體驗。' },
-      { title: '現場活動執行', desc: '參與頒獎典禮現場執行，協調流程與支援視覺呈現，確保活動順利進行。' }
-    ]
-    },
     {
       title: '康健雜誌',
       logo: WorkLogo2,
@@ -184,6 +172,18 @@ useEffect(() => {
       { title: '銷售簡報與行銷文案', desc: '制參與銷售策略規劃，製作專業簡報、現場導引文案與品牌說明資料，提升溝通與提案效果。' },
       { title: '跨部門專案協作', desc: '與設計、攝影、剪輯等協作單位密切溝通，確保行銷素材符合品牌定位與美感品質。' },
       { title: '市場與競品分析', desc: '定期產出市場趨勢與競品研究報告，提供專案即時調整依據，強化行銷策略競爭力。' }
+    ]
+    },
+        {
+      title: '四年接案經驗',
+      // logo: WorkLogo1,
+      date: '2021',
+          position: '平面與動畫設計、電繪',
+
+      jobtype: '',
+    details: [
+       { title: '菜單、行銷素材、LOGO、動畫、UI設計、電繪', desc: '與行銷長期配合負責與廠商對接需求，並與印刷廠商輸出對接。從線上到線下實體活動宣傳設計。' },
+      { title: '合作廠商 :', desc: '放感情集團、瓦法奇朵、龍府小鍋、四川龍府、幸福時光、僑梓企業、OriginBAR 序、梟夜、Tonight Bistro、暢快生活、Nowhere Taipei、凨餐酒 Fong Bar & Kitchen、琢白美學牙醫診所' },
     ]
     },
     {
