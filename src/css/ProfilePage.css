@@ -139,7 +139,7 @@ p, .exp-detail-desc, .contact-item span {
   /* ✅ 改成置中 */
   justify-content: center;
   /* ✅ 垂直置中 */
-  margin-Top: 110px
+  margin-Top: 150px
 }
 
 .aboutTitle {
