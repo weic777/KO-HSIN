@@ -69,8 +69,10 @@
 }
 
 .home-page .home-link-icon { 
-  height: 120px; 
-  width: auto; 
+ height: auto;          /* 不固定高度 */
+  width: 8vw;            /* 用 viewport 寬度控制 */
+  max-width: 120px;      /* 保留最大尺寸 */
+  min-width: 150px;
   cursor: pointer; 
   transition: transform 0.3s ease; 
 }
@@ -101,24 +103,27 @@
 
 /* 單獨星星 */
 .home-page .star6 {
-  width: 50px;
-  height: 50px;
+  width: 5vw;            /* 用 vw 控制大小 */
+  height: auto;          /* 保持比例 */
   top: 15%;
-  left: 15%;
+  left:10%;
 }
 
 .home-page .star12 {
-  width: 70px;
-  height: 70px;
-  top: 25%;
-  left: 43%;
+ width: 7vw;
+  height: auto;
+  top: 5%;
+  left: 48%;
 }
 
 /* Title SVG */
 .home-page .title-svg {
   position: absolute;
   z-index: 1;
-  width: 500px; 
+ width: 30vw;          /* 改成 vw，螢幕越小越小 */
+  max-width: 500px;     /* 保留最大尺寸 */
+    min-width: 300px;     /* 保留最大尺寸 */
+
   top: 15%;
   left: 30%;
   transform: translateX(-50%);
@@ -154,8 +159,9 @@
   position: absolute;
   top: 110%;
   left: 5%;
-  width: 250px;
-  height: auto;
+width: 15vw;           /* 改成響應式 */
+  max-width: 250px;      /* 保留最大尺寸 */
+  height: auto;          /* 保持比例 */
   animation: 
     home-slideUpFade 1s ease forwards, 
     home-floatObject 3s ease-in-out infinite 1s;
@@ -167,8 +173,8 @@
   position: absolute;
   top: 120%;
   left: 40%;
-  width: 290px;
-  animation: 
+ width: 20vw;      
+   animation: 
     home-slideUpFade 1s ease forwards, 
     home-floatObject 3s ease-in-out infinite 1s;
   animation-delay: 0.5s;
@@ -178,8 +184,10 @@
 .home-page .phone {
   position: absolute;
   top: 128%;
-  left: 53.5%;
-  width: 50px;
+  left: 58%;
+  width: 4vw;
+  max-width: 50px;
+  
   animation: 
     home-slideUpFade 1s ease forwards, 
     home-floatObject 3s ease-in-out infinite 1s;

@@ -125,7 +125,7 @@ import uiux6 from '../assets/uiux6.png';
 import uiux7 from '../assets/uiux7.png';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules"; // ✅ 使用 Pagination
+import { Pagination, Navigation } from "swiper/modules"; 
 import "swiper/css";
 import "swiper/css/navigation";
 import { useNavigate } from 'react-router-dom'; 
@@ -527,52 +527,57 @@ const handlePrevVideo = () => {
     </div>
 
 <div className="works-wrapper">
-  <Swiper
-    modules={[Pagination]} // ✅ 移除 Navigation，改用 Pagination
-    spaceBetween={30}
-    loop={true}
-    pagination={{ 
-      clickable: true, 
-      dynamicBullets: true, 
-      dynamicMainBullets: 5 // ✅ 最多五個點
-    }}
-    breakpoints={{
-      0: { slidesPerView: 1 },   // 手機 (≤500px)
-      500: { slidesPerView: 1 },
-      820: { slidesPerView: 2 }, // 平板 (≤820px)
-      1200: { slidesPerView: 3 } // 桌機
-    }}
-  >
-    {workCards
-      .filter(work => selectedTags.length === 0 || selectedTags.includes(work.tag))
-      .map((work, idx) => (
-        <SwiperSlide key={idx}>
-          <div className="work-card-wrapper">
-            <div className="work-card">
-              <div className="year">{work.year}</div>
-              <div className="work-content">
-                <div
-                  className="work-img"
-                  style={{
-                    width: work.imgWidth ? `${work.imgWidth}px` : "100%",
-                    height: work.imgHeight ? `${work.imgHeight}px` : "200px"
-                  }}
-                  onClick={() => {
-                    setLightboxIndex(idx);
-                    setLightboxOpen(true);
-                  }}
-                >
-                  <img src={work.img} alt={work.title} />
-                  <div className="overlay">點擊放大</div>
-                </div>
-                <div className="work-title">{work.title}</div>
-                <div className="work-desc">{work.desc}</div>
+<Swiper
+  modules={[Pagination, Navigation]}
+  spaceBetween={30}
+  loop={true}
+  navigation={{
+    enabled: window.innerWidth >= 820, // ✅ 大於等於 820 才開啟左右按鈕
+    nextEl: ".next",
+    prevEl: ".prev"
+  }}
+  pagination={{
+    clickable: true,
+    dynamicBullets: true,
+    dynamicMainBullets: 5,
+    enabled: window.innerWidth < 820 // ✅ 小於 820 才啟用圓點
+  }}
+  breakpoints={{
+    0: { slidesPerView: 1 },     // <500
+    500: { slidesPerView: 2 },   // 500~819
+    820: { slidesPerView: 3 }    // >=820
+  }}
+>
+{workCards
+    .filter(work => selectedTags.length === 0 || selectedTags.includes(work.tag))
+    .map((work, idx) => (
+      <SwiperSlide key={idx}>
+        <div className="work-card-wrapper">
+          <div className="work-card">
+            <div className="year">{work.year}</div>
+            <div className="work-content">
+              <div
+                className="work-img"
+                style={{
+                  width: work.imgWidth ? `${work.imgWidth}px` : "100%",
+                  height: work.imgHeight ? `${work.imgHeight}px` : "200px"
+                }}
+                onClick={() => {
+                  setLightboxIndex(idx);
+                  setLightboxOpen(true);
+                }}
+              >
+                <img src={work.img} alt={work.title} />
+                <div className="overlay">點擊放大</div>
               </div>
+              <div className="work-title">{work.title}</div>
+              <div className="work-desc">{work.desc}</div>
             </div>
           </div>
-        </SwiperSlide>
-      ))}
-  </Swiper>
+        </div>
+      </SwiperSlide>
+    ))}
+</Swiper>
 </div>
 
     <div className="graphic-nav">

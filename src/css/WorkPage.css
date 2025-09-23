@@ -26,6 +26,19 @@ html {
   display: flex;
   justify-Content: center
 }
+/* 820px 以下隱藏左右箭頭 */
+@media (max-width: 819px) {
+  .graphic-nav {
+    display: none;
+  }
+}
+
+/* 820px 以上隱藏圓點 */
+@media (min-width: 820px) {
+  .swiper-pagination {
+    display: none !important;
+  }
+}
 
 .workTitle {
   width: 15%, ;
