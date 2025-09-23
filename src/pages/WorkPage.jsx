@@ -160,7 +160,7 @@ const groupImages = [
   // 其他 group 同理
 ];
 
-// ✅ 平面設計作品資料（增加 tag）
+// ✅ 平面設計作品資料
 const workCards = [
   { year: '2024', title: '樂天kobo', desc: '新年活動-社群圖文', img: social1, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
   { year: '2024', title: '樂天kobo', desc: '裝飾閱讀器-社群圖文', img: social2, imgWidth: 320, imgHeight: 320, tag: '社群圖文' },
