@@ -74,11 +74,21 @@ export default function HomePage() {
         <SpaceshipAnimation />
 {/* 新增元素區 */}
 <div className="home-objects">
-  <img src={rocket} alt="Rocket" className="rocket" />
-  {/* <img src={people} alt="People" className="people" /> */}
-  <img src={peopleO} alt="People Outline" className="people-outline" />
-  <img src={phone} alt="Phone" className="phone" />
+
+  <div className="rocket-wrapper">
+    <img src={rocket} alt="Rocket" className="rocket" />
+  </div>
+
+  <div className="people-wrapper">
+    <img src={peopleO} alt="People Outline" className="people-outline" />
+  </div>
+
+  <div className="phone-wrapper">
+    <img src={phone} alt="Phone" className="phone" />
+  </div>
+
 </div>
+
         {/* 導頁按鈕 */}
         <div className="home-links">
           <Link to="/work"><img src={WorkTitle} alt="Work" className="home-link-icon work-icon" /></Link>
