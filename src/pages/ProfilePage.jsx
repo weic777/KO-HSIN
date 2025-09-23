@@ -22,12 +22,12 @@ import htmlLogo from '../assets/html-logo.svg';
 import cssLogo from '../assets/css-logo.svg';
 import jsLogo from '../assets/js-logo.svg';
 import idLogo from '../assets/id-logo.svg';
-import WorkLogo1 from '../assets/中國時報.svg';
-import WorkLogo2 from '../assets/康健雜誌.svg';
-import WorkLogo3 from '../assets/新光三越.svg';
+import WorkLogo1 from '../assets/ChinaTimes.svg';
+import WorkLogo2 from '../assets/CommonHealth.svg';
+import WorkLogo3 from '../assets/SKM.svg';
 import WorkLogo4 from '../assets/HiSKIO.svg';
-import WorkLogo5 from '../assets/樂天市場.svg';
-import WorkLogo6 from '../assets/甲桂林廣告.svg';
+import WorkLogo5 from '../assets/Rakuten.svg';
+import WorkLogo6 from '../assets/TopScene.svg';
 import AnimatedButton from '../components/AnimatedButton';
 import ResumePDF from '../assets/2025-Resume-KOHSIN.pdf';
 
