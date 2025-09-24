@@ -1301,7 +1301,7 @@ svg:hover .ContactLine {
 .contact-svg-wrapper {
   position: fixed;
   bottom: 10%;
-  right: -4%;
+  right: -3%;
   width: 200px;
   height: 150px;
   cursor: pointer;
