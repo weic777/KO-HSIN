@@ -1,6 +1,41 @@
 /* =============================
    HomePage 專屬樣式
 ============================= */
+/* 幽浮進場動畫 */
+.spaceship-wrapper {
+  position: absolute;
+  top: 15vh;
+  left: 75%;
+  width: 25vw;
+  max-width: 200px;
+  transform: translate(200%, -20%) scale(0.2); /* 螢幕外右上角 + 超小 */
+  animation: flyInFromFar 2.5s ease-out forwards;
+  animation-delay: 2.5s; /* 等手機出現後再進場 */
+  z-index: 10;
+}
+
+/* 幽浮進場關鍵幀 */
+@keyframes flyInFromFar {
+  0% {
+    transform: translate(200%, -20%) scale(0.2);
+    opacity: 0; /* 一開始完全透明 */
+  }
+  50% {
+    opacity: 1; /* 半途變清楚 */
+  }
+  80% {
+    transform: translate(-10%, 0) scale(1.1); /* 過衝：稍微大一點 */
+  }
+  100% {
+    transform: translate(0, 0) scale(2); /* 停在原位 */
+  }
+}
+
+/* 幽浮漂浮效果（在進場完成後自動接上） */
+.spaceship-wrapper.floating {
+  animation: flyInFromFar 2.5s ease-out forwards,
+             home-floatObject 3s ease-in-out infinite 5s; /* 5s = 進場+延遲後開始漂浮 */
+}
 
 .home-page {
   margin: 0;
@@ -70,8 +105,8 @@
 
 .home-page .home-link-icon { 
  height: auto;          /* 不固定高度 */
-  width: 8vw;            /* 用 viewport 寬度控制 */
-  max-width: 120px;      /* 保留最大尺寸 */
+  width: 12w;            /* 用 viewport 寬度控制 */
+  max-width: 250px;      /* 保留最大尺寸 */
   min-width: 150px;
   cursor: pointer; 
   transition: transform 0.3s ease; 
@@ -84,7 +119,7 @@
 /* 個別按鈕絕對定位 */
 .home-page .work-icon { position: absolute; top: 10px; left: 20%; }
 .home-page .profile-icon { position: absolute; top: -150px; left: 45%; }
-.home-page .contact-icon { position: absolute; top: 100px; left: 60%; }
+.home-page .contact-icon { position: absolute; top: 100px; left: 65%; }
 
 /* 星星漂浮動畫 */
 @keyframes home-floatRotate {

@@ -1,4 +1,5 @@
 import '../index.css';
+import LightboxPortal from '../components/LightboxPortal'; // 路徑依你放的位置調整
 import React, { useState, useEffect } from "react"; 
 import '../css/WorkPage.css';
 import workTitle from '../assets/work-title.svg';
@@ -11,7 +12,7 @@ import arrowrighthover from '../assets/arrow-right-hover.svg';
 import xyellow from '../assets/x-yellow.svg';
 import xblue from '../assets/x-blue.svg';
 import goarrow from '../assets/go-arrow.svg';
-
+import star6y from '../assets/star6y.svg';
 import Tv from '../assets/Tv.svg';
 import TvBtLf from '../assets/TvBtLf.svg';
 import TvBtRi from '../assets/TvBtRi.svg';
@@ -197,10 +198,13 @@ const workCards = [
 
 ];
 
+
+
 function WorkPage() {
   <div id="work-top"></div>
 
 const [visibleGroups, setVisibleGroups] = useState(groupImages.length); // 初始全部顯示
+
 useEffect(() => {
   const handleResize = () => {
     const width = window.innerWidth;
@@ -267,7 +271,60 @@ const navigate = useNavigate();
     { cover: wafacover, title: '瓦法奇朵', backColor: '#075524ff', size: { cover: { w: 12, h: 23}, page: { w: 285, h: 571 } }, pages: [[wafacover, wafa2], [wafa3,wafa4], [ wafa5,wafa6], [ wafa7,wafa8],[wafa10,wafaend] ] },
   ];
  const [showScrollTop, setShowScrollTop] = useState(false);
+ useEffect(() => {
+  if (lightboxOpen) {
+    document.body.style.overflow = "hidden"; // 禁止滾動
+  } else {
+    document.body.style.overflow = "auto";   // 恢復滾動
+  }
+}, [lightboxOpen]);
 
+useEffect(() => {
+  const handleStarParallax = () => {
+    const leftStarImg = document.querySelector('.star-background-decoration.left .star-decoration-img');
+    const rightStarImg = document.querySelector('.star-background-decoration.right .star-decoration-img');
+    
+    if (!leftStarImg || !rightStarImg) return;
+    
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    // 找到 UI/UX 和菜單區塊
+    const uiuxSection = document.querySelector('.uiux-design-section');
+    const menuSection = document.querySelector('.menu-design-section');
+    
+    if (!uiuxSection || !menuSection) return;
+    
+    const uiuxBottom = uiuxSection.offsetTop + uiuxSection.offsetHeight;
+    const menuTop = menuSection.offsetTop;
+    const triggerPoint = uiuxBottom - windowHeight * 0.3;
+    
+    // 當用戶滾動到兩個區塊之間時顯示星星
+    if (scrollY > triggerPoint - windowHeight && scrollY < menuTop + windowHeight) {
+      leftStarImg.classList.add('visible');
+      rightStarImg.classList.add('visible');
+      
+      // 視差效果 - 左右星星有不同的移動方向
+      const parallaxSpeed = 0.3;
+      const parallaxOffset = (scrollY - triggerPoint) * parallaxSpeed;
+      const rotationAngle = (scrollY - triggerPoint) * 0.1;
+      
+      // 左邊星星
+      leftStarImg.style.transform = `translateY(${parallaxOffset}px) rotate(${rotationAngle}deg)`;
+      
+      // 右邊星星 - 反向旋轉
+      rightStarImg.style.transform = `translateY(${parallaxOffset}px) rotate(${-rotationAngle}deg)`;
+    } else {
+      leftStarImg.classList.remove('visible');
+      rightStarImg.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', handleStarParallax);
+  handleStarParallax();
+
+  return () => window.removeEventListener('scroll', handleStarParallax);
+}, []);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) { // 捲動超過 100px 才顯示
@@ -363,6 +420,22 @@ const handlePrevVideo = () => {
   return (
     
     <div className="App">
+{/* 左右星星背景裝飾 */}
+<div className="star-background-decoration left">
+  <img 
+    src={star6y} 
+    alt="star decoration left" 
+    className="star-decoration-img"
+  />
+</div>
+
+<div className="star-background-decoration right">
+  <img 
+    src={star6y} 
+    alt="star decoration right" 
+    className="star-decoration-img"
+  />
+</div>
       {/* 標題 */}
       <section id='work-top' className="title-section">
         <img src={workTitle} alt="作品標題圖" />
@@ -419,12 +492,19 @@ const handlePrevVideo = () => {
 
         ))}
       </div>
+      
     </div>
+    
   ))}
+  
 </div>
 
 
   </section>
+
+
+
+
 
       {/* 菜單設計 */}
         <section
@@ -528,6 +608,7 @@ const handlePrevVideo = () => {
 
 <div className="works-wrapper">
 <Swiper
+  centeredSlides={true}
   modules={[Pagination, Navigation]}
   spaceBetween={30}
   loop={true}
@@ -592,54 +673,19 @@ const handlePrevVideo = () => {
       </div>
     </div>
 
-{/* === Lightbox 全螢幕預覽 === */}
-{lightboxOpen && (
-  <div className="lightbox" onClick={() => setLightboxOpen(false)}>
-    {/* ❌ 關閉按鈕 */}
-    <button
-      className="lightbox-close"
-      onClick={(e) => {
-        e.stopPropagation();
-        setLightboxOpen(false);
-      }}
-    >
-      ×
-    </button>
+<LightboxPortal
+  isOpen={lightboxOpen}
+  images={filteredWorkCards.map(work => ({
+    img: work.img,
+    title: work.title
+  }))}
+  index={lightboxIndex}
+  onClose={() => setLightboxOpen(false)}
+  onIndexChange={(newIndex) => setLightboxIndex(newIndex)}
+/>
 
-    <button
-      className="lightbox-prev"
-      onClick={(e) => {
-        e.stopPropagation();
-        setLightboxIndex(
-          (lightboxIndex - 1 + filteredWorkCards.length) % filteredWorkCards.length
-        );
-      }}
-    >
-      ‹
-    </button>
 
-    {/* 圖片容器 */}
-    <div className="lightbox-image-wrapper">
-      <img
-        src={filteredWorkCards[lightboxIndex].img}
-        alt={filteredWorkCards[lightboxIndex].title}
-        onClick={(e) => e.stopPropagation()}
-      />
-    </div>
 
-    <button
-      className="lightbox-next"
-      onClick={(e) => {
-        e.stopPropagation();
-        setLightboxIndex(
-          (lightboxIndex + 1) % filteredWorkCards.length
-        );
-      }}
-    >
-      ›
-    </button>
-  </div>
-)}
 
   </section>
 
@@ -779,7 +825,7 @@ const handlePrevVideo = () => {
         className={`scroll-top-btn ${showScrollTop ? "visible" : ""}`}
         onClick={scrollToTop}
       >
-        ⬆
+        ⭡
       </button>
 
 

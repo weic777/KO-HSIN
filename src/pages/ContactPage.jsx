@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import contactTitle from '../assets/contact-title.svg';
 import x from '../assets/x.svg';
+import star6b from '../assets/star6b.svg';
 
 function ContactPage() {
   const formRef = useRef(null);
@@ -27,7 +28,53 @@ function ContactPage() {
     '長期合作 / Long-term Partnership',
     '職缺應徵 / Job Opportunity'
   ];
+// 星星視差效果
+useEffect(() => {
+  const handleStarParallax = () => {
+    const leftStarImg = document.querySelector('.contact-star-decoration.left .contact-star-img');
+    const rightStarImg = document.querySelector('.contact-star-decoration.right .contact-star-img');
+    
+    if (!leftStarImg || !rightStarImg) return;
+    
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    // 找到聯絡頁面的主要區塊
+    const contactTitle = document.querySelector('.contact-title-section');
+    const contactContent = document.querySelector('.contact-content');
+    
+    if (!contactTitle || !contactContent) return;
+    
+    const titleTop = contactTitle.offsetTop;
+    const contentBottom = contactContent.offsetTop + contactContent.offsetHeight;
+    const triggerPoint = titleTop - windowHeight * 0.2;
+    
+    // 當用戶滾動到聯絡表單區域時顯示星星
+    if (scrollY > triggerPoint - windowHeight && scrollY < contentBottom + windowHeight) {
+      leftStarImg.classList.add('visible');
+      rightStarImg.classList.add('visible');
+      
+      // 視差效果 - 左右星星有不同的移動方向
+      const parallaxSpeed = 0.25;
+      const parallaxOffset = (scrollY - triggerPoint) * parallaxSpeed;
+      const rotationAngle = (scrollY - triggerPoint) * 0.08;
+      
+      // 左邊星星
+      leftStarImg.style.transform = `translateY(${parallaxOffset}px) rotate(${rotationAngle}deg)`;
+      
+      // 右邊星星 - 反向旋轉
+      rightStarImg.style.transform = `translateY(${parallaxOffset}px) rotate(${-rotationAngle}deg)`;
+    } else {
+      leftStarImg.classList.remove('visible');
+      rightStarImg.classList.remove('visible');
+    }
+  };
 
+  window.addEventListener('scroll', handleStarParallax);
+  handleStarParallax();
+
+  return () => window.removeEventListener('scroll', handleStarParallax);
+}, []);
   useEffect(() => {
     const timer = setTimeout(() => setShowBottomSvg(true), 10000); // 10秒後顯示
     return () => clearTimeout(timer);
@@ -68,7 +115,24 @@ function ContactPage() {
   };
 
   return (
-    <div className="App">
+<div className="App">
+  {/* 左右星星背景裝飾 - 使用 contact 專屬命名 */}
+  <div className="contact-star-decoration left">
+    <img 
+      src={star6b} 
+      alt="star decoration left" 
+      className="contact-star-img"
+    />
+  </div>
+
+  <div className="contact-star-decoration right">
+    <img 
+      src={star6b} 
+      alt="star decoration right" 
+      className="contact-star-img"
+    />
+  </div>
+
       <div className="contact-container">
         <section className="contact-title-section">
           <img src={contactTitle} alt="聯絡資訊標題圖" />
@@ -124,31 +188,32 @@ function ContactPage() {
                   <span className="label-zh">合作需求類型 <span className="required-star">*</span></span>
                   <span className="label-en">Inquiry Type</span>
                 </div>
-                <div className="input-wrapper">
-                  <div
-                    className={`custom-select ${errors.inquiry ? 'input-error' : ''}`}
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                  >
-                    <span className={`select-placeholder ${!formData.inquiry ? '' : 'selected'}`}>
-                      {formData.inquiry || '請選擇合作類型'}
-                    </span>
-                    <span className={`arrow ${dropdownOpen ? 'up' : 'down'}`}></span>
-                  </div>
-                  {dropdownOpen && (
-                    <div className="dropdown-options">
-                      {inquiryOptions.map((option, idx) => (
-                        <div
-                          key={idx}
-                          className="dropdown-option"
-                          onClick={() => handleSelect(option)}
-                        >
-                          {option}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {errors.inquiry && <div className="error-text">{errors.inquiry}</div>}
-                </div>
+<div className="input-wrapper">
+  <div
+    className={`custom-select ${errors.inquiry ? 'input-error' : ''}`}
+    onClick={() => setDropdownOpen(!dropdownOpen)}
+  >
+    <span className={`select-placeholder ${!formData.inquiry ? '' : 'selected'}`}>
+      {formData.inquiry || '請選擇合作類型'}
+    </span>
+    <span className={`arrow ${dropdownOpen ? 'up' : 'down'}`}></span>
+
+    {dropdownOpen && (
+      <div className="dropdown-options">
+        {inquiryOptions.map((option, idx) => (
+          <div
+            key={idx}
+            className="dropdown-option"
+            onClick={() => handleSelect(option)}
+          >
+            {option}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
               </div>
 
               {/* 留言欄位 */}
@@ -177,32 +242,62 @@ function ContactPage() {
 
 {/* 底部 SVG */}
 {showBottomSvg && (
-  <div className="contact-svg-wrapper">
-    
+  <div 
+    className="contact-svg-wrapper"
+    style={{
+      position: 'fixed',
+      bottom: '30px',
+      right: '30px',
+      width: '150px',
+      height: '150px',
+    }}
+  >
     {/* 圓圈 + 文字 點擊區 */}
-    <div className="click-area" onClick={() => navigate('/contact')}>
+    <div 
+      className="click-area"
+      onClick={() => navigate('/profile')}
+      
+      style={{ width: '100%', height: '100%' }}
+    >
       <svg viewBox="0 0 150 150" width="100%" height="100%">
         <circle className="contact-circle" cx="75" cy="75" r="50" fill="none" />
-        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" fontSize="20" fontWeight="bold" fill="black">
+        
+        <text 
+          x="50%" 
+          y="50%" 
+          textAnchor="middle" 
+          dominantBaseline="middle" 
+          fontSize="20" 
+          fontWeight="bold" 
+          fill="black"
+        >
           <tspan x="50%" dy="-0.6em">下載</tspan>
           <tspan x="50%" dy="1.2em">履歷</tspan>
         </text>
       </svg>
     </div>
 
-    {/* x 按鈕，絕對定位 + transform，獨立 */}
+    {/* x 按鈕，直接絕對定位在 wrapper 右上 */}
     <img
       src={x}
       alt="close"
-      className="resume-close"
       onClick={(e) => { 
         e.stopPropagation(); 
         setShowBottomSvg(false); 
       }}
+      style={{
+        position: 'absolute',
+        top: '20px',
+        right: '25px',
+        width: '25px',
+        height: '25px',
+        cursor: 'pointer',
+        zIndex: 20,
+      }}
     />
-
   </div>
 )}
+
 
 
 

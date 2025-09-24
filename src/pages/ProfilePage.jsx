@@ -30,7 +30,7 @@ import WorkLogo5 from '../assets/Rakuten.svg';
 import WorkLogo6 from '../assets/TopScene.svg';
 import AnimatedButton from '../components/AnimatedButton';
 import ResumePDF from '../assets/2025-Resume-KOHSIN.pdf';
-
+import star6y from '../assets/star6y.svg';
 
 
 import { useEffect, useRef, useState } from 'react';
@@ -201,7 +201,25 @@ useEffect(() => {
   ];
   const [activeExp, setActiveExp] = useState(expItems.length - 1);
   return (
-    <div className="App">
+<div className="App">
+  {/* 左右星星背景裝飾 */}
+  <div className="star-background-decoration left">
+    <img 
+      src={star6y} 
+      alt="star decoration left" 
+      className="star-decoration-img"
+    />
+  </div>
+
+  <div className="star-background-decoration right">
+    <img 
+      src={star6y} 
+      alt="star decoration right" 
+      className="star-decoration-img"
+    />
+  </div>
+
+      
       {/* 標題區塊 */}
       <section className="profile-title-section">
         <img src={aboutTitle} alt="個人簡介標題圖" />

@@ -265,7 +265,7 @@
   color: #f04236;
 }
 .custom-select {
-  position: relative;
+  position: relative;  /* ✅ 確保 dropdown 對齊 */
   width: 100%;
   max-width: 700px;
   height: 45px;
@@ -278,6 +278,7 @@
   padding: 0 10px;
   cursor: pointer;
   font-size: 16px;
+  box-sizing: border-box; /* ✅ 重要 */
 }
 
 .custom-select .select-placeholder.selected {
@@ -298,10 +299,10 @@
 
 /* 下拉選單 */
 .dropdown-options {
-  position: absolute;
+ position: absolute;
   top: calc(100% + 1vh);
   left: 0;
-  width: 100%;        /* 100% 就會跟 input 一樣寬 */
+  width: 100%;           /* ✅ 現在跟 custom-select 一樣寬 */
   box-sizing: border-box;
   background-color: white;
   border-radius: 15px;
@@ -333,7 +334,10 @@
   right: 30px;
   width: 150px;
   height: 150px;
+  transform: translateX(-50px); /* 往左 50px */
 }
+
+
 
 .click-area {
   width: 100%;
@@ -361,18 +365,93 @@
 
 /* x 按鈕 */
 .resume-close {
-  position: absolute;        /* 相對 contact-svg-wrapper */
-transform: translate(38px, -40px);  /* X 偏移 + Y 偏移，直接移到圓圈右上角 */
+  position: fixed;
+  bottom: 30px;   /* 跟 svg 同底部 */
+  right: 20px;    /* 原本 svg 右邊 */
   width: 25px;
   height: 25px;
-  z-index: 20;
   cursor: pointer;
+  transform: translate(-50px, -40px); /* 和 svg 左移一樣的偏移 */
+  z-index: 20;
 }
 
 
+/* 聯絡頁面專屬星星背景裝飾樣式 */
+.contact-star-decoration {
+  position: fixed;
+  top: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
 
+.contact-star-decoration.left {
+  left: 5%; /* 現在可以獨立調整了 */
+  transform: translate(-50%, -140%);
+}
 
+.contact-star-decoration.right {
+  right: 8%;
+  transform: translate(50%, -250%);
+}
 
+.contact-star-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
+}
 
+/* 左邊星星大小 */
+.contact-star-decoration.left .contact-star-img {
+  width: 250px;
+  height: 250px;
+}
 
+/* 右邊星星大小 */
+.contact-star-decoration.right .contact-star-img {
+  width: 180px;
+  height: 180px;
+  transition-delay: 0.3s;
+}
 
+.contact-star-img.visible {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+/* 確保各區塊有適當的 z-index */
+.contact-container,
+.contact-title-section,
+.contact-content,
+.form-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+/* 響應式調整 */
+@media (max-width: 820px) {
+  .contact-star-decoration.left .contact-star-img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .contact-star-decoration.right .contact-star-img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-star-decoration.left .contact-star-img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .contact-star-decoration.right .contact-star-img {
+    width: 110px;
+    height: 110px;
+  }
+}
