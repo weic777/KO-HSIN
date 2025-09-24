@@ -549,6 +549,14 @@ p, .exp-detail-desc, .contact-item span {
   padding-left: 1rem;
   /* 避開黑色條 */
   box-sizing: border-box;
+opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.tag-item.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tag-bar {

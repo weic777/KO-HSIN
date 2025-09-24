@@ -65,6 +65,32 @@ function ProfilePage() {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+useEffect(() => {
+  const tags = document.querySelectorAll(".tag-item");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 依序出現
+          tags.forEach((tag, i) => {
+            setTimeout(() => {
+              tag.classList.add("active");
+            }, i * 150);
+          });
+        } else {
+          // 離開視窗時移除動畫
+          tags.forEach(tag => tag.classList.remove("active"));
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  tags.forEach(tag => observer.observe(tag));
+
+  return () => observer.disconnect();
+}, []);
 
 useEffect(() => {
   const stars = document.querySelectorAll(".honor-card .star-icon");
