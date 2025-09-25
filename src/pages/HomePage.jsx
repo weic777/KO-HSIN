@@ -6,16 +6,13 @@ import SpaceshipAnimation from "../components/SpaceshipAnimation.jsx";
 import WorkTitle from "../assets/work-title-w.svg";
 import ProfileTitle from "../assets/profile-title-w.svg";
 import ContactTitle from "../assets/contact-title-w.svg";
-
 import bg1 from "../assets/bg1.svg";
 import bg2 from "../assets/bg2.svg";
 import bg3 from "../assets/bg3.svg";
 import Star6 from "../assets/6star.svg";
 import Star12 from "../assets/12star.svg";
-
 import title from "../assets/title.svg";
 import rocket from "../assets/rocket.svg";
-import people from "../assets/people.png";
 import phone from "../assets/phone-HOME.svg";
 import peopleO from "../assets/peopleO.png";
 
