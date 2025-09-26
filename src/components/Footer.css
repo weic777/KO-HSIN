@@ -7,12 +7,12 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  padding-top: 20px; /* icon 距上方 30px */
+  padding-top: 20px;
 }
 
 .footer-icons {
   display: flex;
-  gap: 15px; /* icon 間距 */
+  gap: 15px; 
 }
 
 .footer-icon {

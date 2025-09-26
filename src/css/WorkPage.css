@@ -54,7 +54,6 @@ html {
   transform: translateX(-50%);
   text-align: center;
   line-height: 150%;
-  /* ✅ 讓中英文之間有 150% 行距 */
 }
 
 .section-title .zh {
@@ -159,7 +158,6 @@ svg:hover .line {
 /* 書本區塊 */
 .menu-design-section {
   position: relative;
-  /* ✅ 讓內部絕對定位相對於這個區塊 */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -517,7 +515,6 @@ svg:hover .line {
   height: 80vh;
   width: 100%;
   padding-top: 200px;
-  /* ✅ 與標題英文間隔 */
 }
 
 /* 作品介紹容器 (水平排列) */
@@ -612,7 +609,7 @@ svg:hover .line {
 
 /* === 卡片樣式 === */
 .work-img {
-  background: black;                /* ✅ 黑底 */
+  background: black;        
   display: flex;
   justify-content: center;
   align-items: center;
@@ -624,12 +621,12 @@ svg:hover .line {
 .work-img img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;              /* ✅ 保持比例完整顯示 */
+  object-fit: contain;              
   transition: transform 0.3s ease;
 }
 
 .work-img:hover img {
-  transform: scale(1.05);           /* ✅ hover 微放大 */
+  transform: scale(1.05);       
 }
 
 /* hover 提示遮罩 */
@@ -641,14 +638,14 @@ svg:hover .line {
   padding: 6px 10px;
   font-size: 14px;
   color: white;
-  background: rgba(0, 0, 0, 0.5);   /* ✅ 半透明黑底 */
+  background: rgba(0, 0, 0, 0.5);  
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .work-img:hover .overlay {
-  opacity: 1;                       /* ✅ hover 出現提示 */
+  opacity: 1;                   
 }
 
 /* === Lightbox === */
@@ -799,7 +796,6 @@ svg:hover .line {
 }
 
 /* === Tag 篩選按鈕 === */
-/* 🔹 TAG 篩選容器：置中，標題下方 10px */
 .graphic-design-section {
   position: relative;
 }
@@ -923,7 +919,6 @@ svg:hover .line {
   height: 16px;
 }
 
-/* ✅ 滑鼠碰到整個 wrapper（文字或圓形）時同時觸發 */
 .more-link-wrapper:hover .more-link::after {
   width: 100%;
 }
@@ -1069,13 +1064,10 @@ svg:hover .line {
   /* 組與組之間的間隔 */
 
   padding-left: 30vw;
-  /* 🔹用螢幕寬度的百分比替代固定像素 */
   padding-right: 10vw;
-  /* 可選，讓右側也有空間 */
 
   z-index: 1;
   pointer-events: none;
-  /* 不擋互動 */
 }
 
 /* === 統一控制卡片間隔 === */

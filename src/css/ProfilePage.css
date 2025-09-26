@@ -77,12 +77,10 @@ p, .exp-detail-desc, .contact-item span {
   /* 大頭照與聯絡資訊間距 */
   max-width: 1280px;
   flex-wrap: wrap;
-  /* ✅ 內容超出寬度時換行 */
   justify-content: center;
   /* 換行時水平置中 */
 
   padding-top: 0px;
-  /* 🔹 控制內容往下 */
 }
 
 
@@ -136,9 +134,7 @@ p, .exp-detail-desc, .contact-item span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* ✅ 改成置中 */
   justify-content: center;
-  /* ✅ 垂直置中 */
   margin-Top: 150px
 }
 
@@ -684,8 +680,8 @@ opacity: 0;
 
 .exp-info {
   position: absolute;
-  bottom: 20px;   /* 🔹 改成靠底 */
-  left: 20px;     /* 與左邊保持距離 */
+  bottom: 20px;  
+  left: 20px;   
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -696,7 +692,7 @@ opacity: 0;
 /* 中文經歷 & 英文經歷 不用再額外 top 定位 */
 .exp-article h3[lang="zh"] + .exp-info,
 .exp-article h3[lang="en"] + .exp-info {
-  top: auto;      /* 🔹 移除 top，避免干擾 */
+  top: auto;  
   left: 20px;     /* 左邊統一 20px */
 }
 

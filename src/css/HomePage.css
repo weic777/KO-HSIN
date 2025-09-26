@@ -1,6 +1,4 @@
-/* =============================
-   HomePage 專屬樣式
-============================= */
+
 /* 幽浮進場動畫 */
 .spaceship-wrapper {
   position: absolute;
@@ -14,7 +12,6 @@
   z-index: 10;
 }
 
-/* 幽浮進場關鍵幀 */
 @keyframes flyInFromFar {
   0% {
     transform: translate(200%, -20%) scale(0.2);
@@ -24,10 +21,10 @@
     opacity: 1; /* 半途變清楚 */
   }
   80% {
-    transform: translate(-10%, 0) scale(1.1); /* 過衝：稍微大一點 */
+    transform: translate(-10%, 0) scale(1.1); 
   }
   100% {
-    transform: translate(0, 0) scale(2); /* 停在原位 */
+    transform: translate(0, 0) scale(2); 
   }
 }
 

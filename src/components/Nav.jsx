@@ -24,7 +24,6 @@ function Header() {
 
   return (
     <>
-      {/** ---------- 桌機浮動版：只會在 >= 821px 顯示（由 CSS 控制） ---------- */}
       <div className="floating-header" aria-hidden="true">
         <div className="nav-logo">
           <Link to="/home">WEI KO-HSIN</Link>
@@ -87,7 +86,6 @@ function Header() {
         </div>
       </div>
 
-      {/** ---------- 原本的 header（手機 / 漢堡 / 側邊選單）— 完全保留，CSS 會在桌機時隱藏整個 .header ---------- */}
       <header className="header sticky-header">
         <div className="title">
           <h1 className="nav-logo">
@@ -97,7 +95,6 @@ function Header() {
           </h1>
         </div>
 
-        {/* 桌面版 nav（留著以免破壞任何行為，但 CSS 在桌機會隱藏 .header） */}
         <nav className="nav desktop-nav">
           {menuItems.map((item) => (
             <div className="nav-item" key={item.to}>

@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 
 function LightboxPortal({ isOpen, images = [], index: initialIndex = 0, onClose, onIndexChange }) {
   const [index, setIndex] = useState(initialIndex);
-  const initializedRef = useRef(false); // ✅ 標記是否已初始化
+  const initializedRef = useRef(false); 
   const closeBtnRef = useRef(null);
   const lastActiveRef = useRef(null);
 

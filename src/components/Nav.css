@@ -1,7 +1,5 @@
-/* ---------------- 基本 reset / mobile-first（保留原本手機樣式） ---------------- */
 body {
   margin: 0;
-  /* 注意：不要在全域立即加 padding-top，只有桌機浮動 nav 顯示時才加 */
 }
 
 * {
@@ -9,7 +7,6 @@ body {
   box-sizing: border-box;
 }
 
-/* ---------- 原本 header（手機 / 平板）設定 — 我把你原始的 mobile 規則保留 ---------- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -34,7 +31,6 @@ body {
   margin: 0;
 }
 
-/* 桌面版 nav（原本） - 留著以免影響原本邏輯，但會在桌機被隱藏整個 .header */
 .nav.desktop-nav {
   display: flex;
   align-items: center;
@@ -150,31 +146,24 @@ body {
 .mobile-socials img { width: 25px; height: 25px; transition: transform 0.2s ease; }
 .mobile-socials img:hover { transform: scale(1.2); }
 
-/* 響應式觸發（你的原本）- 讓 burger 在 <= 820px 出現 */
 @media (max-width: 820px) {
   .nav.desktop-nav { display: none; }
   .burger { display: flex; }
-  /* 其餘手機規則保持你原本行為（tooltip 已設定為 display:none 在你原始 css） */
 }
 
-/* ---------------- 新增：桌機浮動 nav（**僅在 >= 821px 顯示**） ---------------- */
 .floating-header {
-  display: none; /* 預設不顯示（mobile-first） */
+  display: none; 
 }
 
-/* 桌機（與你原本的 820px 斷點相對應）：顯示浮動 navbar，並隱藏原本的 .header（避免重複） */
 @media (min-width: 821px) {
-  /* 給頁面上方空間，避免浮動 nav 遮到內容（只有桌機） */
   body {
     padding-top: 100px;
   }
 
-  /* 隱藏原本的 header（手機用的那一整塊），避免重複與跑版 */
   .header {
     display: none;
   }
 
-  /* 顯示浮動版（置中、圓角、陰影） */
   .floating-header {
     display: flex;
     position: fixed;
@@ -245,13 +234,11 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-/* hover 和 active 都往上移 */
 .nav-item a:hover,
 .nav-item a.active {
   transform: translateY(-8px);
 }
 
-/* tooltip 仍然顯示 */
 .nav-item .tooltip.active {
   opacity: 1;
   transform: translateY(0);
@@ -264,10 +251,10 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 100%; /* 線條起點在 nav-item 右邊 */
-  margin-left: 10px; /* 調整左邊距離 */
-  width:2px; /* 線條寬度，也就是右邊距離 */
-  height: 55%;          /* 線高，可調整 */
+  left: 100%; 
+  margin-left: 10px; 
+  width:2px; 
+  height: 55%;       
   background-color: #E6E6DC;
 }
 

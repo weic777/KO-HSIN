@@ -2,9 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* ✅ 改成置中 */
     justify-content: center;
-    /* ✅ 垂直置中 */
 }
 
 .contact-title-section {
@@ -30,20 +28,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* 垂直置中 */
     align-items: center;
-    /* 水平置中 */
     text-align: center;
 }
 
 .contact-info>* {
     margin: 0;
-    /* 先清掉預設 margin */
     margin-bottom: 1.5em;
-    /* 150% 行高效果，控制元素間距 */
 }
 
-/* 避免最後一個元素多出 margin */
 .contact-info>*:last-child {
     margin-bottom: 0;
 }
@@ -52,8 +45,8 @@
 .contact-content {
   width: 100%;
   background-color: #EFEC64;
-  margin-top: 0;   /* ✅ 直接緊貼黑線 */
-  padding: 10vh 0; /* 上下留白，響應式可用 vh 控制 */
+  margin-top: 0;  
+  padding: 10vh 0; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,8 +75,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3vh; /* ✅ 改小，上下間距 */
-  padding: 5%; /* ✅ 原本 10%，縮小一點 */
+  gap: 3vh; 
+  padding: 5%; 
 }
 
 /* 單一欄位 */
@@ -91,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.5vw; /* ✅ 原本 3vw，縮小 label 與 input 的距離 */
+  gap: 1.5vw; 
 }
 
 /* 標題區 */
@@ -100,24 +93,24 @@
   flex-direction: column;
   line-height: 140%; 
   text-align: left;
-  min-width: 160px;   /* ✅ 原本 200px，縮短一點 */
+  min-width: 160px; 
   flex-shrink: 0; 
 }
 
 .label-zh {
-  font-size: 20px; /* ✅ 比原本小 */
+  font-size: 20px;
   font-weight: bold;
 }
 
 .label-en {
-  font-size: 16px; /* ✅ 比原本小 */
+  font-size: 16px;
   font-weight: bold;
 }
 .input-wrapper, 
 .custom-select, 
 .form-textarea {
   position: relative; 
-  width: 90%; /* 或 100%，視需求 */
+  width: 90%;
   max-width: none;
 }
 
@@ -126,7 +119,7 @@
   position: absolute;
   top: calc(100% + 1vh);
   left: 0;
-  width: 100%;        /* 100% 就會跟 input 一樣寬 */
+  width: 100%;        
   box-sizing: border-box;
   background-color: white;
   border-radius: 15px;
@@ -136,7 +129,7 @@
 
 /* 輸入欄位 */
 .form-input {
-  width: 100%;       /* 由 input-wrapper 控制寬度 */
+  width: 100%;    
   max-width: 700px;
   height: 45px;
   border-radius: 12px;
@@ -149,16 +142,16 @@
 /* 滑鼠移上去 */
 .form-input:hover {
   border: solid 3px black;
-  background-color: #E6E6DC; /* 比原本稍微深一點 */
-  transition: all 0.2s ease; /* 平滑過渡 */
+  background-color: #E6E6DC;
+  transition: all 0.2s ease; 
 }
 
 /* 被點擊(輸入中) */
 .form-input:focus {
   outline: none; 
   border: solid 3px black;
-  background-color: rgb(255, 255, 255); /* 再深一點，表示聚焦 */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* 聚焦光暈 */
+  background-color: rgb(255, 255, 255); 
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); 
   transition: all 0.2s ease;
 }
 
@@ -167,20 +160,20 @@
   background-color: #fff;
   border: 3px solid #000;
   border-radius: 30px;
-  padding: 5vh 5%;       /* 改成左右 5%，隨螢幕縮放 */
+  padding: 5vh 5%;      
   margin-top: 10vh;
-  width: 90%;            /* 最大寬度統一 */
+  width: 90%;           
   max-width: 1260px;
   min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  box-sizing: border-box; /* 重要！包含 padding */
+  box-sizing: border-box; 
 }
 
 /* 表單容器 */
 .contact-form {
-  background: url('../assets/form-bg.png') no-repeat center/cover; /* 底圖 */
+  background: url('../assets/form-bg.png') no-repeat center/cover; 
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -223,7 +216,7 @@
 }
 /* 留言欄位與其他輸入欄位保持一致 */
 .form-textarea {
-  flex: 1;                     /* 吃掉剩餘寬度，跟 input 一樣 */
+  flex: 1;                     
   max-width: 700px;            /* 與 input 一致 */
   min-height: 120px;           /* 調高高度 */
   border-radius: 12px;
@@ -265,7 +258,7 @@
   color: #f04236;
 }
 .custom-select {
-  position: relative;  /* ✅ 確保 dropdown 對齊 */
+  position: relative;  
   width: 100%;
   max-width: 700px;
   height: 45px;
@@ -278,7 +271,7 @@
   padding: 0 10px;
   cursor: pointer;
   font-size: 16px;
-  box-sizing: border-box; /* ✅ 重要 */
+  box-sizing: border-box;
 }
 
 .custom-select .select-placeholder.selected {
@@ -302,7 +295,7 @@
  position: absolute;
   top: calc(100% + 1vh);
   left: 0;
-  width: 100%;           /* ✅ 現在跟 custom-select 一樣寬 */
+  width: 100%;        
   box-sizing: border-box;
   background-color: white;
   border-radius: 15px;
@@ -385,7 +378,7 @@
 }
 
 .contact-star-decoration.left {
-  left: 5%; /* 現在可以獨立調整了 */
+  left: 5%;
   transform: translate(-50%, -140%);
 }
 
