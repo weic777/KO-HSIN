@@ -214,9 +214,9 @@ function WorkPage() {
 
   const [lightboxOpen, setLightboxOpen] = useState(false); // 是否開啟 Lightbox
   const [lightboxIndex, setLightboxIndex] = useState(0);   // 當前 Lightbox 顯示的圖片索引
-  const [activeCategory, setActiveCategory] = useState('all');
+const [activeCategory, setActiveCategory] = useState('all');
   const [activeBook, setActiveBook] = useState(null);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState(['社群圖文']); // 預設選中「社群圖文」
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showBottomSvg, setShowBottomSvg] = useState(false);
   const handleScroll = (id) => {
