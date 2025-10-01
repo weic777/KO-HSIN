@@ -455,12 +455,12 @@ const [activeCategory, setActiveCategory] = useState('all');
         </div>
 
         {/* 查看更多點擊後頁面還沒做 */}
-        <div className="uiux-more-link-wrapper">
+        {/* <div className="uiux-more-link-wrapper">
           <div className="more-link">查看更多</div>
           <div className="more-circle">
             <img src={goarrow} alt="go arrow" className="go-arrow" />
           </div>
-        </div>
+        </div> */}
 
         {/* 卡片展示遮罩 */}
         <div className="uiux-overlay">
@@ -654,12 +654,12 @@ const [activeCategory, setActiveCategory] = useState('all');
           <button className="next"></button>
         </div>
         {/* 查看更多點擊後頁面還沒做 */}
-        <div className="more-link-wrapper">
+        {/* <div className="more-link-wrapper">
           <div className="more-link">查看更多</div>
           <div className="more-circle">
             <img src={goarrow} alt="go arrow" className="go-arrow" />
           </div>
-        </div>
+        </div> */}
 
         <LightboxPortal
           isOpen={lightboxOpen}
@@ -694,12 +694,12 @@ const [activeCategory, setActiveCategory] = useState('all');
         </div>
 
         {/* 查看更多點擊後頁面還沒做 */}
-        <div className="uiux-more-link-wrapper">
+        {/* <div className="uiux-more-link-wrapper">
           <div className="more-link">查看更多</div>
           <div className="more-circle">
             <img src={goarrow} alt="go arrow" className="go-arrow" />
           </div>
-        </div>
+        </div> */}
 
         {/* TV + 影片遮罩 */}
         <div className="tv-container">
