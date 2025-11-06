@@ -390,9 +390,12 @@ const [activeCategory, setActiveCategory] = useState('all');
   const closeBook = () => setActiveBook(null);
   // 先加一個影片清單
   const videoList = [
-    video1,
-    video2,
-    video3,
+    // video1,
+    // video2,
+    // video3,
+    video4,
+    video4,
+    video4,
     video4,
   ];
   const [videoIndex, setVideoIndex] = useState(0);
